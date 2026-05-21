@@ -14,31 +14,30 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* Paleta Institucional - Modo Claro (Baseada no Guia) */
+        /* Paleta Institucional - Modo Claro */
         :root {
             --bg-color: #FFFFFF;
-            --sidebar-bg: #F1F4F1; /* --muted */
-            --surface-color: #FFFFFF; /* --card */
-            --surface-alt: #F1F4F1; /* --muted */
+            --sidebar-bg: #F1F4F1; 
+            --surface-color: #FFFFFF; 
+            --surface-alt: #F1F4F1; 
             --text-main: #111827;
             --text-muted: #4B5563;
-            --accent-color: #023620; /* --accent (Títulos) */
-            --brand-highlight: #023620; /* --primary (Botões e Ícones) */
+            --accent-color: #023620; 
+            --brand-highlight: #023620; 
             --active-bg: rgba(2, 54, 32, 0.08);
             --btn-text: #FFFFFF;
-            --border-color: #DDE3DD; /* --border */
+            --border-color: #DDE3DD; 
             --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-preta.svg');
             --sidebar-width: 320px;
             
-            /* Cores Semânticas para Valores */
             --destructive: #EF4343;
             --bg-positive: rgba(2, 54, 32, 0.06);
             --text-positive: #023620;
             --bg-negative: rgba(239, 67, 67, 0.06);
-            --text-negative: #C81E1E; /* Vermelho um pouco mais escuro para melhor leitura no claro */
+            --text-negative: #C81E1E; 
         }
 
-        /* Paleta Elegante - Modo Escuro (Preto/Branco/Cinza + Verde de Acento) */
+        /* Paleta Elegante - Modo Escuro */
         body.dark-theme {
             --bg-color: #0A0A0A;
             --sidebar-bg: #000000; 
@@ -46,19 +45,18 @@
             --surface-alt: #1A1A1A; 
             --text-main: #F3F4F6;
             --text-muted: #9CA3AF;
-            --accent-color: #FFFFFF; /* Títulos brancos no modo escuro */
-            --brand-highlight: #5A8770; /* Verde de Acento Modo Escuro */
+            --accent-color: #FFFFFF; 
+            --brand-highlight: #5A8770; 
             --active-bg: rgba(90, 135, 112, 0.15);
-            --btn-text: #FFFFFF; /* Texto branco no botão verde */
+            --btn-text: #FFFFFF; 
             --border-color: #262626;
             --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-branca.svg');
             
-            /* Cores Semânticas para Valores */
             --destructive: #EF4343;
             --bg-positive: rgba(90, 135, 112, 0.15);
             --text-positive: #5A8770;
             --bg-negative: rgba(239, 67, 67, 0.12);
-            --text-negative: #F87171; /* Vermelho mais claro para destacar no fundo escuro */
+            --text-negative: #F87171; 
         }
 
         /* Detecção Automática do Sistema Operacional */
@@ -103,11 +101,7 @@
             }
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -119,7 +113,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Tipografia */
         h1, h2, h3, h4, h5 {
             font-family: 'Anek Latin', sans-serif;
             color: var(--accent-color);
@@ -128,514 +121,169 @@
         }
 
         h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 800; text-transform: uppercase; }
-        h2 { font-size: 1.75rem; margin-bottom: 2rem; margin-top: 2rem; font-weight: 700; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; transition: border-color 0.3s ease;}
-        
-        h3 { 
-            font-size: 1.25rem; margin-bottom: 1.2rem; margin-top: 2.5rem; font-weight: 600; 
-            display: flex; align-items: center; gap: 0.5rem;
-        }
-        
-        h3 i {
-            color: var(--brand-highlight);
-            font-size: 1.4rem;
-        }
-        
+        h2 { font-size: 1.75rem; margin-bottom: 2rem; margin-top: 3rem; font-weight: 700; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.25rem; margin-bottom: 1.2rem; margin-top: 2.5rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        h3 i { color: var(--brand-highlight); font-size: 1.4rem; }
         p { margin-bottom: 1.25rem; color: var(--text-muted); text-align: justify; transition: color 0.3s ease; }
-        
-        ul, ol { margin-bottom: 1.25rem; margin-left: 2rem; color: var(--text-muted); transition: color 0.3s ease;}
+        ul, ol { margin-bottom: 1.25rem; margin-left: 2rem; color: var(--text-muted); }
         li { margin-bottom: 0.5rem; text-align: justify; }
 
-        /* Barra Lateral (Menu Interativo) */
+        /* Barra Lateral */
         .sidebar {
             width: var(--sidebar-width);
             height: 100vh;
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             background-color: var(--sidebar-bg);
             border-right: 1px solid var(--border-color);
             padding: 3rem 0 2rem 0;
-            display: flex;
-            flex-direction: column;
-            z-index: 50;
+            display: flex; flex-direction: column; z-index: 50;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-
-        .nav-container {
-            flex: 1;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--border-color) transparent;
-            padding: 0 2rem;
-        }
-
-        .sidebar-brand {
-            display: block;
-            width: 100%;
-            height: 64px;
-            background-image: var(--logo-url);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: left center;
-            margin-bottom: 2.5rem;
-            transition: background-image 0.3s ease;
-        }
-
+        .nav-container { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; padding: 0 2rem; }
+        .sidebar-brand { display: block; width: 100%; height: 64px; background-image: var(--logo-url); background-size: contain; background-repeat: no-repeat; background-position: left center; margin-bottom: 2.5rem; }
         .nav-list { list-style: none; margin-left: 0; }
-        .nav-list li { text-align: left; }
         .nav-item { margin-bottom: 0.8rem; text-align: left; }
-        
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-align: left;
-            transition: all 0.2s ease;
-            display: block;
-            padding: 0.4rem 0 0.4rem 1rem;
-            border-left: 2px solid transparent;
-            margin-left: -2rem; 
-        }
+        .nav-link { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; font-weight: 500; text-align: left; transition: all 0.2s ease; display: block; padding: 0.4rem 0 0.4rem 1rem; border-left: 2px solid transparent; margin-left: -2rem; }
+        .nav-link:hover { color: var(--text-main); }
+        .nav-link.active { color: var(--brand-highlight); font-weight: 600; border-left: 2px solid var(--brand-highlight); background: var(--active-bg); }
+        .nav-sublink { font-size: 0.85rem; margin-left: -1rem; margin-bottom: 0.5rem; opacity: 0.8; padding-left: 1rem; }
 
-        .nav-link:hover {
-            color: var(--text-main);
-        }
-
-        .nav-link.active {
-            color: var(--brand-highlight);
-            font-weight: 600;
-            border-left: 2px solid var(--brand-highlight);
-            background: var(--active-bg);
-        }
-
-        .nav-sublink {
-            font-size: 0.85rem;
-            margin-left: -1rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-            text-align: left;
-            padding-left: 1rem;
-        }
-
-        .nav-sublink:hover {
-            opacity: 1;
-        }
-
-        /* Controles do Topo (Tema e Exportar) */
-        .top-controls {
-            position: fixed;
-            top: 2rem;
-            right: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 100;
-        }
-
-        .theme-toggle-btn {
-            background-color: var(--sidebar-bg);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            width: 42px;
-            height: 42px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-            color: var(--brand-highlight);
-            border-color: var(--brand-highlight);
-        }
-
-        .icon-sun { display: none; }
-        .icon-moon { display: block; }
-        body.dark-theme .icon-sun { display: block; }
-        body.dark-theme .icon-moon { display: none; }
-        
-        @media (prefers-color-scheme: dark) {
-            body:not(.light-theme) .icon-sun { display: block; }
-            body:not(.light-theme) .icon-moon { display: none; }
-        }
+        /* Controles do Topo */
+        .top-controls { position: fixed; top: 2rem; right: 3rem; display: flex; align-items: center; gap: 1rem; z-index: 100; }
+        .theme-toggle-btn { background-color: var(--sidebar-bg); color: var(--text-main); border: 1px solid var(--border-color); width: 42px; height: 42px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.2s ease; }
+        .theme-toggle-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); color: var(--brand-highlight); border-color: var(--brand-highlight); }
+        .icon-sun { display: none; } .icon-moon { display: block; }
+        body.dark-theme .icon-sun { display: block; } body.dark-theme .icon-moon { display: none; }
+        @media (prefers-color-scheme: dark) { body:not(.light-theme) .icon-sun { display: block; } body:not(.light-theme) .icon-moon { display: none; } }
 
         /* Conteúdo Principal */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            padding: 4rem 6%; 
-            width: auto;
-            max-width: 1440px; /* Expandido para dar aspecto horizontal e panorâmico */
-        }
-
-        section {
-            margin-bottom: 6rem;
-        }
+        .main-content { margin-left: var(--sidebar-width); padding: 4rem 6%; width: auto; max-width: 1440px; }
+        section { margin-bottom: 6rem; }
+        .text-columns { column-count: 2; column-gap: 4rem; text-align: justify; margin-bottom: 1.5rem; }
+        .text-columns p { margin-bottom: 1.25rem; break-inside: avoid; }
 
         /* ==========================================================
-           ELEMENTOS DE DESIGN MODERNO (GRIDS, CARDS, PLACEHOLDERS)
+           NOVO SISTEMA DE PLACEHOLDERS (BLUEPRINTS)
            ========================================================== */
-
-        /* Multi-colunas para textos muito longos na horizontal */
-        .text-columns {
-            column-count: 2;
-            column-gap: 4rem;
-            text-align: justify;
-            margin-bottom: 1.5rem;
-        }
-        
-        .text-columns p {
-            margin-bottom: 1.25rem;
-            break-inside: avoid; /* Evita que o parágrafo seja cortado no meio da coluna */
-        }
-
-        /* Placeholders de Imagem */
         .img-placeholder {
             width: 100%;
-            min-height: 280px;
             background-color: var(--surface-alt);
-            border: 1px dashed var(--border-color);
+            border: 2px dashed var(--border-color);
             border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
-            gap: 1rem;
+            gap: 0.5rem;
             margin: 2rem 0;
-            font-size: 0.95rem;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            padding: 2rem;
+            text-align: center;
             break-inside: avoid;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
         }
         
-        .img-placeholder i {
-            font-size: 3rem;
-            color: var(--brand-highlight);
-            opacity: 0.7;
+        /* Textura de Blueprint (Planta Arquitetônica) */
+        .img-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0,0,0,0.03) 10px,
+                rgba(0,0,0,0.03) 20px
+            );
+            pointer-events: none;
+        }
+        
+        body.dark-theme .img-placeholder::before {
+            background: repeating-linear-gradient( 45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px );
         }
 
-        /* Imagens Reais Inseridas */
-        .content-image {
-            width: 100%;
-            height: auto;
-            max-height: 600px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin: 2rem 0;
-            break-inside: avoid;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+        .img-placeholder i { font-size: 2.5rem; color: var(--brand-highlight); opacity: 0.8; margin-bottom: 0.5rem; z-index: 1;}
+        .img-placeholder .dim { font-family: 'Inter', monospace; font-weight: 700; font-size: 1.3rem; color: var(--text-main); z-index: 1; letter-spacing: 1px;}
+        .img-placeholder .desc { font-size: 0.95rem; font-weight: 500; opacity: 0.8; z-index: 1; text-transform: uppercase; letter-spacing: 0.5px;}
 
-        /* Imagem Flutuante (Wrap de Texto) */
-        .float-image-right {
-            float: right;
-            max-width: 35%; /* Controla a largura para que o texto tenha bastante espaço */
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin: 0.5rem 0 1rem 2.5rem; /* Cria um respiro elegante à esquerda e abaixo da imagem */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            break-inside: avoid;
-        }
+        /* Proporções Exatas para os Placeholders (Usados apenas em Banners isolados) */
+        .ph-banner { aspect-ratio: 21/9; margin: 3rem 0; }
+        .ph-slim { aspect-ratio: 4/1; margin: 2.5rem 0; }
+        .ph-landscape { aspect-ratio: 16/9; margin: 2.5rem 0; }
 
-        /* Limpar float */
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        /* Layout Dividido (Texto lado a lado com Imagem) */
+        /* Layout Dividido Dinâmico */
         .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: stretch;
-            margin: 2.5rem 0;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch; /* Estica ambos os lados para a mesma altura */
+            gap: 3rem;
+            margin: 3rem 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
         }
-
-        .split-layout.reversed {
-            /* Inverte a ordem para criar dinamismo */
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .split-layout .img-placeholder,
-        .split-layout .content-image {
+        .split-layout.reversed { flex-direction: row-reverse; }
+        .split-layout > div { flex: 1; width: 50%; display: flex; flex-direction: column; justify-content: center; }
+        
+        .split-layout > .img-placeholder {
+            flex: 1;
+            width: 50%;
             margin: 0; 
-            height: 100%;
-            max-height: none;
+            height: auto;
+            min-height: 200px; /* Evita que o placeholder encolha demais em textos muito pequenos */
+            aspect-ratio: auto !important; /* Força o placeholder a copiar a altura exata do texto */
         }
 
         /* Grelha de Cartões (Valores) */
-        .cards-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
+        .cards-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem; }
+        .card { flex: 1 1 280px; background-color: var(--surface-color); padding: 1.8rem; border: 1px solid var(--border-color); border-radius: 12px; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease; break-inside: avoid; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--brand-highlight); }
+        .card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; color: var(--brand-highlight); font-size: 1.5rem; }
+        .card-header h4 { margin: 0; font-size: 1.25rem; color: var(--accent-color); }
 
-        .card {
-            flex: 1 1 280px; 
-            background-color: var(--surface-color);
-            padding: 1.8rem;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease;
-            break-inside: avoid;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border-color: var(--brand-highlight);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--brand-highlight); 
-            font-size: 1.5rem;
-        }
-
-        .card-header h4 {
-            margin: 0;
-            font-size: 1.25rem;
-            color: var(--accent-color); 
-        }
-
-        /* Mini cartões horizontais (Ex: Privacidade) */
-        .list-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .list-card-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.2rem;
-            background-color: var(--surface-alt);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            break-inside: avoid;
-        }
-
-        .list-card-item i {
-            color: var(--brand-highlight);
-            font-size: 1.5rem;
-            margin-top: 0.1rem;
-        }
+        .list-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .list-card-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem; background-color: var(--surface-alt); border: 1px solid var(--border-color); border-radius: 8px; break-inside: avoid; }
+        .list-card-item i { color: var(--brand-highlight); font-size: 1.5rem; margin-top: 0.1rem; }
 
         @media (max-width: 900px) {
-            .split-layout { grid-template-columns: 1fr !important; }
-            .split-layout.reversed > div:first-child { order: 2; }
-            
-            .text-columns { column-count: 1; } /* Desativa colunas em ecrãs pequenos */
-            
-            /* Em telas menores, a imagem flutuante volta a ficar centralizada e ocupa a largura total */
-            .float-image-right {
-                float: none;
-                max-width: 100%;
-                margin: 2rem 0;
-            }
+            .split-layout, .split-layout.reversed { flex-direction: column !important; }
+            .split-layout > div, .split-layout > .img-placeholder { width: 100% !important; min-height: 250px; height: auto !important; aspect-ratio: auto; }
+            .text-columns { column-count: 1; } 
             .list-cards { grid-template-columns: 1fr; }
+            .ph-banner, .ph-slim { aspect-ratio: 16/9; } /* Ajuste mobile para banners */
         }
 
-        /* ==========================================================
-           ESTILOS WEB RESTAURADOS (ALERTAS, BOTÕES, TABELAS)
-           ========================================================== */
+        /* Elementos UI (Alertas, Botões) */
+        .value-box { padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.9rem; line-height: 1.5; }
+        .value-box strong { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem; font-size: 0.95rem; font-family: 'Inter', sans-serif; font-weight: 700; }
+        .value-box strong i { font-size: 1.1rem; }
+        .value-positive { background-color: var(--bg-positive); border-left: 3px solid var(--text-positive); color: var(--text-main); }
+        .value-positive strong { color: var(--text-positive); }
+        .value-negative { background-color: var(--bg-negative); border-left: 3px solid var(--text-negative); color: var(--text-main); }
+        .value-negative strong { color: var(--text-negative); }
 
-        /* Estilização Dinâmica: Como Vivemos / Como Não Vivemos */
-        .value-box {
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
+        .alert-box { background-color: var(--surface-alt); border-left: 4px solid var(--brand-highlight); padding: 1.5rem; border-radius: 0 8px 8px 0; margin: 2rem 0; display: flex; gap: 1rem; align-items: flex-start; break-inside: avoid; }
+        .alert-box.cta-box { align-items: center; border-left: none; border: 1px solid var(--border-color); border-radius: 12px; background-color: var(--surface-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .alert-icon { color: var(--brand-highlight); flex-shrink: 0; margin-top: 0.2rem; font-size: 1.5rem; }
+        .alert-content p { margin-bottom: 0; }
+        .alert-content p:not(:last-child) { margin-bottom: 0.5rem; }
 
-        .value-box strong {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-bottom: 0.3rem;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-        }
+        .btn-link { display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--brand-highlight); color: var(--btn-text) !important; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: opacity 0.2s ease, transform 0.2s ease; }
+        .btn-link:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        .value-box strong i {
-            font-size: 1.1rem;
-        }
+        .btn-export { background-color: var(--brand-highlight); color: var(--btn-text); border: none; padding: 0.8rem 1.5rem; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 0.5rem; transition: transform 0.2s ease; }
+        .btn-export:hover { transform: translateY(-2px); }
 
-        .value-positive {
-            background-color: var(--bg-positive);
-            border-left: 3px solid var(--text-positive);
-            color: var(--text-main);
-        }
+        .document-meta { background-color: var(--surface-color); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; margin-top: 2rem; margin-bottom: 4rem; }
+        .document-meta p { margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-main); }
+        .document-meta strong { font-weight: 600; color: var(--accent-color); }
 
-        .value-positive strong {
-            color: var(--text-positive);
-        }
+        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; background-color: var(--surface-color); }
+        th, td { border: 1px solid var(--border-color); padding: 1rem; text-align: left; font-size: 0.95rem; }
+        th { background-color: var(--surface-alt); font-family: 'Anek Latin', sans-serif; font-weight: 700; color: var(--accent-color); }
 
-        .value-negative {
-            background-color: var(--bg-negative);
-            border-left: 3px solid var(--text-negative);
-            color: var(--text-main);
-        }
-
-        .value-negative strong {
-            color: var(--text-negative);
-        }
-
-        /* Caixas de Destaque / Alerta */
-        .alert-box {
-            background-color: var(--surface-alt);
-            border-left: 4px solid var(--brand-highlight);
-            padding: 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin: 2rem 0;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            break-inside: avoid;
-        }
-        
-        .alert-box.cta-box {
-            align-items: center;
-            border-left: none;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            background-color: var(--surface-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .alert-icon {
-            color: var(--brand-highlight);
-            flex-shrink: 0;
-            margin-top: 0.2rem;
-            font-size: 1.5rem;
-        }
-
-        .alert-content p {
-            margin-bottom: 0;
-        }
-        
-        .alert-content p:not(:last-child) {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Estilo para links e botões importantes */
-        .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: var(--brand-highlight);
-            color: var(--btn-text) !important; 
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-        
-        .btn-link:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        /* Botão de Exportação */
-        .btn-export {
-            background-color: var(--brand-highlight);
-            color: var(--btn-text);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-export i {
-            font-size: 1.1rem;
-        }
-
-        .btn-export:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        /* Metadados */
-        .document-meta {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-            margin-bottom: 4rem;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .document-meta p {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            text-align: left;
-        }
-
-        .document-meta strong {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-
-        /* Tabela de Revisão */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-            background-color: var(--surface-color);
-            transition: background-color 0.3s ease;
-        }
-
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 1rem;
-            text-align: left;
-            font-size: 0.95rem;
-            transition: border-color 0.3s ease;
-        }
-
-        th {
-            background-color: var(--surface-alt);
-            font-family: 'Anek Latin', sans-serif;
-            font-weight: 700;
-            color: var(--accent-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Elementos apenas para impressão -> ESCONDIDOS NA WEB */
         .print-only { display: none !important; }
 
         /* ==========================================================
@@ -645,72 +293,15 @@
         .sidebar-overlay { display: none; }
 
         @media (max-width: 1024px) {
-            .mobile-header {
-                display: flex;
-                position: fixed;
-                top: 0; left: 0; right: 0;
-                height: 65px;
-                background-color: var(--sidebar-bg);
-                border-bottom: 1px solid var(--border-color);
-                z-index: 60;
-                align-items: center;
-                padding: 0 1.5rem;
-                justify-content: space-between;
-                transition: background-color 0.3s ease, border-color 0.3s ease;
-            }
-
-            .mobile-logo {
-                width: 140px;
-                height: 30px;
-                background-image: var(--logo-url);
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: left center;
-                transition: background-image 0.3s ease;
-            }
-
-            .hamburger-btn {
-                background: none; border: none; color: var(--text-main); cursor: pointer; padding: 0.5rem;
-                display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 70;
-                width: 280px;
-                padding-top: 1rem;
-            }
+            .mobile-header { display: flex; position: fixed; top: 0; left: 0; right: 0; height: 65px; background-color: var(--sidebar-bg); border-bottom: 1px solid var(--border-color); z-index: 60; align-items: center; padding: 0 1.5rem; justify-content: space-between; }
+            .mobile-logo { width: 140px; height: 30px; background-image: var(--logo-url); background-size: contain; background-repeat: no-repeat; background-position: left center; }
+            .hamburger-btn { background: none; border: none; color: var(--text-main); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+            .sidebar { transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 70; width: 280px; padding-top: 1rem; }
             .sidebar.open { transform: translateX(0); }
-
-            .sidebar-overlay.open {
-                display: block;
-                position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(0,0,0,0.5);
-                z-index: 65;
-                backdrop-filter: blur(2px);
-            }
-
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-                padding: 7rem 1.5rem 2rem 1.5rem; 
-                max-width: none;
-            }
-
-            .top-controls {
-                top: auto;
-                bottom: 1.5rem;
-                right: 1.5rem;
-                flex-direction: column-reverse; 
-                gap: 0.8rem;
-            }
-
-            .theme-toggle-btn, .btn-export {
-                width: 52px; height: 52px; padding: 0; border-radius: 50%;
-                justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            }
+            .sidebar-overlay.open { display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 65; backdrop-filter: blur(2px); }
+            .main-content { margin-left: 0; width: 100%; padding: 7rem 1.5rem 2rem 1.5rem; max-width: none; }
+            .top-controls { top: auto; bottom: 1.5rem; right: 1.5rem; flex-direction: column-reverse; gap: 0.8rem; }
+            .theme-toggle-btn, .btn-export { width: 52px; height: 52px; padding: 0; border-radius: 50%; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
             .btn-export span { display: none; } 
             .btn-export i { font-size: 1.5rem; margin: 0; }
         }
@@ -720,146 +311,59 @@
            ========================================================== */
         @media print {
             :root, body, body.dark-theme, body.light-theme {
-                --bg-color: #FFFFFF !important;
-                --surface-color: #FFFFFF !important;
-                --surface-alt: #F1F4F1 !important;
-                --text-main: #111111 !important;
-                --text-muted: #333333 !important;
-                --accent-color: #023620 !important;
-                --brand-highlight: #023620 !important; 
-                --btn-text: #FFFFFF !important;
-                --border-color: #DDE3DD !important;
+                --bg-color: #FFFFFF !important; --surface-color: #FFFFFF !important; --surface-alt: #F1F4F1 !important;
+                --text-main: #111111 !important; --text-muted: #333333 !important; --accent-color: #023620 !important;
+                --brand-highlight: #023620 !important; --btn-text: #FFFFFF !important; --border-color: #DDE3DD !important;
                 --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-preta.svg') !important;
-                
-                --bg-positive: #F1F8F4 !important;
-                --text-positive: #023620 !important;
-                --bg-negative: #FEF2F2 !important;
-                --text-negative: #C81E1E !important;
+                --bg-positive: #F1F8F4 !important; --text-positive: #023620 !important; --bg-negative: #FEF2F2 !important; --text-negative: #C81E1E !important;
             }
 
-            /* Forçar impressão de cores de fundo e remover sombras */
-            * {
-                box-shadow: none !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            body {
-                display: block;
-                background-color: #FFF !important;
-                font-size: 11pt !important; /* Tamanho editorial padrão */
-                color: #333 !important;
-            }
-
-            .sidebar, .top-controls, .mobile-header, .sidebar-overlay {
-                display: none !important;
-            }
-
-            /* Mostrar elementos escondidos APENAS na impressão */
+            * { box-shadow: none !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body { display: block; background-color: #FFF !important; font-size: 11pt !important; color: #333 !important; }
+            .sidebar, .top-controls, .mobile-header, .sidebar-overlay { display: none !important; }
             .print-only { display: block !important; }
 
-            /* Capa Impressão Horizontalizada */
-            #capa {
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                height: 17cm !important; /* Altura cirúrgica adaptada para o modo PAISAGEM */
-                box-sizing: border-box;
-                page-break-after: always;
-                padding-top: 2rem;
-                margin-bottom: 0;
-            }
-
+            /* Ajustes Capa e PDF */
+            #capa { display: flex !important; flex-direction: column; align-items: center; height: 17cm !important; box-sizing: border-box; page-break-after: always; padding-top: 2rem; margin-bottom: 0; }
             #capa h1 { text-align: center; margin-bottom: 0.5rem; }
+            #capa p:not(.document-meta p) { text-align: center; font-size: 14pt !important; text-transform: uppercase; letter-spacing: 1px; }
+            #capa .document-meta { margin-top: auto !important; margin-bottom: 0 !important; width: 100%; page-break-inside: avoid; }
+            .print-logo-capa { width: 250px !important; height: auto; margin-bottom: 2rem; }
 
-            #capa p:not(.document-meta p) {
-                text-align: center;
-                font-size: 14pt !important;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-
-            #capa .document-meta {
-                margin-top: auto !important; 
-                margin-bottom: 0 !important;
-                width: 100%;
-                page-break-inside: avoid;
-            }
-
-            .print-logo-capa {
-                width: 250px !important;
-                height: auto;
-                margin-bottom: 2rem;
-            }
-
-            .print-sumario {
-                page-break-after: always;
-                page-break-inside: avoid;
-                margin-top: 1rem;
-                margin-bottom: 1rem;
-            }
-
+            .print-sumario { page-break-after: always; page-break-inside: avoid; margin-top: 1rem; margin-bottom: 1rem; }
             .print-sumario h2 { border-bottom: 1px solid #E5E5E5; padding-bottom: 0.5rem; margin-bottom: 1rem; }
-            
-            /* Sumário em duas colunas para aproveitar o formato paisagem */
-            .print-sumario ul { 
-                list-style: none; 
-                margin-left: 0; 
-                column-count: 2;
-                column-gap: 3rem;
-            }
+            .print-sumario ul { list-style: none; margin-left: 0; column-count: 2; column-gap: 3rem; }
             .print-sumario li { margin-bottom: 0.5rem; font-weight: 600; color: #111 !important; break-inside: avoid; }
-            .print-sumario a { color: inherit; text-decoration: none; } /* Adicionado para links clicáveis no PDF */
+            .print-sumario a { color: inherit; text-decoration: none; } 
             .print-sumario ul ul { margin-top: 0.3rem; margin-left: 1.5rem; column-count: 1; }
             .print-sumario ul ul li { font-weight: 400; margin-bottom: 0.3rem; color: #333 !important; }
 
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-                max-width: none;
-                padding: 0;
-            }
-
-            /* Quebras de Página e Fluxo */
+            .main-content { margin-left: 0; width: 100%; padding: 0; }
             section { page-break-inside: auto; margin-bottom: 2rem !important; }
             h1, h2, h3, h4, h5 { page-break-after: avoid; break-after: avoid; page-break-before: auto; }
-            
-            p, .document-meta, table, tr, td, .card, .alert-box, .value-box, .img-placeholder, .content-image, .list-card-item {
-                page-break-inside: avoid;
-                break-inside: avoid;
+            p, .document-meta, table, tr, td, .card, .alert-box, .value-box, .img-placeholder, .list-card-item { page-break-inside: avoid; break-inside: avoid; }
+            ul, ol, li { page-break-inside: auto; break-inside: auto; orphans: 3; widows: 3; }
+
+            /* Forçar as grelhas no PDF */
+            .cards-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1.5rem !important; }
+            .split-layout { display: flex !important; flex-direction: row !important; align-items: stretch !important; gap: 2rem !important; page-break-inside: avoid !important; break-inside: avoid !important; margin-bottom: 2rem !important; }
+            .split-layout.reversed { flex-direction: row-reverse !important; }
+            .list-cards { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 2rem !important; align-items: start !important; }
+            .text-columns { column-count: 2 !important; column-gap: 3rem !important; }
+
+            /* Quebras de Página Forçadas por Item (Exceto itens pequenos agrupados: 10, 11, 12, 13) */
+            #sec-2, #sec-3, #sec-4, #sec-5, #sec-6, #sec-7, #sec-8, #sec-9, #sec-10, #sec-14, #sec-15 {
+                page-break-before: always !important;
+                break-before: page !important;
             }
 
-            ul, ol, li { page-break-inside: auto; break-inside: auto; }
+            /* Controlo de Altura dos Placeholders na Impressão */
+            .ph-banner { max-height: 5cm !important; }
+            .ph-slim { max-height: 4cm !important; }
+            .ph-landscape { max-height: 8cm !important; }
+            .split-layout > .img-placeholder { max-height: none !important; }
 
-            /* Forçar as grelhas a comportarem-se bem no PDF Paisagem */
-            .cards-grid {
-                display: grid !important;
-                grid-template-columns: repeat(3, 1fr) !important; /* 3 colunas para aproveitar a largura do Paisagem */
-                gap: 1.5rem !important;
-            }
-
-            .split-layout, .list-cards {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 2rem !important;
-                align-items: start !important;
-            }
-
-            .text-columns {
-                column-count: 2 !important;
-                column-gap: 3rem !important;
-            }
-
-            .float-image-right {
-                max-width: 30% !important; /* Deixa mais espaço para o texto na impressão */
-                margin: 0 0 1rem 2rem !important;
-            }
-
-            /* Configuração do tamanho do papel gerado pelo navegador */
-            @page {
-                size: A4 landscape; /* FORÇA A EXPORTAÇÃO PARA O MODO PAISAGEM */
-                margin: 1.5cm 2cm;
-            }
+            @page { size: A4 landscape; margin: 1.5cm 2cm; }
         }
     </style>
 </head>
@@ -971,118 +475,86 @@
         </section>
 
         <!-- SEÇÃO 1 -->
-        <section id="sec-1" class="clearfix">
+        <section id="sec-1">
+            
+            <div class="img-placeholder ph-banner">
+                <i class="ph ph-panorama"></i>
+                <span class="dim">1200 x 400 px</span>
+                <span class="desc">Hero Banner / Imagem Institucional Ampla</span>
+            </div>
+
             <h2>1. QUEM É A AUVP CAPITAL?</h2>
             
-            <!-- Imagem 1: Vertical Quem Somos (Flutuando à direita) -->
-            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%201%20-%20imagem%20vertical%20quem%20somos.webp" alt="Sede AUVP Capital" class="float-image-right">
-            
-            <p>A AUVP Capital é um ecossistema integrado de educação financeira, investimentos e soluções estratégicas, criado para transformar, de forma concreta, a relação das pessoas e das empresas com o dinheiro. Nascemos no cerrado, longe do glamour do eixo Rio–São Paulo, e foi justamente essa origem que moldou nossa visão prática, acessível e orientada a resultados.</p>
-            <p>Hoje, somos a maior escola de investimentos do Brasil e a consultoria número 1 no ranking do BTG Pactual. Mais do que títulos ou reconhecimento, o que nos move é gerar impacto real: levar educação financeira de verdade e gestão patrimonial eficiente a brasileiros comuns, com soluções que entregam resultados.</p>
-            <p>A AUVP Capital atua com uma gama integrada de produtos e frentes que conectam educação financeira, investimentos, gestão patrimonial, soluções empresariais, agronegócio, experiências e tecnologia. Essa integração permite a criação de soluções inovadoras, tanto para indivíduos quanto para empresas que buscam crescimento sustentável, segurança financeira e decisões mais inteligentes.</p>
+            <div class="split-layout">
+                <div>
+                    <p>A AUVP Capital é um ecossistema integrado de educação financeira, investimentos e soluções estratégicas, criado para transformar, de forma concreta, a relação das pessoas e das empresas com o dinheiro. Nascemos no cerrado, longe do glamour do eixo Rio–São Paulo, e foi justamente essa origem que moldou nossa visão prática, acessível e orientada a resultados.</p>
+                    <p>Hoje, somos a maior escola de investimentos do Brasil e a consultoria número 1 no ranking do BTG Pactual. Mais do que títulos ou reconhecimento, o que nos move é gerar impacto real: levar educação financeira de verdade e gestão patrimonial eficiente a brasileiros comuns, com soluções que entregam resultados.</p>
+                    <p>A AUVP Capital atua com uma gama integrada de produtos e frentes que conectam educação financeira, investimentos, gestão patrimonial, soluções empresariais, agronegócio, experiências e tecnologia. Essa integração permite a criação de soluções inovadoras, tanto para indivíduos quanto para empresas que buscam crescimento sustentável, segurança financeira e decisões mais inteligentes.</p>
+                </div>
+                <div class="img-placeholder">
+                    <i class="ph ph-buildings"></i>
+                    <span class="dim">Ajustável</span>
+                    <span class="desc">Acompanha altura do texto</span>
+                </div>
+            </div>
+
+            <!-- Parágrafos com largura total (sem a div text-columns) -->
             <p>Seu braço educacional já impactou mais de 40 milhões de pessoas, oferecendo o conhecimento necessário para dominar o universo dos investimentos. Em 2025 e 2026, a AUVP Capital consolidou sua liderança no mercado ao conquistar o primeiro lugar no ranking de melhores consultorias pelo BTG Pactual, reforçando sua posição como referência nacional.</p>
             <p>Ainda em 2025, a AUVP Capital ampliou sua atuação no mercado de capitais com o lançamento de três ETFs em parceria com o BTG Pactual. O AUVP11 tornou-se o primeiro ETF do Brasil 100% fundamentalista, reafirmando nossa capacidade de inovar com profundidade técnica. Já o AREA11 marcou um novo capítulo ao ser o primeiro fundo de índice da B3 estruturado integralmente para geração de renda mensal indexada ao IPCA. O AUPO11 consolidou nosso compromisso com soluções eficientes e acessíveis, ao combinar simplicidade operacional, previsibilidade tributária, com alíquota fixa de 15% de IR; sendo ideal para reserva de oportunidade e emergência.</p>
             <p>Mais do que uma plataforma, a AUVP Capital é um ecossistema completo que integra investidores, conhecimento e capital, transformando educação em estratégia e estratégia em resultados concretos. Aqui, cada aluno, membro ou investidor encontra segurança, crescimento e liberdade financeira para evoluir em todas as etapas da sua jornada.</p>
-
-            <!-- Imagem 2 (Item 4 Diversidade) movida para o fim -->
-            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%204%20-%20imagem%20diversidade.webp" alt="Diversidade AUVP Capital" class="content-image">
+            
+            <div class="img-placeholder ph-landscape">
+                <i class="ph ph-users-three"></i>
+                <span class="dim">1200 x 600 px</span>
+                <span class="desc">Paisagem / Diversidade de Equipa</span>
+            </div>
         </section>
 
         <!-- SEÇÃO 2 -->
         <section id="sec-2">
             <h2>2. NOSSOS VALORES</h2>
+            
             <div class="text-columns">
                 <p>Assim como no Cerrado, onde as árvores são discretas na superfície, mas sustentadas por raízes profundas e resilientes, acreditamos que a força de um profissional está na sua solidez intelectual, na profundidade do seu conhecimento e na consistência das suas decisões. Não selecionamos profissionais pela imagem que projetam, mas pela base que constroem. Preferimos quem é, não quem apenas parece ser.</p>
                 <p>É por isso que aqui nos reconhecemos e nos chamamos de Piratas. Piratas da AUVP Capital não são rótulos, são pessoas que escolhem navegar juntas, com autonomia, responsabilidade e coragem, sabendo que fazem parte de algo maior.</p>
                 <p>Nossos valores são o código que mantém a tripulação unida, protege nossa cultura e garante que seguimos na mesma direção com coragem, lealdade e propósito. Eles definem o que é ser um verdadeiro pirata da AUVP Capital: quem somos, como navegamos e o que jamais aceitamos dentro do navio.</p>
             </div>
             
-            <!-- Grelha de Valores com Cards Modernos -->
             <div class="cards-grid">
                 
                 <div class="card">
-                    <div class="card-header">
-                        <i class="ph ph-warning-circle"></i>
-                        <h4>Manda a Real</h4>
-                    </div>
+                    <div class="card-header"><i class="ph ph-warning-circle"></i><h4>Manda a Real</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Coragem de dar ideias e questionar as regras.</p>
-                    
-                    <div class="value-box value-positive">
-                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
-                        Falamos com franqueza, questionamos processos que podem evoluir e trazemos novas ideias.
-                    </div>
-                    <div class="value-box value-negative">
-                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
-                        Omitindo opiniões por medo, ou aceitando processos ruins porque "sempre foi assim".
-                    </div>
+                    <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Falamos com franqueza, questionamos processos que podem evoluir e trazemos novas ideias.</div>
+                    <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Omitindo opiniões por medo, ou aceitando processos ruins porque "sempre foi assim".</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <i class="ph ph-users"></i>
-                        <h4>Divide o Rum</h4>
-                    </div>
+                    <div class="card-header"><i class="ph ph-users"></i><h4>Divide o Rum</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Reconhece os louros dos colegas e recompensa à altura.</p>
-                    
-                    <div class="value-box value-positive">
-                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
-                        Reconhecemos o trabalho dos colegas e celebramos vitórias coletivas.
-                    </div>
-                    <div class="value-box value-negative">
-                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
-                        Apropriando-nos do mérito do time ou criando competição interna destrutiva.
-                    </div>
+                    <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Reconhecemos o trabalho dos colegas e celebramos vitórias coletivas.</div>
+                    <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Apropriando-nos do mérito do time ou criando competição interna destrutiva.</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <i class="ph ph-fire"></i>
-                        <h4>Sangue nos Olhos, Capitão</h4>
-                    </div>
+                    <div class="card-header"><i class="ph ph-fire"></i><h4>Sangue nos Olhos, Capitão</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Ensina, aprende e inspira medo ou admiração.</p>
-                    
-                    <div class="value-box value-positive">
-                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
-                        Buscamos crescimento constante, compartilhamos conhecimento e lideramos pelo exemplo.
-                    </div>
-                    <div class="value-box value-negative">
-                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
-                        Aceitando mediocridade, retendo conhecimento ou evitando responsabilidade.
-                    </div>
+                    <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Buscamos crescimento constante, compartilhamos conhecimento e lideramos pelo exemplo.</div>
+                    <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Aceitando mediocridade, retendo conhecimento ou evitando responsabilidade.</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <i class="ph ph-target"></i>
-                        <h4>Impiedoso</h4>
-                    </div>
+                    <div class="card-header"><i class="ph ph-target"></i><h4>Impiedoso</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Vigia os concorrentes, analisa dados e executa o que funciona.</p>
-                    
-                    <div class="value-box value-positive">
-                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
-                        Monitoramos tendências, tomamos decisões baseadas em dados e aprendemos.
-                    </div>
-                    <div class="value-box value-negative">
-                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
-                        Ignorando o mercado, decidindo por achismo ou subestimando competidores.
-                    </div>
+                    <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Monitoramos tendências, tomamos decisões baseadas em dados e aprendemos.</div>
+                    <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Ignorando o mercado, decidindo por achismo ou subestimando competidores.</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <i class="ph ph-anchor"></i>
-                        <h4>Imediato</h4>
-                    </div>
+                    <div class="card-header"><i class="ph ph-anchor"></i><h4>Imediato</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Leal aos piratas e à AUVP Capital.</p>
-                    
-                    <div class="value-box value-positive">
-                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
-                        Defendemos a AUVP Capital, protegemos o time e priorizamos o coletivo.
-                    </div>
-                    <div class="value-box value-negative">
-                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
-                        Agindo em benefício próprio ou enfraquecendo a reputação da empresa.
-                    </div>
+                    <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Defendemos a AUVP Capital, protegemos o time e priorizamos o coletivo.</div>
+                    <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Agindo em benefício próprio ou enfraquecendo a reputação da empresa.</div>
                 </div>
 
             </div>
@@ -1100,8 +572,11 @@
             <h2>3. A QUEM SE APLICA ESTE CÓDIGO?</h2>
             
             <div class="split-layout">
-                <!-- Imagem 3: Diversidade (Equipa/Reunião) -->
-                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%203%20-%20imagem%20diversidade.jpg" alt="Equipe AUVP" class="content-image">
+                <div class="img-placeholder">
+                    <i class="ph ph-users-three"></i>
+                    <span class="dim">Ajustável</span>
+                    <span class="desc">Acompanha altura do texto</span>
+                </div>
                 <div>
                     <p>Na AUVP Capital, a integridade é o pilar de todas as nossas ações e a base da confiança que construímos com nossos clientes, colaboradores e parceiros. Por isso, este Código de Ética e Conduta formaliza nosso compromisso com os mais elevados padrões de comportamento profissional, tendo como objetivo servir como um guia prático para a tomada de decisões no dia a dia, assegurando que nossas operações estejam sempre alinhadas aos nossos valores e à legislação vigente.</p>
                     <p>As normas aqui estabelecidas são de aplicação obrigatória e irrestrita a todos os sócios, administradores, colaboradores em todos os níveis hierárquicos, bem como a prestadores de serviço, fornecedores e quaisquer parceiros que representem a AUVP Capital.</p>
@@ -1115,6 +590,12 @@
         <section id="sec-4">
             <h2>4. O QUE PODE ACONTECER CASO ESTE CÓDIGO DE ÉTICA SEJA DESCUMPRIDO?</h2>
             
+            <div class="img-placeholder ph-slim">
+                <i class="ph ph-gavel"></i>
+                <span class="dim">1200 x 300 px</span>
+                <span class="desc">Banner Slim / Compliance e Seriedade</span>
+            </div>
+
             <div class="text-columns">
                 <p>Condutas que contrariem os princípios éticos comprometem diretamente a reputação, a credibilidade e a confiança construídas pela AUVP Capital junto a alunos, membros, investidores, parceiros e ao mercado. A solidez da AUVP Capital é resultado de uma atuação consistente, transparente e responsável, e a sua preservação é dever de todos.</p>
                 <p>Desde o início da relação com a AUVP Capital, cada sócio, colaborador e parceiro assume a responsabilidade de proteger a imagem institucional e os valores que sustentam a Companhia.</p>
@@ -1133,16 +614,33 @@
 
         <!-- SEÇÃO 5 -->
         <section id="sec-5">
+            <div class="img-placeholder ph-banner">
+                <i class="ph ph-compass"></i>
+                <span class="dim">1200 x 400 px</span>
+                <span class="desc">Banner Horizontal / Boas Práticas e Dia a Dia</span>
+            </div>
+
             <h2>5. BOAS PRÁTICAS E CULTURA</h2>
             
             <h3 id="sec-5-1"><i class="ph ph-briefcase"></i> 5.1. Ambiente de Trabalho</h3>
-            <p>Antes de transformar a relação das pessoas e das empresas com o dinheiro, a AUVP Capital trabalha para que seus colaboradores, parceiros e sócios se sintam parte de um ambiente seguro, respeitoso e alinhado a valores sólidos. Acreditamos que resultados consistentes nascem de relações pautadas pela cordialidade, responsabilidade, respeito, cuidado e zelo no dia a dia de trabalho.</p>
-            <p>Esperamos condutas que:</p>
-            <ul>
-                <li>Sejam pautadas pela boa-fé, transparência, diligência e lealdade na execução das atividades mantendo relações éticas com alunos, membros, investidores, clientes, parceiros e demais stakeholders;</li>
-                <li>Busquem sempre atender aos objetivos financeiros e patrimoniais de seus clientes, respeitando seus perfis, interesses e expectativas;</li>
-                <li>Evitem práticas que possam comprometer a relação de confiança e responsabilidade fiduciária mantida com clientes, investidores e o mercado.</li>
-            </ul>
+            
+            <div class="split-layout">
+                <div>
+                    <p>Antes de transformar a relação das pessoas e das empresas com o dinheiro, a AUVP Capital trabalha para que seus colaboradores, parceiros e sócios se sintam parte de um ambiente seguro, respeitoso e alinhado a valores sólidos. Acreditamos que resultados consistentes nascem de relações pautadas pela cordialidade, responsabilidade, respeito, cuidado e zelo no dia a dia de trabalho.</p>
+                    <p>Esperamos condutas que:</p>
+                    <ul>
+                        <li>Sejam pautadas pela boa-fé, transparência, diligência e lealdade na execução das atividades mantendo relações éticas com alunos, membros, investidores, clientes, parceiros e demais stakeholders;</li>
+                        <li>Busquem sempre atender aos objetivos financeiros e patrimoniais de seus clientes, respeitando seus perfis, interesses e expectativas;</li>
+                        <li>Evitem práticas que possam comprometer a relação de confiança e responsabilidade fiduciária mantida com clientes, investidores e o mercado.</li>
+                    </ul>
+                </div>
+                <div class="img-placeholder">
+                    <i class="ph ph-handshake"></i>
+                    <span class="dim">Ajustável</span>
+                    <span class="desc">Acompanha altura do texto</span>
+                </div>
+            </div>
+            
             <p>Um ambiente de trabalho saudável é construído pelas atitudes de cada pessoa que faz parte da AUVP Capital. Da mesma forma, existem comportamentos incompatíveis com esse ambiente, capazes de gerar impactos negativos individuais e institucionais, e que estão sujeitos às medidas previstas nas políticas internas, incluindo, entre outros:</p>
             <ul>
                 <li>Exercício de atividades profissionais sob efeito de álcool ou substâncias ilícitas;</li>
@@ -1152,10 +650,6 @@
                 <li>Fumar é permitido somente em áreas abertas, sendo vedado em quaisquer ambientes fechados da AUVP Capital;</li>
                 <li>Utilização de objetos que emitam fumaça, como cigarros eletrônicos, vaporizadores, incensos ou similares, nas dependências da empresa.</li>
             </ul>
-            <p>A AUVP Capital preza por um ambiente de trabalho equilibrado, respeitoso, seguro e saudável, tanto do ponto de vista físico quanto emocional, reconhecendo que o bem-estar das pessoas é essencial para o desempenho, a integridade das relações e a entrega consistente de resultados.</p>
-
-            <!-- Imagem do item 5.1 inserida no lugar do placeholder anterior -->
-            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%205%20-%20imagem%20diversidade.webp" alt="Ambiente de Trabalho e Diversidade" class="content-image">
 
             <h3 id="sec-5-2"><i class="ph ph-shield-warning"></i> 5.2. Discriminação</h3>
             <p>A AUVP Capital entende que a discriminação se caracteriza por qualquer forma de tratamento desigual, exclusão ou distinção injustificada baseada em características pessoais, como raça, cor, sexo, gênero, religião, nacionalidade, origem social, idade, deficiência ou qualquer outro traço individual.</p>
@@ -1169,86 +663,60 @@
             </div>
 
             <h3 id="sec-5-3"><i class="ph ph-warning-octagon"></i> 5.3. Assédio Moral e Sexual</h3>
-            <p>A AUVP Capital entende que ambientes profissionais saudáveis são construídos a partir do respeito, da dignidade e da segurança nas relações. Por isso, é fundamental compreender as diferenças entre assédio moral e assédio sexual, práticas incompatíveis com nossos valores e que não são toleradas, sob nenhuma circunstância.</p>
-            <p>Assédio moral consiste em condutas abusivas que expõem a pessoa a situações repetitivas e prolongadas de humilhação, constrangimento, intimidação ou desrespeito, afetando sua dignidade, integridade emocional e desempenho profissional.</p>
-            <p>É importante destacar que o assédio moral se caracteriza pela repetição e continuidade das condutas ao longo do tempo. São exemplos de comportamentos que podem caracterizar assédio moral:</p>
-            <ul>
-                <li>Retirar, de forma injustificada, autonomia, responsabilidades, cargos ou funções;</li>
-                <li>Sobrecarregar com tarefas incompatíveis ou inviáveis;</li>
-                <li>Ignorar a presença do colaborador, excluindo-o de interações ou comunicações relevantes;</li>
-                <li>Isolar, desconsiderar opiniões ou invalidar contribuições de maneira recorrente;</li>
-                <li>Gritar, adotar tom agressivo ou desrespeitoso;</li>
-                <li>Espalhar boatos, rumores ou informações ofensivas;</li>
-                <li>Desconsiderar condições ou limitações relacionadas à saúde;</li>
-                <li>Atribuir apelidos pejorativos ou impor punições vexatórias.</li>
-            </ul>
-            <p>Por outro lado, práticas legítimas de gestão, quando realizadas de forma respeitosa, objetiva e justificada, não configuram assédio moral, tais como:</p>
-            <ul>
-                <li>Cobrança por resultados, metas e desempenho;</li>
-                <li>Redistribuição ou aumento de demandas de trabalho;</li>
-                <li>Utilização de ferramentas e controles tecnológicos previstos na rotina profissional;</li>
-                <li>Feedbacks e críticas construtivas sobre o trabalho realizado.</li>
-            </ul>
+            
+            <div class="split-layout reversed">
+                <div>
+                    <p>A AUVP Capital entende que ambientes profissionais saudáveis são construídos a partir do respeito, da dignidade e da segurança nas relações. Por isso, é fundamental compreender as diferenças entre assédio moral e assédio sexual, práticas incompatíveis com nossos valores e que não são toleradas, sob nenhuma circunstância.</p>
+                    <p>Assédio moral consiste em condutas abusivas que expõem a pessoa a situações repetitivas e prolongadas de humilhação, constrangimento, intimidação ou desrespeito, afetando sua dignidade, integridade emocional e desempenho profissional.</p>
+                    <p>É importante destacar que o assédio moral se caracteriza pela repetição e continuidade das condutas ao longo do tempo. São exemplos de comportamentos que podem caracterizar assédio moral:</p>
+                    <ul>
+                        <li>Retirar, de forma injustificada, autonomia, responsabilidades, cargos ou funções;</li>
+                        <li>Sobrecarregar com tarefas incompatíveis ou inviáveis;</li>
+                        <li>Ignorar a presença do colaborador, excluindo-o de interações ou comunicações relevantes;</li>
+                        <li>Isolar, desconsiderar opiniões ou invalidar contribuições de maneira recorrente.</li>
+                    </ul>
+                </div>
+                <div class="img-placeholder">
+                    <i class="ph ph-chat-circle-slash"></i>
+                    <span class="dim">Ajustável</span>
+                    <span class="desc">Acompanha altura do texto</span>
+                </div>
+            </div>
+
+            <p>Por outro lado, práticas legítimas de gestão, quando realizadas de forma respeitosa, objetiva e justificada, não configuram assédio moral, tais como cobrança por resultados, redistribuição de demandas ou feedbacks construtivos.</p>
             <p>Assédio sexual, por sua vez, refere-se a qualquer conduta indesejada de natureza sexual, verbal, não verbal ou física, que tenha como objetivo ou efeito constranger, violar a liberdade, a intimidade ou a vontade da pessoa, ou ainda obter vantagem sexual.</p>
-            <p>Essa prática pode ocorrer por meio de falas, gestos, contatos físicos, mensagens, comunicações eletrônicas ou compartilhamento de conteúdos, podendo acontecer dentro ou fora do ambiente de trabalho. Diferentemente do assédio moral, um único ato é suficiente para caracterizar o assédio sexual. São exemplos de situações:</p>
-            <ul>
-                <li>Piadas, comentários ou insinuações de cunho sexual que gerem desconforto;</li>
-                <li>Comentários sobre aparência física ou forma de vestir com conotação sexual;</li>
-                <li>Perguntas invasivas sobre a vida íntima;</li>
-                <li>Sons, gestos, olhares ou insinuações inadequadas;</li>
-                <li>Toques, abraços ou beijos sem consentimento;</li>
-                <li>Ameaças, pressões ou promessas em troca de favorecimento sexual;</li>
-                <li>Compartilhamento de imagens, vídeos ou mensagens de conteúdo sexual.</li>
-            </ul>
-            <p>Qualquer forma de assédio viola os valores da AUVP Capital e não é aceita em nossas relações profissionais. Diante de situações dessa natureza, é fundamental que sejam adotadas as medidas como reunir evidências e registrar o ocorrido no Canal de Ética.</p>
+            <p>Essa prática pode ocorrer por meio de falas, gestos, contatos físicos, mensagens, comunicações eletrônicas ou compartilhamento de conteúdos, podendo acontecer dentro ou fora do ambiente de trabalho. Qualquer forma de assédio viola os valores da AUVP Capital e não é aceita em nossas relações profissionais.</p>
 
             <h3 id="sec-5-4"><i class="ph ph-scales"></i> 5.4. Conflito de Interesses</h3>
             <p>A AUVP Capital considera que há conflito de interesses sempre que interesses pessoais, financeiros, familiares, afetivos, profissionais ou de qualquer outra natureza influenciem, ou aparentem influenciar, o julgamento, a imparcialidade ou a tomada de decisão de uma pessoa no exercício de suas funções.</p>
             <p>Diante disso, espera-se que todos os colaboradores, sócios e parceiros atuem com transparência e atenção permanente, comunicando previamente qualquer situação, relação ou atividade que possa caracterizar ou gerar a percepção de conflito de interesses.</p>
-            <p>Podem configurar situações de conflito de interesses, entre outras:</p>
-            <ul>
-                <li>Relacionamentos afetivos ou vínculos de parentesco com colaboradores, parceiros comerciais, fornecedores ou clientes;</li>
-                <li>Vínculos familiares ou pessoais entre membros da liderança ou do quadro societário que possam impactar decisões estratégicas;</li>
-                <li>Exercício de atividades paralelas ou participação em negócios que atuem no mesmo segmento;</li>
-                <li>Contratação, indicação ou gestão de fornecedores com vínculos pessoais;</li>
-                <li>Negociação, direta ou indireta, de ativos originadas ou relacionadas às empresas da AUVP Capital, sem a devida aprovação;</li>
-                <li>Uso ou divulgação indevida de informações confidenciais ou privilegiadas.</li>
-            </ul>
-            <p>É importante destacar que a existência de um potencial conflito de interesses não representa, por si só, uma infração ao Código de Ética e Conduta. No entanto, a omissão ou a falta de comunicação dessas situações ao time de Compliance configuram descumprimento das diretrizes.</p>
 
             <h3 id="sec-5-5"><i class="ph ph-bank"></i> 5.5. Pessoas Politicamente Expostas</h3>
-            <p>Considera-se Pessoa Exposta Politicamente (PEP) aquela que, em razão do cargo ou função pública que exerce ou exerceu, está sujeita a controles mais rigorosos sobre suas operações financeiras e fiscais.</p>
-            <p>A AUVP Capital não restringe relações profissionais ou comerciais envolvendo Pessoas Expostas Politicamente. Contudo, em atenção aos riscos associados, adota procedimentos específicos de análise, acompanhamento e mitigação. Assim, qualquer colaborador que se enquadre nessa condição deve comunicar o fato ao Compliance.</p>
+            <p>Considera-se Pessoa Exposta Politicamente (PEP) aquela que, em razão do cargo ou função pública que exerce ou exerceu, está sujeita a controles mais rigorosos sobre suas operações financeiras e fiscais. A AUVP Capital não restringe relações profissionais com PEPs, mas adota procedimentos específicos de análise e mitigação.</p>
 
             <h3 id="sec-5-6"><i class="ph ph-briefcase"></i> 5.6. Atividades Paralelas</h3>
-            <p>Entende-se como atividade paralela qualquer ocupação profissional exercida pelo colaborador, com ou sem remuneração, além de suas atribuições na AUVP Capital.</p>
-            <p>Se não pactuada de forma diversa em contrato de trabalho ou de prestação de serviços, a realização de atividades paralelas é admitida, desde que previamente informada ao time de Compliance, observando as seguintes condições:</p>
-            <ul>
-                <li>O colaborador não poderá prestar serviços a empresas que atuem em concorrência com a AUVP Capital;</li>
-                <li>A atividade externa não poderá interferir na jornada de trabalho ou no desempenho na AUVP Capital;</li>
-                <li>É vedado o uso de recursos, informações, dados ou conhecimento interno da AUVP Capital para fins relacionados à atividade paralela.</li>
-            </ul>
+            <p>Entende-se como atividade paralela qualquer ocupação profissional exercida pelo colaborador, com ou sem remuneração, além de suas atribuições na AUVP Capital. A realização de atividades paralelas é admitida, desde que previamente informada ao time de Compliance e que não concorra com os serviços da AUVP Capital.</p>
 
             <h3 id="sec-5-7"><i class="ph ph-lock-key"></i> 5.7. Informações Privilegiadas</h3>
+            
+            <div class="img-placeholder ph-slim">
+                <i class="ph ph-eye-slash"></i>
+                <span class="dim">1200 x 300 px</span>
+                <span class="desc">Banner Slim / Sigilo e Informação Privilegiada</span>
+            </div>
+
             <p>No mercado financeiro, determinadas informações sensíveis não são de acesso público imediato e, quando utilizadas de forma indevida, podem gerar vantagens injustas. A utilização dessas informações para benefício próprio ou de terceiros é incompatível com os princípios da AUVP Capital e representa violação às normas aplicáveis.</p>
             
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-header">
-                        <i class="ph ph-trend-up"></i>
-                        <h4>Insider Trading</h4>
-                    </div>
+                    <div class="card-header"><i class="ph ph-trend-up"></i><h4>Insider Trading</h4></div>
                     <p>Ocorre quando alguém se antecipa ao mercado ao negociar valores mobiliários com base em informação relevante ainda não divulgada, buscando obter vantagem econômica. Prática tipificada como crime.</p>
                 </div>
                 <div class="card">
-                    <div class="card-header">
-                        <i class="ph ph-fast-forward"></i>
-                        <h4>Front Running</h4>
-                    </div>
+                    <div class="card-header"><i class="ph ph-fast-forward"></i><h4>Front Running</h4></div>
                     <p>Configura-se quando agentes com acesso privilegiado a ordens ou movimentações futuras realizam operações previamente, aproveitando-se desse conhecimento para obter ganhos pessoais.</p>
                 </div>
             </div>
-
         </section>
 
         <!-- SEÇÃO 6 -->
@@ -1256,17 +724,17 @@
             <h2>6. CORRUPÇÃO</h2>
             <div class="split-layout reversed">
                 <div>
-                    <p>A corrupção consiste no uso indevido de poder, influência ou posição privilegiada para obtenção de benefícios pessoais ou para a prática de atos contrários à lei e aos princípios que regem a atuação ética.</p>
-                    <p>Na AUVP Capital, qualquer prática que possa ser caracterizada como corrupção é expressamente vedada. O enfrentamento a esse tipo de conduta é um pilar fundamental para a preservação da ética.</p>
+                    <p>A corrupção consiste no uso indevido de poder, influência ou posição privilegiada para obtenção de benefícios pessoais ou para a prática de atos contrários à lei e aos princípios que regem a atuação ética. O enfrentamento a esse tipo de conduta é um pilar fundamental para a preservação da ética.</p>
                     <p>Exemplos de situações que podem caracterizar práticas corruptas:</p>
                     <ul>
-                        <li><strong>Suborno:</strong> concessão, promessa, solicitação ou aceitação de benefícios indevidos. Pode manifestar-se por <strong>Propina</strong> ou <strong>Pagamentos de facilitação</strong>.</li>
-                        <li><strong>Conluio:</strong> atuação coordenada e intencional para fraudar processos, incluindo <strong>Ajuste prévio de propostas</strong>, <strong>Cartelização</strong> ou <strong>Acordos de preços</strong>.</li>
+                        <li><strong>Suborno:</strong> concessão, promessa, solicitação ou aceitação de benefícios indevidos (Propina ou Pagamentos de facilitação).</li>
+                        <li><strong>Conluio:</strong> atuação coordenada e intencional para fraudar processos (Cartelização ou Acordos de preços).</li>
                     </ul>
                 </div>
                 <div class="img-placeholder">
                     <i class="ph ph-hand-coins"></i>
-                    <span>[ Imagem: Ética Corporativa e Combate à Corrupção ]</span>
+                    <span class="dim">Ajustável</span>
+                    <span class="desc">Acompanha altura do texto</span>
                 </div>
             </div>
         </section>
@@ -1277,7 +745,8 @@
             <div class="split-layout">
                 <div class="img-placeholder">
                     <i class="ph ph-shield-warning"></i>
-                    <span>[ Imagem: Prevenção a Fraudes e Segurança da Informação ]</span>
+                    <span class="dim">Ajustável</span>
+                    <span class="desc">Acompanha altura do texto</span>
                 </div>
                 <div>
                     <p>A AUVP Capital também adota postura de tolerância zero em relação a qualquer prática que envolva engano, manipulação ou obtenção de vantagens indevidas. Condutas dessa natureza violam diretamente os princípios éticos da Companhia e podem configurar ilícitos civis, administrativos e penais.</p>
@@ -1294,7 +763,7 @@
 
         <!-- SEÇÃO 8 -->
         <section id="sec-8">
-            <h2>8. BRINDES, PRESENTES, SOFT DOLLAR E HOSPITALIDADES</h2>
+            <h2>8. BRINDES, PRESENTES E HOSPITALIDADES</h2>
             <p>A AUVP Capital mantém relações comerciais pautadas pela ética, independência, equilíbrio e transparência. O oferecimento ou recebimento de brindes, presentes e hospitalidades é prática legítima no ambiente corporativo, desde que não influencie decisões profissionais.</p>
             
             <div class="cards-grid">
@@ -1311,90 +780,70 @@
                     <p>Benefícios econômicos concedidos por fornecedores. Admitidos apenas quando visam melhorar a qualidade dos serviços prestados aos clientes, aprovados pelo Compliance.</p>
                 </div>
             </div>
-
-            <p><strong>Vedações:</strong> Não é permitido oferecer/aceitar benefícios para influenciar decisões, aceitar dinheiro em espécie, ou usar os benefícios para vantagem indevida. Relacionamentos com Entes Públicos possuem padrão ainda mais restritivo.</p>
         </section>
 
         <!-- SEÇÃO 9 -->
         <section id="sec-9">
             <h2>9. PRIVACIDADE E PROTEÇÃO DE DADOS</h2>
+            
+            <div class="img-placeholder ph-banner">
+                <i class="ph ph-database"></i>
+                <span class="dim">1200 x 400 px</span>
+                <span class="desc">Banner Horizontal / LGPD e Cibersegurança</span>
+            </div>
+
             <p>As informações tratadas pela Companhia constituem ativos essenciais para a sustentabilidade do negócio. Toda informação relacionada a clientes, parceiros, colaboradores, deve ser utilizada, armazenada e protegida de forma adequada, em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
             
             <div class="list-cards">
                 <div class="list-card-item">
                     <i class="ph ph-check-circle"></i>
-                    <div>
-                        <p style="margin: 0;">O tratamento de dados observará rigorosamente as finalidades definidas.</p>
-                    </div>
+                    <div><p style="margin: 0;">O tratamento de dados observará rigorosamente as finalidades definidas.</p></div>
                 </div>
                 <div class="list-card-item">
                     <i class="ph ph-funnel"></i>
-                    <div>
-                        <p style="margin: 0;">A coleta ocorrerá de forma estritamente necessária aos propósitos do negócio.</p>
-                    </div>
+                    <div><p style="margin: 0;">A coleta ocorrerá de forma estritamente necessária aos propósitos do negócio.</p></div>
                 </div>
                 <div class="list-card-item">
                     <i class="ph ph-lock-key"></i>
-                    <div>
-                        <p style="margin: 0;">Medidas técnicas e administrativas avançadas de segurança serão sempre adotadas.</p>
-                    </div>
+                    <div><p style="margin: 0;">Medidas técnicas e administrativas avançadas de segurança serão sempre adotadas.</p></div>
                 </div>
                 <div class="list-card-item">
                     <i class="ph ph-user-focus"></i>
-                    <div>
-                        <p style="margin: 0;">O acesso às informações será restrito apenas aos profissionais autorizados e necessários.</p>
-                    </div>
+                    <div><p style="margin: 0;">O acesso às informações será restrito apenas aos profissionais autorizados e necessários.</p></div>
                 </div>
             </div>
-            
-            <div class="img-placeholder" style="min-height: 200px; margin-top: 3rem;">
-                <i class="ph ph-database"></i>
-                <span>[ Imagem: Proteção de Dados, Privacidade e Tecnologia ]</span>
-            </div>
         </section>
 
-        <!-- SEÇÃO 10 -->
+        <!-- SEÇÃO 10, 11 e 12 -->
         <section id="sec-10">
-            <h2>10. VISITAS</h2>
-            <p>A presença de visitantes externos nas dependências da AUVP Capital exige atenção redobrada. O colaborador responsável pela visita responde pela conduta do terceiro durante todo o período, devendo acompanhá-lo continuamente e zelar pelo acesso restrito a ambientes, informações e sistemas.</p>
-        </section>
-
-        <!-- SEÇÃO 11 -->
-        <section id="sec-11">
-            <h2>11. USO DA MARCA</h2>
             <div class="split-layout reversed">
                 <div>
-                    <p>Os Piratas atuam como extensão da marca AUVP Capital e, por isso, devem zelar permanentemente por sua reputação. O uso da marca deve ser responsável, evitando qualquer associação a conteúdos ou comportamentos incompatíveis com os valores da Companhia.</p>
-                    <p>Atenção, Pirata: a marca AUVP Capital reflete quem somos. Cuidar dela é responsabilidade de todos.</p>
+                    <h2 style="margin-top:0;">10. VISITAS</h2>
+                    <p>A presença de visitantes externos nas dependências da AUVP Capital exige atenção redobrada. O colaborador responsável pela visita responde pela conduta do terceiro durante todo o período, devendo acompanhá-lo continuamente e zelar pelo acesso restrito a ambientes, informações e sistemas.</p>
+                    
+                    <h2 id="sec-11">11. USO DA MARCA</h2>
+                    <p>Os Piratas atuam como extensão da marca AUVP Capital e, por isso, devem zelar permanentemente por sua reputação. O uso da marca deve ser responsável, evitando qualquer associação a conteúdos ou comportamentos incompatíveis com os valores da Companhia. Atenção, Pirata: a marca AUVP Capital reflete quem somos. Cuidar dela é responsabilidade de todos.</p>
+                    
+                    <h2 id="sec-12">12. CANAIS DE COMUNICAÇÃO</h2>
+                    <p>A AUVP Capital possui canais oficiais de comunicação, destinados exclusivamente a finalidades profissionais. As comunicações e atividades do dia a dia devem ser realizadas por esses meios, pois são os únicos que permitem a aplicação adequada de controles e medidas de segurança da informação.</p>
                 </div>
                 <div class="img-placeholder">
                     <i class="ph ph-megaphone"></i>
-                    <span>[ Imagem: Identidade Visual / Logotipo AUVP Capital ]</span>
+                    <span class="dim">Ajustável</span>
+                    <span class="desc">Acompanha altura do texto</span>
                 </div>
             </div>
-        </section>
-
-        <!-- SEÇÃO 12 -->
-        <section id="sec-12">
-            <h2>12. CANAIS DE COMUNICAÇÃO INTERNOS</h2>
-            <p>A AUVP Capital possui canais oficiais de comunicação, destinados exclusivamente a finalidades profissionais. As comunicações e atividades do dia a dia devem ser realizadas por esses meios, pois são os únicos que permitem a aplicação adequada de controles e medidas de segurança da informação.</p>
         </section>
 
         <!-- SEÇÃO 13 -->
         <section id="sec-13">
             <h2>13. TREINAMENTOS</h2>
             <p>A AUVP Capital possui uma área própria de treinamentos e incentiva o desenvolvimento contínuo de seus colaboradores. É responsabilidade de cada colaborador participar ativamente dessas iniciativas, com especial atenção aos treinamentos obrigatórios (Ética, Compliance e Segurança da Informação), realizados anualmente.</p>
-            
-            <div class="img-placeholder" style="min-height: 200px;">
-                <i class="ph ph-graduation-cap"></i>
-                <span>[ Imagem: Treinamentos Corporativos / Desenvolvimento ]</span>
-            </div>
         </section>
-
+            
         <!-- SEÇÃO 14 -->
         <section id="sec-14">
             <h2>14. CANAL DE ÉTICA</h2>
-            
             <div class="text-columns">
                 <p>O Canal de Ética da AUVP Capital é um instrumento essencial para a preservação da nossa cultura, da integridade das nossas relações e da confiança entre todos que fazem parte da nossa tripulação. Ele existe para garantir um ambiente seguro, ético e responsável, onde condutas inadequadas possam ser reportadas com seriedade, respeito e confidencialidade.</p>
                 <p>As condutas que possam configurar violação a este Código de Ética serão analisadas pelo Comitê de Compliance, órgão responsável por zelar pela aplicação e cumprimento deste Código, orientar sobre dilemas éticos, apurar violações e recomendar sanções.</p>
@@ -1410,7 +859,6 @@
                     </a>
                 </div>
             </div>
-
         </section>
 
         <!-- SEÇÃO 15 -->
@@ -1445,41 +893,66 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // == Funcionalidade: Scroll Suave e Highlight de Menu ==
-            const sections = document.querySelectorAll('section, h3[id^="sec-"]');
             const navLinks = document.querySelectorAll('.nav-link');
+            const targets = [];
 
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
+            // Mapeia cirurgicamente apenas os elementos que existem no menu lateral
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const target = document.querySelector(href);
+                    if (target) targets.push(target);
+                }
             });
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.5
-            };
+            // Scroll suave com margem de segurança (para o título não colar no teto)
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                        const offset = 80; // Margem no topo da tela
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - offset;
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${id}`) {
-                                link.classList.add('active');
-                            }
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
                         });
                     }
                 });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
             });
+
+            // Função robusta de ScrollSpy (substitui o IntersectionObserver falho)
+            function onScroll() {
+                let currentId = '';
+                const scrollPosition = window.scrollY;
+
+                targets.forEach(target => {
+                    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+                    // Gatilho visual: atualiza assim que o elemento chega a 150px do topo
+                    if (targetTop - 150 <= scrollPosition) {
+                        currentId = target.getAttribute('id');
+                    }
+                });
+
+                // Tratamento especial: se chegar ao final exato da página, marca o último item
+                if (window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 50) {
+                    currentId = targets[targets.length - 1].getAttribute('id');
+                }
+
+                // Atualiza o destaque da classe ativa
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Ativa o ouvinte de eventos focado em performance e dispara-o no load inicial
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
 
             // == Funcionalidade: Switch de Tema Claro/Escuro ==
             const toggleBtn = document.getElementById('theme-toggle-btn');
@@ -1487,11 +960,8 @@
             const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
             if (currentTheme) {
-                if (currentTheme === 'dark') {
-                    document.body.classList.add('dark-theme');
-                } else {
-                    document.body.classList.add('light-theme');
-                }
+                if (currentTheme === 'dark') document.body.classList.add('dark-theme');
+                else document.body.classList.add('light-theme');
             }
 
             toggleBtn.addEventListener('click', function() {
@@ -1509,7 +979,6 @@
                 }
             });
 
-            // == Funcionalidade: Menu Mobile (Hamburger) ==
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const sidebar = document.getElementById('sidebar');
             const sidebarOverlay = document.getElementById('sidebar-overlay');
