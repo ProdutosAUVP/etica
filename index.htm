@@ -5,54 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Código de Ética - AUVP Capital</title>
 
-    <!-- Fontes: Anek Latin (Títulos) e Inter (Texto Corrido - Interface Limpa) -->
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Biblioteca de Ícones Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* Paleta Minimalista - Modo Claro (Padrão) */
+        /* Paleta Institucional - Modo Claro (Baseada no Guia) */
         :root {
-            --bg-color: #FAFAFA;
-            --surface-color: #FFFFFF;
-            --text-main: #2A2A2A;
-            --text-muted: #5C5C5C;
-            --accent-color: #000000;
-            --border-color: #E5E5E5;
-            --sidebar-width: 320px;
+            --bg-color: #FFFFFF;
+            --sidebar-bg: #F1F4F1; /* --muted */
+            --surface-color: #FFFFFF; /* --card */
+            --surface-alt: #F1F4F1; /* --muted */
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --accent-color: #023620; /* --accent (Títulos) */
+            --brand-highlight: #023620; /* --primary (Botões e Ícones) */
+            --active-bg: rgba(2, 54, 32, 0.08);
+            --btn-text: #FFFFFF;
+            --border-color: #DDE3DD; /* --border */
             --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-preta.svg');
+            --sidebar-width: 320px;
+            
+            /* Cores Semânticas para Valores */
+            --destructive: #EF4343;
+            --bg-positive: rgba(2, 54, 32, 0.06);
+            --text-positive: #023620;
+            --bg-negative: rgba(239, 67, 67, 0.06);
+            --text-negative: #C81E1E; /* Vermelho um pouco mais escuro para melhor leitura no claro */
         }
 
-        /* Paleta Elegante - Modo Escuro (Forçado via classe) */
+        /* Paleta Elegante - Modo Escuro (Preto/Branco/Cinza + Verde de Acento) */
         body.dark-theme {
             --bg-color: #0A0A0A;
-            --surface-color: #141414;
-            --text-main: #EDEDED;
-            --text-muted: #A1A1A1;
-            --accent-color: #FFFFFF;
+            --sidebar-bg: #000000; 
+            --surface-color: #141414; 
+            --surface-alt: #1A1A1A; 
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent-color: #FFFFFF; /* Títulos brancos no modo escuro */
+            --brand-highlight: #5A8770; /* Verde de Acento Modo Escuro */
+            --active-bg: rgba(90, 135, 112, 0.15);
+            --btn-text: #FFFFFF; /* Texto branco no botão verde */
             --border-color: #262626;
             --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-branca.svg');
+            
+            /* Cores Semânticas para Valores */
+            --destructive: #EF4343;
+            --bg-positive: rgba(90, 135, 112, 0.15);
+            --text-positive: #5A8770;
+            --bg-negative: rgba(239, 67, 67, 0.12);
+            --text-negative: #F87171; /* Vermelho mais claro para destacar no fundo escuro */
         }
 
         /* Detecção Automática do Sistema Operacional */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #0A0A0A;
+                --sidebar-bg: #000000;
                 --surface-color: #141414;
-                --text-main: #EDEDED;
-                --text-muted: #A1A1A1;
+                --surface-alt: #1A1A1A;
+                --text-main: #F3F4F6;
+                --text-muted: #9CA3AF;
                 --accent-color: #FFFFFF;
+                --brand-highlight: #5A8770;
+                --active-bg: rgba(90, 135, 112, 0.15);
+                --btn-text: #FFFFFF;
                 --border-color: #262626;
                 --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-branca.svg');
+                --destructive: #EF4343;
+                --bg-positive: rgba(90, 135, 112, 0.15);
+                --text-positive: #5A8770;
+                --bg-negative: rgba(239, 67, 67, 0.12);
+                --text-negative: #F87171;
             }
             body.light-theme {
-                --bg-color: #FAFAFA;
+                --bg-color: #FFFFFF;
+                --sidebar-bg: #F1F4F1;
                 --surface-color: #FFFFFF;
-                --text-main: #2A2A2A;
-                --text-muted: #5C5C5C;
-                --accent-color: #000000;
-                --border-color: #E5E5E5;
+                --surface-alt: #F1F4F1;
+                --text-main: #111827;
+                --text-muted: #4B5563;
+                --accent-color: #023620;
+                --brand-highlight: #023620;
+                --active-bg: rgba(2, 54, 32, 0.08);
+                --btn-text: #FFFFFF;
+                --border-color: #DDE3DD;
                 --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-preta.svg');
+                --destructive: #EF4343;
+                --bg-positive: rgba(2, 54, 32, 0.06);
+                --text-positive: #023620;
+                --bg-negative: rgba(239, 67, 67, 0.06);
+                --text-negative: #C81E1E;
             }
         }
 
@@ -67,7 +114,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.7;
-            display: flex;
+            display: block; 
             scroll-behavior: smooth;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
@@ -81,8 +128,17 @@
         }
 
         h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 800; text-transform: uppercase; }
-        h2 { font-size: 1.75rem; margin-bottom: 1.5rem; margin-top: 2rem; font-weight: 700; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; transition: border-color 0.3s ease;}
-        h3 { font-size: 1.25rem; margin-bottom: 1rem; margin-top: 1.5rem; font-weight: 600; }
+        h2 { font-size: 1.75rem; margin-bottom: 2rem; margin-top: 2rem; font-weight: 700; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; transition: border-color 0.3s ease;}
+        
+        h3 { 
+            font-size: 1.25rem; margin-bottom: 1.2rem; margin-top: 2.5rem; font-weight: 600; 
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        
+        h3 i {
+            color: var(--brand-highlight);
+            font-size: 1.4rem;
+        }
         
         p { margin-bottom: 1.25rem; color: var(--text-muted); text-align: justify; transition: color 0.3s ease; }
         
@@ -96,9 +152,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: var(--surface-color);
+            background-color: var(--sidebar-bg);
             border-right: 1px solid var(--border-color);
-            padding: 3rem 2rem 2rem 2rem;
+            padding: 3rem 0 2rem 0;
             display: flex;
             flex-direction: column;
             z-index: 50;
@@ -108,15 +164,15 @@
         .nav-container {
             flex: 1;
             overflow-y: auto;
-            /* Esconder scrollbar mantendo funcionalidade */
             scrollbar-width: thin;
             scrollbar-color: var(--border-color) transparent;
+            padding: 0 2rem;
         }
 
         .sidebar-brand {
             display: block;
             width: 100%;
-            height: 64px; /* Logo aumentada (era 38px) */
+            height: 64px;
             background-image: var(--logo-url);
             background-size: contain;
             background-repeat: no-repeat;
@@ -137,21 +193,33 @@
             text-align: left;
             transition: all 0.2s ease;
             display: block;
-            padding: 0.4rem 0;
+            padding: 0.4rem 0 0.4rem 1rem;
+            border-left: 2px solid transparent;
+            margin-left: -2rem; 
         }
 
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-color);
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .nav-link.active {
+            color: var(--brand-highlight);
             font-weight: 600;
-            padding-left: 0.5rem;
+            border-left: 2px solid var(--brand-highlight);
+            background: var(--active-bg);
         }
 
         .nav-sublink {
             font-size: 0.85rem;
-            margin-left: 1rem;
+            margin-left: -1rem;
             margin-bottom: 0.5rem;
             opacity: 0.8;
             text-align: left;
+            padding-left: 1rem;
+        }
+
+        .nav-sublink:hover {
+            opacity: 1;
         }
 
         /* Controles do Topo (Tema e Exportar) */
@@ -166,7 +234,7 @@
         }
 
         .theme-toggle-btn {
-            background-color: var(--surface-color);
+            background-color: var(--sidebar-bg);
             color: var(--text-main);
             border: 1px solid var(--border-color);
             width: 42px;
@@ -176,6 +244,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.25rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             transition: all 0.2s ease;
         }
@@ -183,6 +252,8 @@
         .theme-toggle-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            color: var(--brand-highlight);
+            border-color: var(--brand-highlight);
         }
 
         .icon-sun { display: none; }
@@ -198,13 +269,322 @@
         /* Conteúdo Principal */
         .main-content {
             margin-left: var(--sidebar-width);
-            padding: 4rem 10%;
-            width: calc(100% - var(--sidebar-width));
-            max-width: 1100px;
+            padding: 4rem 6%; 
+            width: auto;
+            max-width: 1440px; /* Expandido para dar aspecto horizontal e panorâmico */
         }
 
         section {
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
+        }
+
+        /* ==========================================================
+           ELEMENTOS DE DESIGN MODERNO (GRIDS, CARDS, PLACEHOLDERS)
+           ========================================================== */
+
+        /* Multi-colunas para textos muito longos na horizontal */
+        .text-columns {
+            column-count: 2;
+            column-gap: 4rem;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+        
+        .text-columns p {
+            margin-bottom: 1.25rem;
+            break-inside: avoid; /* Evita que o parágrafo seja cortado no meio da coluna */
+        }
+
+        /* Placeholders de Imagem */
+        .img-placeholder {
+            width: 100%;
+            min-height: 280px;
+            background-color: var(--surface-alt);
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            gap: 1rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            break-inside: avoid;
+        }
+        
+        .img-placeholder i {
+            font-size: 3rem;
+            color: var(--brand-highlight);
+            opacity: 0.7;
+        }
+
+        /* Imagens Reais Inseridas */
+        .content-image {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin: 2rem 0;
+            break-inside: avoid;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Imagem Flutuante (Wrap de Texto) */
+        .float-image-right {
+            float: right;
+            max-width: 35%; /* Controla a largura para que o texto tenha bastante espaço */
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin: 0.5rem 0 1rem 2.5rem; /* Cria um respiro elegante à esquerda e abaixo da imagem */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            break-inside: avoid;
+        }
+
+        /* Limpar float */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Layout Dividido (Texto lado a lado com Imagem) */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: stretch;
+            margin: 2.5rem 0;
+        }
+
+        .split-layout.reversed {
+            /* Inverte a ordem para criar dinamismo */
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .split-layout .img-placeholder,
+        .split-layout .content-image {
+            margin: 0; 
+            height: 100%;
+            max-height: none;
+        }
+
+        /* Grelha de Cartões (Valores) */
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            flex: 1 1 280px; 
+            background-color: var(--surface-color);
+            padding: 1.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease;
+            break-inside: avoid;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-color: var(--brand-highlight);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-highlight); 
+            font-size: 1.5rem;
+        }
+
+        .card-header h4 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--accent-color); 
+        }
+
+        /* Mini cartões horizontais (Ex: Privacidade) */
+        .list-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .list-card-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem;
+            background-color: var(--surface-alt);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            break-inside: avoid;
+        }
+
+        .list-card-item i {
+            color: var(--brand-highlight);
+            font-size: 1.5rem;
+            margin-top: 0.1rem;
+        }
+
+        @media (max-width: 900px) {
+            .split-layout { grid-template-columns: 1fr !important; }
+            .split-layout.reversed > div:first-child { order: 2; }
+            
+            .text-columns { column-count: 1; } /* Desativa colunas em ecrãs pequenos */
+            
+            /* Em telas menores, a imagem flutuante volta a ficar centralizada e ocupa a largura total */
+            .float-image-right {
+                float: none;
+                max-width: 100%;
+                margin: 2rem 0;
+            }
+            .list-cards { grid-template-columns: 1fr; }
+        }
+
+        /* ==========================================================
+           ESTILOS WEB RESTAURADOS (ALERTAS, BOTÕES, TABELAS)
+           ========================================================== */
+
+        /* Estilização Dinâmica: Como Vivemos / Como Não Vivemos */
+        .value-box {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .value-box strong {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .value-box strong i {
+            font-size: 1.1rem;
+        }
+
+        .value-positive {
+            background-color: var(--bg-positive);
+            border-left: 3px solid var(--text-positive);
+            color: var(--text-main);
+        }
+
+        .value-positive strong {
+            color: var(--text-positive);
+        }
+
+        .value-negative {
+            background-color: var(--bg-negative);
+            border-left: 3px solid var(--text-negative);
+            color: var(--text-main);
+        }
+
+        .value-negative strong {
+            color: var(--text-negative);
+        }
+
+        /* Caixas de Destaque / Alerta */
+        .alert-box {
+            background-color: var(--surface-alt);
+            border-left: 4px solid var(--brand-highlight);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            break-inside: avoid;
+        }
+        
+        .alert-box.cta-box {
+            align-items: center;
+            border-left: none;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: var(--surface-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .alert-icon {
+            color: var(--brand-highlight);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+            font-size: 1.5rem;
+        }
+
+        .alert-content p {
+            margin-bottom: 0;
+        }
+        
+        .alert-content p:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Estilo para links e botões importantes */
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--brand-highlight);
+            color: var(--btn-text) !important; 
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        
+        .btn-link:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Botão de Exportação */
+        .btn-export {
+            background-color: var(--brand-highlight);
+            color: var(--btn-text);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-export i {
+            font-size: 1.1rem;
+        }
+
+        .btn-export:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
 
         /* Metadados */
@@ -248,40 +628,15 @@
         }
 
         th {
-            background-color: var(--bg-color);
+            background-color: var(--surface-alt);
             font-family: 'Anek Latin', sans-serif;
             font-weight: 700;
             color: var(--accent-color);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Botão de Exportação */
-        .btn-export {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 0.8rem 1.5rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-export:hover {
-            opacity: 0.8;
-            transform: translateY(-2px);
-        }
-
-        /* Elementos apenas para impressão */
-        .print-only {
-            display: none;
-        }
+        /* Elementos apenas para impressão -> ESCONDIDOS NA WEB */
+        .print-only { display: none !important; }
 
         /* ==========================================================
            RESPONSIVIDADE (MOBILE)
@@ -289,13 +644,13 @@
         .mobile-header { display: none; }
         .sidebar-overlay { display: none; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .mobile-header {
                 display: flex;
                 position: fixed;
                 top: 0; left: 0; right: 0;
                 height: 65px;
-                background-color: var(--surface-color);
+                background-color: var(--sidebar-bg);
                 border-bottom: 1px solid var(--border-color);
                 z-index: 60;
                 align-items: center;
@@ -316,7 +671,7 @@
 
             .hamburger-btn {
                 background: none; border: none; color: var(--text-main); cursor: pointer; padding: 0.5rem;
-                display: flex; align-items: center; justify-content: center;
+                display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
             }
 
             .sidebar {
@@ -340,14 +695,15 @@
             .main-content {
                 margin-left: 0;
                 width: 100%;
-                padding: 7rem 1.5rem 2rem 1.5rem; /* Espaço para o mobile header */
+                padding: 7rem 1.5rem 2rem 1.5rem; 
+                max-width: none;
             }
 
             .top-controls {
                 top: auto;
                 bottom: 1.5rem;
                 right: 1.5rem;
-                flex-direction: column-reverse; /* Theme toggle fica acima do export */
+                flex-direction: column-reverse; 
                 gap: 0.8rem;
             }
 
@@ -355,113 +711,108 @@
                 width: 52px; height: 52px; padding: 0; border-radius: 50%;
                 justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             }
-            .btn-export span { display: none; } /* Esconde o texto, mantem só o icone */
-            .btn-export svg { margin: 0; }
+            .btn-export span { display: none; } 
+            .btn-export i { font-size: 1.5rem; margin: 0; }
         }
 
         /* ==========================================================
            CONFIGURAÇÕES RIGOROSAS PARA IMPRESSÃO / EXPORTAÇÃO PDF
            ========================================================== */
         @media print {
-            /* Forçar Tema Claro para o PDF (para economizar tinta e manter padrão formal) */
             :root, body, body.dark-theme, body.light-theme {
                 --bg-color: #FFFFFF !important;
                 --surface-color: #FFFFFF !important;
+                --surface-alt: #F1F4F1 !important;
                 --text-main: #111111 !important;
                 --text-muted: #333333 !important;
-                --accent-color: #000000 !important;
-                --border-color: #E5E5E5 !important;
+                --accent-color: #023620 !important;
+                --brand-highlight: #023620 !important; 
+                --btn-text: #FFFFFF !important;
+                --border-color: #DDE3DD !important;
                 --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-preta.svg') !important;
+                
+                --bg-positive: #F1F8F4 !important;
+                --text-positive: #023620 !important;
+                --bg-negative: #FEF2F2 !important;
+                --text-negative: #C81E1E !important;
+            }
+
+            /* Forçar impressão de cores de fundo e remover sombras */
+            * {
+                box-shadow: none !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
 
             body {
                 display: block;
                 background-color: #FFF !important;
+                font-size: 11pt !important; /* Tamanho editorial padrão */
+                color: #333 !important;
             }
 
-            /* Esconder elementos interativos e mobile */
             .sidebar, .top-controls, .mobile-header, .sidebar-overlay {
                 display: none !important;
             }
 
-            /* Mostrar elementos de impressão */
-            .print-only {
-                display: block !important;
-            }
+            /* Mostrar elementos escondidos APENAS na impressão */
+            .print-only { display: block !important; }
 
-            /* Diagramação da Capa Exclusiva no Export */
+            /* Capa Impressão Horizontalizada */
             #capa {
                 display: flex !important;
                 flex-direction: column;
                 align-items: center;
-                height: 23cm; /* Ajustado: garante que caiba perfeitamente na área imprimível de uma folha A4 */
+                height: 17cm !important; /* Altura cirúrgica adaptada para o modo PAISAGEM */
                 box-sizing: border-box;
                 page-break-after: always;
                 padding-top: 2rem;
                 margin-bottom: 0;
             }
 
-            #capa h1 {
-                text-align: center;
-                margin-bottom: 0.5rem;
-            }
+            #capa h1 { text-align: center; margin-bottom: 0.5rem; }
 
             #capa p:not(.document-meta p) {
                 text-align: center;
-                font-size: 1.2rem;
+                font-size: 14pt !important;
                 text-transform: uppercase;
                 letter-spacing: 1px;
             }
 
             #capa .document-meta {
-                margin-top: auto !important; /* Empurra o quadro de informações para a base da folha */
+                margin-top: auto !important; 
                 margin-bottom: 0 !important;
                 width: 100%;
-                page-break-inside: avoid; /* Previne que o quadro seja quebrado ao meio em qualquer cenário */
+                page-break-inside: avoid;
             }
 
-            /* Logo específica da capa */
             .print-logo-capa {
-                width: 250px;
+                width: 250px !important;
                 height: auto;
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
             }
 
             .print-sumario {
                 page-break-after: always;
                 page-break-inside: avoid;
-                margin-top: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .print-sumario h2 {
-                border-bottom: 1px solid #E5E5E5;
-                padding-bottom: 0.5rem;
+                margin-top: 1rem;
                 margin-bottom: 1rem;
             }
 
-            .print-sumario ul {
-                list-style: none;
-                margin-left: 0;
+            .print-sumario h2 { border-bottom: 1px solid #E5E5E5; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+            
+            /* Sumário em duas colunas para aproveitar o formato paisagem */
+            .print-sumario ul { 
+                list-style: none; 
+                margin-left: 0; 
+                column-count: 2;
+                column-gap: 3rem;
             }
+            .print-sumario li { margin-bottom: 0.5rem; font-weight: 600; color: #111 !important; break-inside: avoid; }
+            .print-sumario a { color: inherit; text-decoration: none; } /* Adicionado para links clicáveis no PDF */
+            .print-sumario ul ul { margin-top: 0.3rem; margin-left: 1.5rem; column-count: 1; }
+            .print-sumario ul ul li { font-weight: 400; margin-bottom: 0.3rem; color: #333 !important; }
 
-            .print-sumario li {
-                margin-bottom: 0.5rem;
-                font-weight: 500;
-                color: #333 !important;
-            }
-
-            .print-sumario ul ul {
-                margin-top: 0.3rem;
-                margin-left: 1.5rem;
-            }
-
-            .print-sumario ul ul li {
-                font-weight: 400;
-                margin-bottom: 0.3rem;
-            }
-
-            /* Ajustar layout para ocupar toda a página */
             .main-content {
                 margin-left: 0;
                 width: 100%;
@@ -469,36 +820,45 @@
                 padding: 0;
             }
 
-            /* Prevenir quebras indesejadas */
-            section {
-                page-break-inside: auto;
-                margin-bottom: 2rem;
-            }
-
-            h1, h2, h3, h4, h5 {
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-
-            /* Mantém parágrafos e tabelas juntos, mas permite que as listas quebrem naturalmente */
-            p, .document-meta, table, tr, td {
+            /* Quebras de Página e Fluxo */
+            section { page-break-inside: auto; margin-bottom: 2rem !important; }
+            h1, h2, h3, h4, h5 { page-break-after: avoid; break-after: avoid; page-break-before: auto; }
+            
+            p, .document-meta, table, tr, td, .card, .alert-box, .value-box, .img-placeholder, .content-image, .list-card-item {
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
 
-            /* Garante que listas e itens de lista possam ser separados em páginas diferentes */
-            ul, ol, li {
-                page-break-inside: auto;
-                break-inside: auto;
+            ul, ol, li { page-break-inside: auto; break-inside: auto; }
+
+            /* Forçar as grelhas a comportarem-se bem no PDF Paisagem */
+            .cards-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important; /* 3 colunas para aproveitar a largura do Paisagem */
+                gap: 1.5rem !important;
             }
 
-            h2 {
-                page-break-before: auto;
+            .split-layout, .list-cards {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 2rem !important;
+                align-items: start !important;
             }
 
+            .text-columns {
+                column-count: 2 !important;
+                column-gap: 3rem !important;
+            }
+
+            .float-image-right {
+                max-width: 30% !important; /* Deixa mais espaço para o texto na impressão */
+                margin: 0 0 1rem 2rem !important;
+            }
+
+            /* Configuração do tamanho do papel gerado pelo navegador */
             @page {
-                size: A4;
-                margin: 2.5cm 2cm;
+                size: A4 landscape; /* FORÇA A EXPORTAÇÃO PARA O MODO PAISAGEM */
+                margin: 1.5cm 2cm;
             }
         }
     </style>
@@ -509,7 +869,7 @@
     <div class="mobile-header">
         <div class="mobile-logo" aria-label="AUVP Capital"></div>
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir Menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <i class="ph ph-list"></i>
         </button>
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
@@ -550,11 +910,11 @@
     <!-- CONTROLES DO TOPO -->
     <div class="top-controls">
         <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Alternar Modo Claro/Escuro" title="Alternar Modo Claro/Escuro">
-            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <i class="ph ph-moon icon-moon"></i>
+            <i class="ph ph-sun icon-sun"></i>
         </button>
         <button class="btn-export" onclick="window.print()" aria-label="Exportar PDF" title="Exportar PDF">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <i class="ph ph-printer"></i>
             <span>Exportar PDF</span>
         </button>
     </div>
@@ -582,102 +942,200 @@
         <section class="print-only print-sumario">
             <h2>SUMÁRIO</h2>
             <ul>
-                <li>1. Quem é a AUVP Capital?</li>
-                <li>2. Nossos Valores</li>
-                <li>3. A quem se aplica?</li>
-                <li>4. Consequências</li>
-                <li>5. Boas Práticas e Cultura
+                <li><a href="#sec-1">1. Quem é a AUVP Capital?</a></li>
+                <li><a href="#sec-2">2. Nossos Valores</a></li>
+                <li><a href="#sec-3">3. A quem se aplica?</a></li>
+                <li><a href="#sec-4">4. Consequências</a></li>
+                <li><a href="#sec-5">5. Boas Práticas e Cultura</a>
                     <ul>
-                        <li>5.1. Ambiente de Trabalho</li>
-                        <li>5.2. Discriminação</li>
-                        <li>5.3. Assédio Moral e Sexual</li>
-                        <li>5.4. Conflito de Interesses</li>
-                        <li>5.5. Pessoas Politicamente Expostas</li>
-                        <li>5.6. Atividades Paralelas</li>
-                        <li>5.7. Informações Privilegiadas</li>
+                        <li><a href="#sec-5-1">5.1. Ambiente de Trabalho</a></li>
+                        <li><a href="#sec-5-2">5.2. Discriminação</a></li>
+                        <li><a href="#sec-5-3">5.3. Assédio Moral e Sexual</a></li>
+                        <li><a href="#sec-5-4">5.4. Conflito de Interesses</a></li>
+                        <li><a href="#sec-5-5">5.5. Pessoas Politicamente Expostas</a></li>
+                        <li><a href="#sec-5-6">5.6. Atividades Paralelas</a></li>
+                        <li><a href="#sec-5-7">5.7. Informações Privilegiadas</a></li>
                     </ul>
                 </li>
-                <li>6. Corrupção</li>
-                <li>7. Fraudes</li>
-                <li>8. Brindes e Hospitalidades</li>
-                <li>9. Proteção de Dados</li>
-                <li>10. Visitas</li>
-                <li>11. Uso da Marca</li>
-                <li>12. Canais de Comunicação</li>
-                <li>13. Treinamentos</li>
-                <li>14. Canal de Ética</li>
-                <li>15. Revisão do Código</li>
+                <li><a href="#sec-6">6. Corrupção</a></li>
+                <li><a href="#sec-7">7. Fraudes</a></li>
+                <li><a href="#sec-8">8. Brindes e Hospitalidades</a></li>
+                <li><a href="#sec-9">9. Proteção de Dados</a></li>
+                <li><a href="#sec-10">10. Visitas</a></li>
+                <li><a href="#sec-11">11. Uso da Marca</a></li>
+                <li><a href="#sec-12">12. Canais de Comunicação</a></li>
+                <li><a href="#sec-13">13. Treinamentos</a></li>
+                <li><a href="#sec-14">14. Canal de Ética</a></li>
+                <li><a href="#sec-15">15. Revisão do Código</a></li>
             </ul>
         </section>
 
         <!-- SEÇÃO 1 -->
-        <section id="sec-1">
+        <section id="sec-1" class="clearfix">
             <h2>1. QUEM É A AUVP CAPITAL?</h2>
+            
+            <!-- Imagem 1: Vertical Quem Somos (Flutuando à direita) -->
+            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%201%20-%20imagem%20vertical%20quem%20somos.webp" alt="Sede AUVP Capital" class="float-image-right">
+            
             <p>A AUVP Capital é um ecossistema integrado de educação financeira, investimentos e soluções estratégicas, criado para transformar, de forma concreta, a relação das pessoas e das empresas com o dinheiro. Nascemos no cerrado, longe do glamour do eixo Rio–São Paulo, e foi justamente essa origem que moldou nossa visão prática, acessível e orientada a resultados.</p>
             <p>Hoje, somos a maior escola de investimentos do Brasil e a consultoria número 1 no ranking do BTG Pactual. Mais do que títulos ou reconhecimento, o que nos move é gerar impacto real: levar educação financeira de verdade e gestão patrimonial eficiente a brasileiros comuns, com soluções que entregam resultados.</p>
             <p>A AUVP Capital atua com uma gama integrada de produtos e frentes que conectam educação financeira, investimentos, gestão patrimonial, soluções empresariais, agronegócio, experiências e tecnologia. Essa integração permite a criação de soluções inovadoras, tanto para indivíduos quanto para empresas que buscam crescimento sustentável, segurança financeira e decisões mais inteligentes.</p>
             <p>Seu braço educacional já impactou mais de 40 milhões de pessoas, oferecendo o conhecimento necessário para dominar o universo dos investimentos. Em 2025 e 2026, a AUVP Capital consolidou sua liderança no mercado ao conquistar o primeiro lugar no ranking de melhores consultorias pelo BTG Pactual, reforçando sua posição como referência nacional.</p>
             <p>Ainda em 2025, a AUVP Capital ampliou sua atuação no mercado de capitais com o lançamento de três ETFs em parceria com o BTG Pactual. O AUVP11 tornou-se o primeiro ETF do Brasil 100% fundamentalista, reafirmando nossa capacidade de inovar com profundidade técnica. Já o AREA11 marcou um novo capítulo ao ser o primeiro fundo de índice da B3 estruturado integralmente para geração de renda mensal indexada ao IPCA. O AUPO11 consolidou nosso compromisso com soluções eficientes e acessíveis, ao combinar simplicidade operacional, previsibilidade tributária, com alíquota fixa de 15% de IR; sendo ideal para reserva de oportunidade e emergência.</p>
             <p>Mais do que uma plataforma, a AUVP Capital é um ecossistema completo que integra investidores, conhecimento e capital, transformando educação em estratégia e estratégia em resultados concretos. Aqui, cada aluno, membro ou investidor encontra segurança, crescimento e liberdade financeira para evoluir em todas as etapas da sua jornada.</p>
+
+            <!-- Imagem 2 (Item 4 Diversidade) movida para o fim -->
+            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%204%20-%20imagem%20diversidade.webp" alt="Diversidade AUVP Capital" class="content-image">
         </section>
 
         <!-- SEÇÃO 2 -->
         <section id="sec-2">
             <h2>2. NOSSOS VALORES</h2>
-            <p>Assim como no Cerrado, onde as árvores são discretas na superfície, mas sustentadas por raízes profundas e resilientes, acreditamos que a força de um profissional está na sua solidez intelectual, na profundidade do seu conhecimento e na consistência das suas decisões. Não selecionamos profissionais pela imagem que projetam, mas pela base que constroem. Preferimos quem é, não quem apenas parece ser.</p>
-            <p>É por isso que aqui nos reconhecemos e nos chamamos de Piratas. Piratas da AUVP Capital não são rótulos, são pessoas que escolhem navegar juntas, com autonomia, responsabilidade e coragem, sabendo que fazem parte de algo maior.</p>
-            <p>Nossos valores são o código que mantém a tripulação unida, protege nossa cultura e garante que seguimos na mesma direção com coragem, lealdade e propósito. Eles definem o que é ser um verdadeiro pirata da AUVP Capital: quem somos, como navegamos e o que jamais aceitamos dentro do navio.</p>
+            <div class="text-columns">
+                <p>Assim como no Cerrado, onde as árvores são discretas na superfície, mas sustentadas por raízes profundas e resilientes, acreditamos que a força de um profissional está na sua solidez intelectual, na profundidade do seu conhecimento e na consistência das suas decisões. Não selecionamos profissionais pela imagem que projetam, mas pela base que constroem. Preferimos quem é, não quem apenas parece ser.</p>
+                <p>É por isso que aqui nos reconhecemos e nos chamamos de Piratas. Piratas da AUVP Capital não são rótulos, são pessoas que escolhem navegar juntas, com autonomia, responsabilidade e coragem, sabendo que fazem parte de algo maior.</p>
+                <p>Nossos valores são o código que mantém a tripulação unida, protege nossa cultura e garante que seguimos na mesma direção com coragem, lealdade e propósito. Eles definem o que é ser um verdadeiro pirata da AUVP Capital: quem somos, como navegamos e o que jamais aceitamos dentro do navio.</p>
+            </div>
             
-            <h3>Manda a Real</h3>
-            <p>Coragem de dar ideias e questionar as regras.</p>
-            <p><strong>Como Vivemos:</strong> Falamos com franqueza quando identificamos problemas ou oportunidades de melhoria. Questionamos processos e decisões quando acreditamos que podem evoluir. Trazemos novas ideias para o time. Incentivamos pensamento crítico.</p>
-            <p><strong>Como Não Vivemos:</strong> Omitindo opiniões por medo. Aceitando processos ruins apenas porque "sempre foi assim". Guardando ideias por receio de julgamento.</p>
+            <!-- Grelha de Valores com Cards Modernos -->
+            <div class="cards-grid">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-warning-circle"></i>
+                        <h4>Manda a Real</h4>
+                    </div>
+                    <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Coragem de dar ideias e questionar as regras.</p>
+                    
+                    <div class="value-box value-positive">
+                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
+                        Falamos com franqueza, questionamos processos que podem evoluir e trazemos novas ideias.
+                    </div>
+                    <div class="value-box value-negative">
+                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
+                        Omitindo opiniões por medo, ou aceitando processos ruins porque "sempre foi assim".
+                    </div>
+                </div>
 
-            <h3>Divide o Rum</h3>
-            <p>Reconhece os louros dos colegas e recompensa à altura.</p>
-            <p><strong>Como Vivemos:</strong> Reconhecemos o trabalho dos colegas. Celebramos vitórias coletivas. Valorizamos quem contribui para o resultado.</p>
-            <p><strong>Como Não Vivemos:</strong> Apropriando-nos do mérito do time. Ignorando contribuições de colegas. Criando competição interna destrutiva.</p>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-users"></i>
+                        <h4>Divide o Rum</h4>
+                    </div>
+                    <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Reconhece os louros dos colegas e recompensa à altura.</p>
+                    
+                    <div class="value-box value-positive">
+                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
+                        Reconhecemos o trabalho dos colegas e celebramos vitórias coletivas.
+                    </div>
+                    <div class="value-box value-negative">
+                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
+                        Apropriando-nos do mérito do time ou criando competição interna destrutiva.
+                    </div>
+                </div>
 
-            <h3>Sangue nos Olhos, Capitão</h3>
-            <p>Ensina, aprende e inspira medo ou admiração.</p>
-            <p><strong>Como Vivemos:</strong> Buscamos crescimento constante. Compartilhamos conhecimento. Lideramos pelo exemplo.</p>
-            <p><strong>Como Não Vivemos:</strong> Aceitando mediocridade. Retendo conhecimento. Evitando responsabilidade.</p>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-fire"></i>
+                        <h4>Sangue nos Olhos, Capitão</h4>
+                    </div>
+                    <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Ensina, aprende e inspira medo ou admiração.</p>
+                    
+                    <div class="value-box value-positive">
+                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
+                        Buscamos crescimento constante, compartilhamos conhecimento e lideramos pelo exemplo.
+                    </div>
+                    <div class="value-box value-negative">
+                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
+                        Aceitando mediocridade, retendo conhecimento ou evitando responsabilidade.
+                    </div>
+                </div>
 
-            <h3>Impiedoso</h3>
-            <p>Vigia os concorrentes, analisa os dados e executa o que funciona.</p>
-            <p><strong>Como Vivemos:</strong> Monitoramos concorrentes e tendências. Tomamos decisões baseadas em dados. Aprendemos com o que funciona.</p>
-            <p><strong>Como Não Vivemos:</strong> Ignorando movimentos do mercado. Tomando decisões por achismo. Subestimando competidores.</p>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-target"></i>
+                        <h4>Impiedoso</h4>
+                    </div>
+                    <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Vigia os concorrentes, analisa dados e executa o que funciona.</p>
+                    
+                    <div class="value-box value-positive">
+                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
+                        Monitoramos tendências, tomamos decisões baseadas em dados e aprendemos.
+                    </div>
+                    <div class="value-box value-negative">
+                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
+                        Ignorando o mercado, decidindo por achismo ou subestimando competidores.
+                    </div>
+                </div>
 
-            <h3>Imediato</h3>
-            <p>Leal aos piratas e à AUVP Capital.</p>
-            <p><strong>Como Vivemos:</strong> Defendemos os interesses da AUVP Capital. Protegemos o time. Colocamos o coletivo acima do individual.</p>
-            <p><strong>Como Não Vivemos:</strong> Agindo apenas em benefício próprio. Abandonando o time em momentos difíceis. Enfraquecendo a reputação da empresa.</p>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-anchor"></i>
+                        <h4>Imediato</h4>
+                    </div>
+                    <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Leal aos piratas e à AUVP Capital.</p>
+                    
+                    <div class="value-box value-positive">
+                        <strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong>
+                        Defendemos a AUVP Capital, protegemos o time e priorizamos o coletivo.
+                    </div>
+                    <div class="value-box value-negative">
+                        <strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong>
+                        Agindo em benefício próprio ou enfraquecendo a reputação da empresa.
+                    </div>
+                </div>
 
-            <p>É importante lembrar que nossos valores não são slogans, são critérios de decisão! Eles guiam cada atitude, contratação e reconhecimento. Aqui, cultura não é o que está no mural, é o que sustenta o nosso resultado.</p>
+            </div>
+
+            <div class="alert-box" style="border-left-color: var(--text-muted);">
+                <i class="ph ph-info alert-icon" style="color: var(--text-muted);"></i>
+                <div class="alert-content">
+                    <p>É importante lembrar que nossos valores não são slogans, são critérios de decisão! Eles guiam cada atitude, contratação e reconhecimento. Aqui, cultura não é o que está no mural, é o que sustenta o nosso resultado.</p>
+                </div>
+            </div>
         </section>
 
         <!-- SEÇÃO 3 -->
         <section id="sec-3">
             <h2>3. A QUEM SE APLICA ESTE CÓDIGO?</h2>
-            <p>Na AUVP Capital, a integridade é o pilar de todas as nossas ações e a base da confiança que construímos com nossos clientes, colaboradores e parceiros. Por isso, este Código de Ética e Conduta formaliza nosso compromisso com os mais elevados padrões de comportamento profissional, tendo como objetivo servir como um guia prático para a tomada de decisões no dia a dia, assegurando que nossas operações estejam sempre alinhadas aos nossos valores e à legislação vigente.</p>
-            <p>As normas aqui estabelecidas são de aplicação obrigatória e irrestrita a todos os sócios, administradores, colaboradores em todos os níveis hierárquicos, bem como a prestadores de serviço, fornecedores e quaisquer parceiros que representem a AUVP Capital.</p>
-            <p>Em caso de dúvidas sobre a aplicação deste Código ou sobre a conduta mais adequada em determinada situação, é fundamental a busca por orientação junto ao nosso time de Compliance.</p>
-            <p>Vale lembrar que a proatividade na busca por esclarecimentos demonstra o compromisso com a ética e a integridade.</p>
+            
+            <div class="split-layout">
+                <!-- Imagem 3: Diversidade (Equipa/Reunião) -->
+                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%203%20-%20imagem%20diversidade.jpg" alt="Equipe AUVP" class="content-image">
+                <div>
+                    <p>Na AUVP Capital, a integridade é o pilar de todas as nossas ações e a base da confiança que construímos com nossos clientes, colaboradores e parceiros. Por isso, este Código de Ética e Conduta formaliza nosso compromisso com os mais elevados padrões de comportamento profissional, tendo como objetivo servir como um guia prático para a tomada de decisões no dia a dia, assegurando que nossas operações estejam sempre alinhadas aos nossos valores e à legislação vigente.</p>
+                    <p>As normas aqui estabelecidas são de aplicação obrigatória e irrestrita a todos os sócios, administradores, colaboradores em todos os níveis hierárquicos, bem como a prestadores de serviço, fornecedores e quaisquer parceiros que representem a AUVP Capital.</p>
+                    <p style="margin-top: 1.5rem;">Em caso de dúvidas sobre a aplicação deste Código ou sobre a conduta mais adequada em determinada situação, é fundamental a busca por orientação junto ao nosso time de Compliance.</p>
+                    <p>Vale lembrar que a proatividade na busca por esclarecimentos demonstra o compromisso com a ética e a integridade.</p>
+                </div>
+            </div>
         </section>
 
         <!-- SEÇÃO 4 -->
         <section id="sec-4">
             <h2>4. O QUE PODE ACONTECER CASO ESTE CÓDIGO DE ÉTICA SEJA DESCUMPRIDO?</h2>
-            <p>Condutas que contrariem os princípios éticos comprometem diretamente a reputação, a credibilidade e a confiança construídas pela AUVP Capital junto a alunos, membros, investidores, parceiros e ao mercado. A solidez da AUVP Capital é resultado de uma atuação consistente, transparente e responsável, e a sua preservação é dever de todos.</p>
-            <p>Desde o início da relação com a AUVP Capital, cada sócio, colaborador e parceiro assume a responsabilidade de proteger a imagem institucional e os valores que sustentam a Companhia.</p>
-            <p>O descumprimento das diretrizes previstas neste Código de Ética poderá ser reportado pelos canais oficiais (<a href="https://canal.ouvidordigital.com.br/asupernova" target="_blank" style="color: var(--accent-color);">Ouvidor Digital AUVP Capital</a>) e ensejará a adoção das medidas disciplinares cabíveis, nos termos das políticas internas, sem prejuízo da aplicação de sanções legais ou regulatórias, quando aplicável.</p>
+            
+            <div class="text-columns">
+                <p>Condutas que contrariem os princípios éticos comprometem diretamente a reputação, a credibilidade e a confiança construídas pela AUVP Capital junto a alunos, membros, investidores, parceiros e ao mercado. A solidez da AUVP Capital é resultado de uma atuação consistente, transparente e responsável, e a sua preservação é dever de todos.</p>
+                <p>Desde o início da relação com a AUVP Capital, cada sócio, colaborador e parceiro assume a responsabilidade de proteger a imagem institucional e os valores que sustentam a Companhia.</p>
+            </div>
+
+            <div class="alert-box">
+                <i class="ph ph-warning alert-icon"></i>
+                <div class="alert-content">
+                    <p>O descumprimento das diretrizes previstas neste Código de Ética poderá ser reportado pelos canais oficiais e ensejará a adoção das medidas disciplinares cabíveis, nos termos das políticas internas, sem prejuízo da aplicação de sanções legais ou regulatórias, quando aplicável.</p>
+                    <a href="https://canal.ouvidordigital.com.br/asupernova" target="_blank" class="btn-link">
+                        <i class="ph ph-arrow-square-out"></i> Ouvidor Digital AUVP Capital
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- SEÇÃO 5 -->
         <section id="sec-5">
             <h2>5. BOAS PRÁTICAS E CULTURA</h2>
             
-            <h3 id="sec-5-1">5.1. AMBIENTE DE TRABALHO</h3>
+            <h3 id="sec-5-1"><i class="ph ph-briefcase"></i> 5.1. Ambiente de Trabalho</h3>
             <p>Antes de transformar a relação das pessoas e das empresas com o dinheiro, a AUVP Capital trabalha para que seus colaboradores, parceiros e sócios se sintam parte de um ambiente seguro, respeitoso e alinhado a valores sólidos. Acreditamos que resultados consistentes nascem de relações pautadas pela cordialidade, responsabilidade, respeito, cuidado e zelo no dia a dia de trabalho.</p>
             <p>Esperamos condutas que:</p>
             <ul>
@@ -696,25 +1154,33 @@
             </ul>
             <p>A AUVP Capital preza por um ambiente de trabalho equilibrado, respeitoso, seguro e saudável, tanto do ponto de vista físico quanto emocional, reconhecendo que o bem-estar das pessoas é essencial para o desempenho, a integridade das relações e a entrega consistente de resultados.</p>
 
-            <h3 id="sec-5-2">5.2. DISCRIMINAÇÃO</h3>
+            <!-- Imagem do item 5.1 inserida no lugar do placeholder anterior -->
+            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%205%20-%20imagem%20diversidade.webp" alt="Ambiente de Trabalho e Diversidade" class="content-image">
+
+            <h3 id="sec-5-2"><i class="ph ph-shield-warning"></i> 5.2. Discriminação</h3>
             <p>A AUVP Capital entende que a discriminação se caracteriza por qualquer forma de tratamento desigual, exclusão ou distinção injustificada baseada em características pessoais, como raça, cor, sexo, gênero, religião, nacionalidade, origem social, idade, deficiência ou qualquer outro traço individual.</p>
             <p>Essas condutas podem ocorrer de maneira pontual ou recorrente, afetando indivíduos ou grupos em condições semelhantes, e também podem se manifestar por meio de práticas como assédio moral, assédio discriminatório ou abuso de posição hierárquica.</p>
-            <p>A AUVP Capital reafirma seu compromisso com um ambiente profissional pautado no respeito, na diversidade e na igualdade de oportunidades, incentivando relações inclusivas e responsáveis. Qualquer prática discriminatória por parte de colaboradores, sócios, parceiros ou terceiros vinculados à AUVP Capital é incompatível com seus valores e não será tolerada, estando sujeita às medidas previstas em suas políticas internas e na legislação aplicável.</p>
+            
+            <div class="alert-box">
+                <i class="ph ph-prohibit alert-icon"></i>
+                <div class="alert-content">
+                    <p>A AUVP Capital reafirma seu compromisso com um ambiente profissional pautado no respeito, na diversidade e na igualdade de oportunidades, incentivando relações inclusivas e responsáveis. Qualquer prática discriminatória por parte de colaboradores, sócios, parceiros ou terceiros vinculados à AUVP Capital é incompatível com seus valores e não será tolerada.</p>
+                </div>
+            </div>
 
-            <h3 id="sec-5-3">5.3. ASSÉDIO MORAL E SEXUAL</h3>
+            <h3 id="sec-5-3"><i class="ph ph-warning-octagon"></i> 5.3. Assédio Moral e Sexual</h3>
             <p>A AUVP Capital entende que ambientes profissionais saudáveis são construídos a partir do respeito, da dignidade e da segurança nas relações. Por isso, é fundamental compreender as diferenças entre assédio moral e assédio sexual, práticas incompatíveis com nossos valores e que não são toleradas, sob nenhuma circunstância.</p>
-            <p>Assédio moral consiste em condutas abusivas que expõem a pessoa a situações repetitivas e prolongadas de humilhação, constrangimento, intimidação ou desrespeito, afetando sua dignidade, integridade emocional e desempenho profissional. Essas condutas podem se manifestar por meio de atitudes, palavras, gestos ou comportamentos que visam desqualificar, diminuir, intimidar ou isolar o outro.</p>
-            <p>É importante destacar que o assédio moral se caracteriza pela repetição e continuidade das condutas ao longo do tempo. Situações isoladas podem gerar dano moral, mas não configuram, necessariamente, assédio moral nos termos aqui definidos. São exemplos de comportamentos que podem caracterizar assédio moral:</p>
+            <p>Assédio moral consiste em condutas abusivas que expõem a pessoa a situações repetitivas e prolongadas de humilhação, constrangimento, intimidação ou desrespeito, afetando sua dignidade, integridade emocional e desempenho profissional.</p>
+            <p>É importante destacar que o assédio moral se caracteriza pela repetição e continuidade das condutas ao longo do tempo. São exemplos de comportamentos que podem caracterizar assédio moral:</p>
             <ul>
-                <li>Retirar, de forma injustificada, autonomia, responsabilidades, cargos ou funções, ou contestar constantemente as decisões do colaborador de forma não embasada;</li>
-                <li>Sobrecarregar com tarefas incompatíveis ou inviáveis, ou, ao contrário, retirar atividades de forma a gerar sensação de inutilidade ou incompetência;</li>
+                <li>Retirar, de forma injustificada, autonomia, responsabilidades, cargos ou funções;</li>
+                <li>Sobrecarregar com tarefas incompatíveis ou inviáveis;</li>
                 <li>Ignorar a presença do colaborador, excluindo-o de interações ou comunicações relevantes;</li>
                 <li>Isolar, desconsiderar opiniões ou invalidar contribuições de maneira recorrente;</li>
                 <li>Gritar, adotar tom agressivo ou desrespeitoso;</li>
                 <li>Espalhar boatos, rumores ou informações ofensivas;</li>
                 <li>Desconsiderar condições ou limitações relacionadas à saúde;</li>
-                <li>Atribuir apelidos pejorativos ou impor punições vexatórias;</li>
-                <li>Omitir ou manipular informações essenciais ao desempenho das atividades.</li>
+                <li>Atribuir apelidos pejorativos ou impor punições vexatórias.</li>
             </ul>
             <p>Por outro lado, práticas legítimas de gestão, quando realizadas de forma respeitosa, objetiva e justificada, não configuram assédio moral, tais como:</p>
             <ul>
@@ -724,8 +1190,7 @@
                 <li>Feedbacks e críticas construtivas sobre o trabalho realizado.</li>
             </ul>
             <p>Assédio sexual, por sua vez, refere-se a qualquer conduta indesejada de natureza sexual, verbal, não verbal ou física, que tenha como objetivo ou efeito constranger, violar a liberdade, a intimidade ou a vontade da pessoa, ou ainda obter vantagem sexual.</p>
-            <p>Essa prática pode ocorrer por meio de falas, gestos, contatos físicos, mensagens, comunicações eletrônicas ou compartilhamento de conteúdos, podendo acontecer dentro ou fora do ambiente de trabalho. O assédio sexual pode envolver pessoas de qualquer gênero, tanto como vítimas quanto como autores, independentemente de hierarquia.</p>
-            <p>Diferentemente do assédio moral, um único ato é suficiente para caracterizar o assédio sexual, sendo sempre considerada a percepção da vítima diante da conduta. São exemplos de situações que configuram assédio sexual:</p>
+            <p>Essa prática pode ocorrer por meio de falas, gestos, contatos físicos, mensagens, comunicações eletrônicas ou compartilhamento de conteúdos, podendo acontecer dentro ou fora do ambiente de trabalho. Diferentemente do assédio moral, um único ato é suficiente para caracterizar o assédio sexual. São exemplos de situações:</p>
             <ul>
                 <li>Piadas, comentários ou insinuações de cunho sexual que gerem desconforto;</li>
                 <li>Comentários sobre aparência física ou forma de vestir com conotação sexual;</li>
@@ -735,205 +1200,217 @@
                 <li>Ameaças, pressões ou promessas em troca de favorecimento sexual;</li>
                 <li>Compartilhamento de imagens, vídeos ou mensagens de conteúdo sexual.</li>
             </ul>
-            <p>Qualquer forma de assédio viola os valores da AUVP Capital e não é aceita em nossas relações profissionais. Diante de situações dessa natureza, é fundamental que sejam adotadas as seguintes medidas:</p>
-            <ul>
-                <li>Reunir evidências e, quando possível, identificar testemunhas;</li>
-                <li>Buscar apoio psicológico, se necessário;</li>
-                <li>Registrar o ocorrido por meio do Canal de Ética da AUVP Capital, para apuração adequada e aplicação das medidas cabíveis, conforme as políticas internas e a legislação aplicável.</li>
-            </ul>
-            <p>A AUVP Capital reforça seu compromisso com um ambiente de trabalho seguro, respeitoso e ético, no qual todas as pessoas possam exercer suas atividades com dignidade, confiança e integridade.</p>
+            <p>Qualquer forma de assédio viola os valores da AUVP Capital e não é aceita em nossas relações profissionais. Diante de situações dessa natureza, é fundamental que sejam adotadas as medidas como reunir evidências e registrar o ocorrido no Canal de Ética.</p>
 
-            <h3 id="sec-5-4">5.4. CONFLITO DE INTERESSES</h3>
-            <p>A AUVP Capital considera que há conflito de interesses sempre que interesses pessoais, financeiros, familiares, afetivos, profissionais ou de qualquer outra natureza influenciem, ou aparentem influenciar, o julgamento, a imparcialidade ou a tomada de decisão de uma pessoa no exercício de suas funções. Em termos práticos, o conflito ocorre quando decisões profissionais passam a ser orientadas por interesses particulares em detrimento dos interesses da AUVP Capital, de seus clientes, investidores ou do mercado.</p>
-            <p>A AUVP Capital reconhece que, em sua trajetória de construção e crescimento, podem existir vínculos familiares, afetivos ou pessoais entre sócios, diretores, líderes, colaboradores, parceiros e fornecedores. A existência desses vínculos, por si só, não configura infração a este Código. Todavia, tais situações exigem transparência, responsabilidade e a adoção de mecanismos adequados de governança para prevenir riscos reais, potenciais ou aparentes de favorecimento ou influência indevida.</p>
+            <h3 id="sec-5-4"><i class="ph ph-scales"></i> 5.4. Conflito de Interesses</h3>
+            <p>A AUVP Capital considera que há conflito de interesses sempre que interesses pessoais, financeiros, familiares, afetivos, profissionais ou de qualquer outra natureza influenciem, ou aparentem influenciar, o julgamento, a imparcialidade ou a tomada de decisão de uma pessoa no exercício de suas funções.</p>
             <p>Diante disso, espera-se que todos os colaboradores, sócios e parceiros atuem com transparência e atenção permanente, comunicando previamente qualquer situação, relação ou atividade que possa caracterizar ou gerar a percepção de conflito de interesses.</p>
             <p>Podem configurar situações de conflito de interesses, entre outras:</p>
             <ul>
-                <li>Relacionamentos afetivos ou vínculos de parentesco com colaboradores, parceiros comerciais, fornecedores ou clientes, quando capazes de influenciar decisões profissionais, especialmente em casos que envolvam subordinação direta, avaliação de desempenho, promoção, remuneração, contratação ou desligamento;</li>
-                <li>Vínculos familiares ou pessoais entre membros da liderança ou do quadro societário que possam impactar decisões estratégicas, financeiras ou de governança;</li>
-                <li>Exercício de atividades paralelas ou participação em negócios que atuem no mesmo segmento ou em áreas relacionadas às atividades da AUVP Capital;</li>
-                <li>Contratação, indicação ou gestão de fornecedores e prestadores de serviços que possuam vínculos pessoais ou profissionais com pessoas relacionadas à AUVP Capital;</li>
-                <li>Negociação, direta ou indireta, de ativos, produtos ou oportunidades originadas ou relacionadas às empresas da AUVP Capital, sem a devida transparência e aprovação;</li>
+                <li>Relacionamentos afetivos ou vínculos de parentesco com colaboradores, parceiros comerciais, fornecedores ou clientes;</li>
+                <li>Vínculos familiares ou pessoais entre membros da liderança ou do quadro societário que possam impactar decisões estratégicas;</li>
+                <li>Exercício de atividades paralelas ou participação em negócios que atuem no mesmo segmento;</li>
+                <li>Contratação, indicação ou gestão de fornecedores com vínculos pessoais;</li>
+                <li>Negociação, direta ou indireta, de ativos originadas ou relacionadas às empresas da AUVP Capital, sem a devida aprovação;</li>
                 <li>Uso ou divulgação indevida de informações confidenciais ou privilegiadas.</li>
             </ul>
-            <p>É importante destacar que a existência de um potencial conflito de interesses não representa, por si só, uma infração ao Código de Ética e Conduta. No entanto, a omissão ou a falta de comunicação dessas situações ao time de Compliance pelo email compliance@auvp.com.br, configuram descumprimento das diretrizes da AUVP Capital.</p>
-            <p>Para tanto, qualquer vínculo familiar de primeiro ou segundo grau, relacionamentos afetivos como namoro, união estável, casamento entre colaboradores ou entre colaboradores e parceiros, fornecedores ou prestadores de serviços, deve ser informado no e-mail citado, de maneira clara e tempestiva.</p>
-            <p>O reporte possibilitará a avaliação adequada e a definição das providências necessárias, em observância às diretrizes de ética, compliance e governança. Todas as situações reportadas serão analisadas de forma criteriosa, com o objetivo de identificar o tratamento mais adequado, mitigar riscos e preservar a integridade das decisões.</p>
-            <p>Em caso de dúvida, a orientação é clara: procure o time de Compliance antes de tomar qualquer decisão ou adotar qualquer conduta.</p>
-            <p>A AUVP Capital reforça, assim, seu compromisso com a ética, a transparência e a confiança, pilares essenciais para relações responsáveis, decisões íntegras e resultados sustentáveis.</p>
+            <p>É importante destacar que a existência de um potencial conflito de interesses não representa, por si só, uma infração ao Código de Ética e Conduta. No entanto, a omissão ou a falta de comunicação dessas situações ao time de Compliance configuram descumprimento das diretrizes.</p>
 
-            <h3 id="sec-5-5">5.5. PESSOAS POLITICAMENTE EXPOSTAS</h3>
-            <p>Considera-se Pessoa Exposta Politicamente aquela que, em razão do cargo ou função pública que exerce ou exerceu, está sujeita a controles mais rigorosos sobre suas operações financeiras e fiscais, como medida preventiva contra práticas ilícitas, especialmente lavagem de dinheiro e corrupção.</p>
-            <p>De acordo com a regulamentação do Conselho de Controle de Atividades Financeiras (COAF), enquadram-se como PEP’s as pessoas que tenham ocupado, nos últimos cinco anos, posições públicas de relevância, bem como seus familiares até o segundo grau e indivíduos com vínculo próximo.</p>
-            <p>A AUVP Capital não restringe relações profissionais ou comerciais envolvendo Pessoas Expostas Politicamente. Contudo, em atenção aos riscos associados, adota procedimentos específicos de análise, acompanhamento e mitigação, em conformidade com suas políticas internas e com a legislação vigente. Podendo aplicar diligência reforçada em operações envolvendo PEPs.</p>
-            <p>Assim, qualquer colaborador que se enquadre nessa condição, de forma direta ou indireta, deve comunicar o fato ao Compliance por meio do email compliance@auvp.com.br, assegurando transparência, boa-fé e aderência às diretrizes de governança e integridade da AUVP Capital.</p>
+            <h3 id="sec-5-5"><i class="ph ph-bank"></i> 5.5. Pessoas Politicamente Expostas</h3>
+            <p>Considera-se Pessoa Exposta Politicamente (PEP) aquela que, em razão do cargo ou função pública que exerce ou exerceu, está sujeita a controles mais rigorosos sobre suas operações financeiras e fiscais.</p>
+            <p>A AUVP Capital não restringe relações profissionais ou comerciais envolvendo Pessoas Expostas Politicamente. Contudo, em atenção aos riscos associados, adota procedimentos específicos de análise, acompanhamento e mitigação. Assim, qualquer colaborador que se enquadre nessa condição deve comunicar o fato ao Compliance.</p>
 
-            <h3 id="sec-5-6">5.6. ATIVIDADES PARALELAS</h3>
+            <h3 id="sec-5-6"><i class="ph ph-briefcase"></i> 5.6. Atividades Paralelas</h3>
             <p>Entende-se como atividade paralela qualquer ocupação profissional exercida pelo colaborador, com ou sem remuneração, além de suas atribuições na AUVP Capital.</p>
-            <p>Se não pactuada de forma diversa em contrato de trabalho ou de prestação de serviços, a realização de atividades paralelas é admitida, desde que previamente informada ao time de Compliance, via e-mail, desde que sejam observadas as seguintes condições:</p>
+            <p>Se não pactuada de forma diversa em contrato de trabalho ou de prestação de serviços, a realização de atividades paralelas é admitida, desde que previamente informada ao time de Compliance, observando as seguintes condições:</p>
             <ul>
-                <li>O colaborador não poderá prestar serviços, de forma direta ou indireta, a empresas que atuem em concorrência com a AUVP Capital;</li>
-                <li>A atividade externa não poderá interferir na jornada de trabalho, no desempenho ou nas responsabilidades assumidas na AUVP Capital;</li>
-                <li>É vedado o uso de recursos, informações, dados, estratégias ou qualquer conhecimento interno da AUVP Capital para fins relacionados à atividade paralela.</li>
+                <li>O colaborador não poderá prestar serviços a empresas que atuem em concorrência com a AUVP Capital;</li>
+                <li>A atividade externa não poderá interferir na jornada de trabalho ou no desempenho na AUVP Capital;</li>
+                <li>É vedado o uso de recursos, informações, dados ou conhecimento interno da AUVP Capital para fins relacionados à atividade paralela.</li>
             </ul>
 
-            <h3 id="sec-5-7">5.7. INFORMAÇÕES PRIVILEGIADAS</h3>
-            <p>No mercado financeiro, determinadas informações sensíveis não são de acesso público imediato e, quando utilizadas de forma indevida, podem gerar vantagens injustas e distorcer a igualdade de condições entre os participantes. No âmbito da AUVP Capital, esse tipo de conteúdo envolve dados estratégicos, decisões ainda não divulgadas e informações relevantes relacionadas a produtos, operações e instituições da AUVP Capital.</p>
-            <p>A utilização, o compartilhamento ou a exploração dessas informações para benefício próprio ou de terceiros é incompatível com os princípios da AUVP Capital e representa violação às normas internas e à regulamentação aplicável, sujeitando os envolvidos a sanções administrativas, civis e penais.</p>
-            <p>Entre as condutas mais graves associadas ao uso indevido de informações sensíveis, destacam-se:</p>
-            <h4>Insider Trading</h4>
-            <p>Ocorre quando alguém se antecipa ao mercado ao negociar valores mobiliários com base em informação relevante ainda não divulgada, buscando obter vantagem econômica. Essa prática é tipificada como crime pela legislação brasileira e pode gerar responsabilização penal, além de penalidades administrativas.</p>
-            <h4>Front Running</h4>
-            <p>Configura-se quando agentes com acesso privilegiado a ordens, estratégias ou movimentações futuras realizam operações previamente, aproveitando-se desse conhecimento para obter ganhos pessoais. Assim como o insider trading, trata-se de infração grave, sujeita a sanções administrativas e repercussões penais.</p>
-            <p>A AUVP Capital mantém postura rigorosa no tratamento de informações sensíveis e não admite qualquer forma de uso indevido, reforçando seu compromisso com a integridade, a transparência e o funcionamento ético do mercado de capitais.</p>
+            <h3 id="sec-5-7"><i class="ph ph-lock-key"></i> 5.7. Informações Privilegiadas</h3>
+            <p>No mercado financeiro, determinadas informações sensíveis não são de acesso público imediato e, quando utilizadas de forma indevida, podem gerar vantagens injustas. A utilização dessas informações para benefício próprio ou de terceiros é incompatível com os princípios da AUVP Capital e representa violação às normas aplicáveis.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-trend-up"></i>
+                        <h4>Insider Trading</h4>
+                    </div>
+                    <p>Ocorre quando alguém se antecipa ao mercado ao negociar valores mobiliários com base em informação relevante ainda não divulgada, buscando obter vantagem econômica. Prática tipificada como crime.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-fast-forward"></i>
+                        <h4>Front Running</h4>
+                    </div>
+                    <p>Configura-se quando agentes com acesso privilegiado a ordens ou movimentações futuras realizam operações previamente, aproveitando-se desse conhecimento para obter ganhos pessoais.</p>
+                </div>
+            </div>
+
         </section>
 
+        <!-- SEÇÃO 6 -->
         <section id="sec-6">
             <h2>6. CORRUPÇÃO</h2>
-            <p>A corrupção consiste no uso indevido de poder, influência ou posição privilegiada para obtenção de benefícios pessoais ou para a prática de atos contrários à lei e aos princípios que regem a atuação ética. Trata-se de uma conduta que compromete a integridade, viola normas legais e afasta valores essenciais como honestidade, responsabilidade e transparência.</p>
-            <p>Na AUVP Capital, qualquer prática que possa ser caracterizada como corrupção é expressamente vedada. O enfrentamento a esse tipo de conduta é um pilar fundamental para a preservação da ética, da credibilidade e da confiança nas relações profissionais e institucionais. Por essa razão, conduzimos os negócios de forma íntegra, responsável e alinhada às melhores práticas de governança.</p>
-            <p>A seguir, são apresentados exemplos de situações que podem caracterizar práticas corruptas, especialmente considerando o contexto das atividades desenvolvidas pela AUVP Capital:</p>
-            <ul>
-                <li><strong>Suborno:</strong> ocorre quando alguém tenta direcionar decisões ou comportamentos por meio da concessão, promessa, solicitação ou aceitação de benefícios indevidos, com a finalidade de obter vantagem ilegítima ou influenciar o descumprimento de deveres legais e éticos. Essa prática pode se manifestar de diferentes maneiras, entre elas:
+            <div class="split-layout reversed">
+                <div>
+                    <p>A corrupção consiste no uso indevido de poder, influência ou posição privilegiada para obtenção de benefícios pessoais ou para a prática de atos contrários à lei e aos princípios que regem a atuação ética.</p>
+                    <p>Na AUVP Capital, qualquer prática que possa ser caracterizada como corrupção é expressamente vedada. O enfrentamento a esse tipo de conduta é um pilar fundamental para a preservação da ética.</p>
+                    <p>Exemplos de situações que podem caracterizar práticas corruptas:</p>
                     <ul>
-                        <li><strong>Propina:</strong> entrega ou recebimento de valores, bens ou vantagens como forma de obter favorecimento, influência ou tratamento privilegiado, inclusive para viabilizar contratações ou decisões específicas.</li>
-                        <li><strong>Pagamentos de facilitação:</strong> valores, ainda que reduzidos, destinados a acelerar procedimentos, garantir aprovações ou encobrir irregularidades que deveriam ser tratados de forma regular e transparente.</li>
+                        <li><strong>Suborno:</strong> concessão, promessa, solicitação ou aceitação de benefícios indevidos. Pode manifestar-se por <strong>Propina</strong> ou <strong>Pagamentos de facilitação</strong>.</li>
+                        <li><strong>Conluio:</strong> atuação coordenada e intencional para fraudar processos, incluindo <strong>Ajuste prévio de propostas</strong>, <strong>Cartelização</strong> ou <strong>Acordos de preços</strong>.</li>
                     </ul>
-                </li>
-                <li><strong>Conluio:</strong> refere-se à atuação coordenada e intencional entre pessoas ou organizações com o objetivo de fraudar processos, restringir a concorrência ou induzir terceiros ao erro. Essas práticas podem ocorrer, por exemplo, por meio de:
-                    <ul>
-                        <li><strong>Ajuste prévio de propostas:</strong> combinação entre participantes de processos concorrenciais para definir, de antemão, o resultado, comprometendo a lisura da disputa.</li>
-                        <li><strong>Cartelização:</strong> acordos ilegais entre empresas para controlar preços, dividir mercados, limitar a oferta ou compartilhar informações estratégicas.</li>
-                        <li><strong>Acordos de preços:</strong> entendimentos entre concorrentes para estabelecer ou manter valores de venda de bens e serviços de forma artificial.</li>
-                    </ul>
-                </li>
-            </ul>
-            <p>A AUVP Capital adota postura de tolerância zero em relação a qualquer forma de corrupção ou prática que comprometa a integridade dos seus negócios, não admitindo condutas dessa natureza por colaboradores, parceiros ou terceiros a ela vinculados.</p>
+                </div>
+                <div class="img-placeholder">
+                    <i class="ph ph-hand-coins"></i>
+                    <span>[ Imagem: Ética Corporativa e Combate à Corrupção ]</span>
+                </div>
+            </div>
         </section>
 
+        <!-- SEÇÃO 7 -->
         <section id="sec-7">
             <h2>7. FRAUDES</h2>
-            <p>A AUVP Capital também adota postura de tolerância zero em relação a qualquer prática que envolva engano, manipulação ou obtenção de vantagens indevidas. Condutas dessa natureza violam diretamente os princípios éticos da Companhia e podem configurar ilícitos civis, administrativos e penais.</p>
-            <p>Considera-se fraude toda ação deliberada que tenha como objetivo gerar benefício próprio ou a terceiros, por meio da distorção de informações, do uso indevido de recursos ou da quebra de confiança institucional. Esse tipo de prática compromete a integridade dos processos, a transparência das decisões e a credibilidade da organização.</p>
-            <p>Entre as situações que podem caracterizar fraude, incluem-se, exemplificativamente:</p>
-            <ul>
-                <li>Produção, alteração ou utilização irregular de documentos;</li>
-                <li>Manipulação de informações contábeis, financeiras ou operacionais;</li>
-                <li>Classificação intencional de despesas em centros de custo incompatíveis;</li>
-                <li>Uso ou vazamento de dados e informações estratégicas para fins particulares.</li>
-            </ul>
-            <p>Diante de qualquer indício ou suspeita de fraude, espera-se atuação responsável e imediata dos colaboradores, com comunicação por meio do Canal de Ética, no link <a href="https://canal.ouvidordigital.com.br/asupernova" target="_blank" style="color: var(--accent-color);">Ouvidor Digital AUVP Capital</a>. Em caso de incerteza quanto à caracterização da conduta, o Compliance deve ser consultado para orientação adequada.</p>
+            <div class="split-layout">
+                <div class="img-placeholder">
+                    <i class="ph ph-shield-warning"></i>
+                    <span>[ Imagem: Prevenção a Fraudes e Segurança da Informação ]</span>
+                </div>
+                <div>
+                    <p>A AUVP Capital também adota postura de tolerância zero em relação a qualquer prática que envolva engano, manipulação ou obtenção de vantagens indevidas. Condutas dessa natureza violam diretamente os princípios éticos da Companhia e podem configurar ilícitos civis, administrativos e penais.</p>
+                    <p>Considera-se fraude toda ação deliberada que tenha como objetivo gerar benefício próprio ou a terceiros, por meio da distorção de informações ou quebra de confiança. Incluem-se:</p>
+                    <ul>
+                        <li>Produção, alteração ou utilização irregular de documentos;</li>
+                        <li>Manipulação de informações contábeis, financeiras ou operacionais;</li>
+                        <li>Classificação intencional de despesas em centros de custo incompatíveis;</li>
+                        <li>Uso ou vazamento de dados estratégicos para fins particulares.</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
+        <!-- SEÇÃO 8 -->
         <section id="sec-8">
             <h2>8. BRINDES, PRESENTES, SOFT DOLLAR E HOSPITALIDADES</h2>
-            <p>A AUVP Capital mantém relações comerciais pautadas pela ética, independência, equilíbrio e transparência. O oferecimento ou recebimento de brindes, presentes e hospitalidades é prática legítima no ambiente corporativo, desde que não influencie decisões profissionais, não gere favorecimento indevido e não comprometa a imparcialidade das relações.</p>
-            <p>Para fins deste Código, adotam-se as seguintes definições:</p>
-            <ul>
-                <li><strong>Brindes:</strong> itens promocionais de baixo valor, geralmente com identificação da marca de quem oferece, distribuídos como cortesia institucional.</li>
-                <li><strong>Presentes:</strong> qualquer item que não se enquadre como brinde, independentemente de valor ou natureza.</li>
-                <li><strong>Hospitalidades:</strong> convites, refeições, eventos, viagens, entretenimento, hospedagem ou qualquer benefício similar oferecido no contexto de relacionamento profissional.</li>
-                <li><strong>Soft Dollar:</strong> benefícios econômicos de natureza não financeira, vinculados às atividades de análise, gestão ou consultoria de investimentos, concedidos por fornecedores ou intermediários em razão do direcionamento de transações.</li>
-            </ul>
+            <p>A AUVP Capital mantém relações comerciais pautadas pela ética, independência, equilíbrio e transparência. O oferecimento ou recebimento de brindes, presentes e hospitalidades é prática legítima no ambiente corporativo, desde que não influencie decisões profissionais.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--brand-highlight);">Brindes & Presentes</h4>
+                    <p>Brindes são itens promocionais de baixo valor. Presentes são quaisquer outros itens. Ambos só permitidos se tiverem finalidade legítima e não gerarem expectativa de contrapartida.</p>
+                </div>
+                <div class="card">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--brand-highlight);">Hospitalidades</h4>
+                    <p>Convites, refeições, eventos ou entretenimento no contexto profissional. Sujeitos ao bom senso e transparência.</p>
+                </div>
+                <div class="card">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--brand-highlight);">Soft Dollar</h4>
+                    <p>Benefícios econômicos concedidos por fornecedores. Admitidos apenas quando visam melhorar a qualidade dos serviços prestados aos clientes, aprovados pelo Compliance.</p>
+                </div>
+            </div>
 
-            <h4>Diretrizes</h4>
-            <p>É permitido o recebimento ou oferecimento de brindes, presentes e hospitalidades desde que:</p>
-            <ul>
-                <li>Possuam finalidade legítima de relacionamento institucional ou comercial;</li>
-                <li>Sejam razoáveis e compatíveis com os usos de mercado;</li>
-                <li>Não gerem expectativa, explícita ou implícita, de contrapartida ou favorecimento;</li>
-                <li>Não comprometam a independência técnica ou a imparcialidade das decisões;</li>
-                <li>Possam ser divulgados publicamente sem gerar constrangimento reputacional.</li>
-            </ul>
-            <p>A conduta deve sempre observar os princípios da proporcionalidade, transparência e bom senso.</p>
-
-            <h4>Limites e Comunicação</h4>
-            <p>Sempre que houver dúvida quanto à adequação, razoabilidade ou potencial influência do benefício, o Compliance deverá ser consultado previamente por meio do e-mail compliance@auvp.com.br.</p>
-            <p>O Compliance poderá orientar quanto à aceitação, recusa, devolução ou destinação institucional do item. A comunicação preventiva não caracteriza irregularidade, mas demonstra diligência e compromisso com a integridade.</p>
-
-            <h4>Vedações</h4>
-            <p>Não é permitido:</p>
-            <ul>
-                <li>Oferecer ou aceitar benefícios com a finalidade de influenciar decisões;</li>
-                <li>Receber vantagens em contextos de negociação relevante, contratação sensível, avaliação de desempenho ou decisão regulatória;</li>
-                <li>Aceitar dinheiro em espécie ou vantagens equivalentes a dinheiro;</li>
-                <li>Utilizar benefícios recebidos para obtenção de vantagem pessoal indevida.</li>
-            </ul>
-
-            <h4>Relacionamento com Entes ou Sujeitos Públicos</h4>
-            <p>Nas interações com agentes públicos, entes governamentais, autarquias, empresas estatais ou qualquer pessoa que exerça função pública, a AUVP Capital adota padrão de conduta mais restritivo. Nessas situações:</p>
-            <ul>
-                <li>Somente poderão ser oferecidos brindes institucionais de caráter simbólico e valor modesto;</li>
-                <li>É vedado oferecer ou custear hospitalidades, viagens, hospedagens ou entretenimento, salvo quando estritamente relacionados a evento institucional formal, devidamente justificado e previamente autorizado pelo Compliance;</li>
-                <li>É proibido qualquer benefício que possa ser interpretado como vantagem indevida, direta ou indireta.</li>
-            </ul>
-            <p>Todos os colaboradores devem observar a legislação anticorrupção aplicável e atuar com máxima cautela nas relações com o setor público. Em caso de dúvida, a consulta prévia ao Compliance é obrigatória.</p>
-
-            <h4>Soft Dollar e Relacionamento com Fornecedores</h4>
-            <p>A AUVP Capital adota uma política criteriosa e restritiva em relação à prática de Soft Dollar, em conformidade com a regulamentação da CVM e com as melhores práticas do mercado financeiro. A utilização de Soft Dollar somente é admitida quando atender, simultaneamente, aos seguintes princípios:</p>
-            <ul>
-                <li><strong>Primazia do Interesse do Cliente:</strong> eventuais benefícios devem resultar exclusivamente na melhoria da qualidade dos serviços prestados aos clientes, sendo vedada qualquer vantagem pessoal, direta ou indireta, a colaboradores, sócios ou terceiros relacionados à AUVP Capital;</li>
-                <li><strong>Transparência e Controle:</strong> todos os acordos ou arranjos envolvendo Soft Dollar devem ser formalizados, documentados e submetidos à aprovação prévia do Compliance, assegurando rastreabilidade e governança;</li>
-                <li><strong>Independência Técnica:</strong> a seleção de fornecedores, intermediários ou contrapartes deverá sempre se basear em critérios objetivos de melhor execução, eficiência, qualidade e custo-benefício, sem influência de benefícios acessórios;</li>
-                <li><strong>Vedações Expressas:</strong> é proibido o recebimento de qualquer benefício que não esteja diretamente relacionado às atividades de gestão, análise ou consultoria de investimentos, bem como vantagens de caráter pessoal, promocional ou recreativo.</li>
-            </ul>
-            <p>Em caso de dúvida quanto ao enquadramento, valor ou adequação, o colaborador deve consultar previamente o Compliance antes de aceitar ou oferecer qualquer benefício.</p>
+            <p><strong>Vedações:</strong> Não é permitido oferecer/aceitar benefícios para influenciar decisões, aceitar dinheiro em espécie, ou usar os benefícios para vantagem indevida. Relacionamentos com Entes Públicos possuem padrão ainda mais restritivo.</p>
         </section>
 
+        <!-- SEÇÃO 9 -->
         <section id="sec-9">
             <h2>9. PRIVACIDADE E PROTEÇÃO DE DADOS</h2>
-            <p>As informações tratadas pela Companhia constituem ativos essenciais para a sustentabilidade do negócio, orientando decisões estratégicas, investimentos e a evolução de seus produtos e serviços. Por essa razão, a gestão responsável de dados, em quaisquer de seus formatos (físico ou digital), é parte central do compromisso institucional com a inovação, a confiança e a integridade no mercado em que atua.</p>
-            <p>Toda informação relacionada a clientes, parceiros, colaboradores, bem como a projetos, estratégias e soluções em desenvolvimento, deve ser utilizada, armazenada e protegida de forma adequada, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e com as demais normas aplicáveis. Nesse contexto, a Companhia assegura que:</p>
-            <ul>
-                <li>O tratamento de dados observará as finalidades previamente definidas em suas Políticas de Privacidade;</li>
-                <li>A coleta ocorrerá de forma estritamente necessária ao atendimento dos objetivos legítimos do negócio;</li>
-                <li>Os titulares terão seus direitos garantidos, com canais específicos para solicitação e atendimento;</li>
-                <li>Medidas técnicas e administrativas de segurança serão adotadas para prevenir acessos não autorizados, perdas ou vazamentos;</li>
-                <li>O acesso às informações será restrito aos profissionais que delas necessitem para o exercício de suas funções;</li>
-                <li>A proteção da privacidade será incorporada desde as fases iniciais de novos projetos e iniciativas.</li>
-            </ul>
-            <p>Diante disso, é dever de cada colaborador conhecer e observar as Políticas de Privacidade aplicáveis às suas atividades e aos produtos correlatos. Em caso de dúvidas ou situações específicas, a equipe de Compliance deverá ser prontamente acionada.</p>
+            <p>As informações tratadas pela Companhia constituem ativos essenciais para a sustentabilidade do negócio. Toda informação relacionada a clientes, parceiros, colaboradores, deve ser utilizada, armazenada e protegida de forma adequada, em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+            
+            <div class="list-cards">
+                <div class="list-card-item">
+                    <i class="ph ph-check-circle"></i>
+                    <div>
+                        <p style="margin: 0;">O tratamento de dados observará rigorosamente as finalidades definidas.</p>
+                    </div>
+                </div>
+                <div class="list-card-item">
+                    <i class="ph ph-funnel"></i>
+                    <div>
+                        <p style="margin: 0;">A coleta ocorrerá de forma estritamente necessária aos propósitos do negócio.</p>
+                    </div>
+                </div>
+                <div class="list-card-item">
+                    <i class="ph ph-lock-key"></i>
+                    <div>
+                        <p style="margin: 0;">Medidas técnicas e administrativas avançadas de segurança serão sempre adotadas.</p>
+                    </div>
+                </div>
+                <div class="list-card-item">
+                    <i class="ph ph-user-focus"></i>
+                    <div>
+                        <p style="margin: 0;">O acesso às informações será restrito apenas aos profissionais autorizados e necessários.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="img-placeholder" style="min-height: 200px; margin-top: 3rem;">
+                <i class="ph ph-database"></i>
+                <span>[ Imagem: Proteção de Dados, Privacidade e Tecnologia ]</span>
+            </div>
         </section>
 
+        <!-- SEÇÃO 10 -->
         <section id="sec-10">
             <h2>10. VISITAS</h2>
-            <p>A presença de visitantes externos nas dependências da AUVP Capital exige atenção redobrada. O colaborador responsável pela visita responde pela conduta do terceiro durante todo o período em que ele estiver na Companhia, devendo acompanhá-lo continuamente e zelar pelo acesso restrito a ambientes, informações e sistemas, sejam eles físicos, verbais ou digitais.</p>
-            <p>Os visitantes devem ter contato exclusivamente com conteúdos previamente autorizados e estritamente necessários ao objetivo da visita, podendo, inclusive, serem submetidos à assinatura de acordo de confidencialidade (Non-Disclosure Agreement - NDA), quando cabível.</p>
+            <p>A presença de visitantes externos nas dependências da AUVP Capital exige atenção redobrada. O colaborador responsável pela visita responde pela conduta do terceiro durante todo o período, devendo acompanhá-lo continuamente e zelar pelo acesso restrito a ambientes, informações e sistemas.</p>
         </section>
 
+        <!-- SEÇÃO 11 -->
         <section id="sec-11">
             <h2>11. USO DA MARCA</h2>
-            <p>Os Piratas atuam como extensão da marca AUVP Capital e, por isso, devem zelar permanentemente por sua reputação. O uso da marca deve ser responsável, evitando qualquer associação a conteúdos, posicionamentos ou comportamentos incompatíveis com os valores, o propósito e os princípios da Companhia.</p>
-            <p>Não é permitida a manifestação pública em nome da AUVP Capital por quem não seja formalmente autorizado como porta-voz, nem exposições negativas que possam impactar a imagem institucional. Todavia, é permitida e incentivada a interação com os canais oficiais da AUVP Capital, incluindo curtir, comentar e compartilhar conteúdos publicados em suas redes sociais.</p>
-            <p>Atenção, Pirata: a marca AUVP Capital reflete quem somos. Cuidar dela é responsabilidade de todos.</p>
+            <div class="split-layout reversed">
+                <div>
+                    <p>Os Piratas atuam como extensão da marca AUVP Capital e, por isso, devem zelar permanentemente por sua reputação. O uso da marca deve ser responsável, evitando qualquer associação a conteúdos ou comportamentos incompatíveis com os valores da Companhia.</p>
+                    <p>Atenção, Pirata: a marca AUVP Capital reflete quem somos. Cuidar dela é responsabilidade de todos.</p>
+                </div>
+                <div class="img-placeholder">
+                    <i class="ph ph-megaphone"></i>
+                    <span>[ Imagem: Identidade Visual / Logotipo AUVP Capital ]</span>
+                </div>
+            </div>
         </section>
 
+        <!-- SEÇÃO 12 -->
         <section id="sec-12">
             <h2>12. CANAIS DE COMUNICAÇÃO INTERNOS</h2>
-            <p>A AUVP Capital possui canais oficiais de comunicação, destinados exclusivamente a finalidades profissionais. As comunicações e atividades do dia a dia devem ser realizadas por esses meios, pois são os únicos que permitem a aplicação adequada de controles e medidas de segurança da informação. O uso de canais alternativos deve ser evitado.</p>
-            <p>O compartilhamento de documentos exige atenção redobrada! Todo envio deve ocorrer exclusivamente pelos canais oficiais, e preferencialmente por e-mail corporativo, sendo direcionado apenas às pessoas ou grupos formalmente autorizados e estritamente necessários ao acesso à informação.</p>
+            <p>A AUVP Capital possui canais oficiais de comunicação, destinados exclusivamente a finalidades profissionais. As comunicações e atividades do dia a dia devem ser realizadas por esses meios, pois são os únicos que permitem a aplicação adequada de controles e medidas de segurança da informação.</p>
         </section>
 
+        <!-- SEÇÃO 13 -->
         <section id="sec-13">
             <h2>13. TREINAMENTOS</h2>
-            <p>A AUVP Capital possui uma área própria de treinamentos e incentiva o desenvolvimento contínuo de seus colaboradores, disponibilizando diferentes iniciativas para a ampliação de conhecimentos, incluindo cursos e treinamentos internos e externos. É responsabilidade de cada colaborador participar ativamente dessas iniciativas, com especial atenção aos treinamentos obrigatórios, realizados anualmente.</p>
-            <p>São eles:</p>
-            <ul>
-                <li>Treinamento sobre Ética e Prevenção à Lavagem de Dinheiro;</li>
-                <li>Treinamento sobre Compliance;</li>
-                <li>Treinamento sobre Segurança das Informações, Privacidade e Proteção de Dados.</li>
-            </ul>
+            <p>A AUVP Capital possui uma área própria de treinamentos e incentiva o desenvolvimento contínuo de seus colaboradores. É responsabilidade de cada colaborador participar ativamente dessas iniciativas, com especial atenção aos treinamentos obrigatórios (Ética, Compliance e Segurança da Informação), realizados anualmente.</p>
+            
+            <div class="img-placeholder" style="min-height: 200px;">
+                <i class="ph ph-graduation-cap"></i>
+                <span>[ Imagem: Treinamentos Corporativos / Desenvolvimento ]</span>
+            </div>
         </section>
 
+        <!-- SEÇÃO 14 -->
         <section id="sec-14">
             <h2>14. CANAL DE ÉTICA</h2>
-            <p>O Canal de Ética da AUVP Capital é um instrumento essencial para a preservação da nossa cultura, da integridade das nossas relações e da confiança entre todos que fazem parte da nossa tripulação. Ele existe para garantir um ambiente seguro, ético e responsável, onde condutas inadequadas possam ser reportadas com seriedade, respeito e confidencialidade.</p>
-            <p>Por meio do Canal de Ética, qualquer pessoa (colaboradores, parceiros, fornecedores ou terceiros) pode relatar, de boa-fé, situações que violem ou possam violar nossos valores, os termos deste código, políticas internas, normas legais ou princípios de conduta esperados. Isso inclui, mas não se limita à, práticas antiéticas, conflitos de interesse, assédio, discriminação, fraude, corrupção ou uso indevido de informações e recursos.</p>
-            <p>A AUVP Capital utiliza a plataforma Ouvidor Digital como meio oficial para recebimento das manifestações, por meio do endereço: <a href="https://canal.ouvidordigital.com.br/asupernova" target="_blank" style="color: var(--accent-color);">https://canal.ouvidordigital.com.br/asupernova</a></p>
-            <p>O Canal permite que o relato seja realizado de forma identificada ou anônima, a critério do denunciante. Nos casos em que o denunciante opte pelo anonimato, a plataforma realiza triagem técnica e procedimentos de anonimização, assegurando que não haja identificação da origem da manifestação. As comunicações são tratadas com confidencialidade, sendo o acesso às informações restrito às pessoas responsáveis pela apuração, sempre com o compromisso de proteção contra retaliações.</p>
-            <p>A AUVP Capital não admite qualquer forma de retaliação contra quem, de boa-fé, realizar relato ou colaborar com apurações.</p>
-            <p>As condutas que possam configurar violação a este Código de Ética serão analisadas pelo Comitê de Compliance. Toda denúncia ou suspeita deve ser comunicada por meio do Canal oficial, para que possa ser devidamente registrada e apurada. O prazo e o fluxo de apuração seguirão procedimento interno formal, assegurando imparcialidade e ampla análise dos fatos.</p>
-            <p>Portanto, a AUVP Capital possui um Comitê de Compliance, sendo um órgão responsável por zelar pela aplicação e cumprimento deste Código. Suas atribuições incluem a orientação sobre dilemas éticos, a apuração de violações, a recomendação de sanções e a proposição de atualizações deste Código, tendo o compromisso de identificar, prevenir e gerenciar quaisquer situações de conflito de interesse.</p>
+            
+            <div class="text-columns">
+                <p>O Canal de Ética da AUVP Capital é um instrumento essencial para a preservação da nossa cultura, da integridade das nossas relações e da confiança entre todos que fazem parte da nossa tripulação. Ele existe para garantir um ambiente seguro, ético e responsável, onde condutas inadequadas possam ser reportadas com seriedade, respeito e confidencialidade.</p>
+                <p>As condutas que possam configurar violação a este Código de Ética serão analisadas pelo Comitê de Compliance, órgão responsável por zelar pela aplicação e cumprimento deste Código, orientar sobre dilemas éticos, apurar violações e recomendar sanções.</p>
+            </div>
+
+            <div class="alert-box cta-box">
+                <i class="ph ph-shield-check alert-icon" style="font-size: 3rem;"></i>
+                <div class="alert-content" style="flex: 1;">
+                    <h4 style="font-family: 'Anek Latin', sans-serif; font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--brand-highlight);">Ouvidor Digital AUVP Capital</h4>
+                    <p style="font-size: 0.95rem;">Por meio do Canal, qualquer pessoa pode relatar, de forma identificada ou anônima, situações que violem nossos valores. A AUVP Capital não admite qualquer forma de retaliação contra quem realizar relato de boa-fé.</p>
+                    <a href="https://canal.ouvidordigital.com.br/asupernova" target="_blank" class="btn-link">
+                        <i class="ph ph-arrow-square-out"></i> Acessar Canal de Ética
+                    </a>
+                </div>
+            </div>
+
         </section>
 
         <!-- SEÇÃO 15 -->
@@ -966,6 +1443,7 @@
     <!-- Script para Tema e Interação -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
             // == Funcionalidade: Scroll Suave e Highlight de Menu ==
             const sections = document.querySelectorAll('section, h3[id^="sec-"]');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -1008,7 +1486,6 @@
             const currentTheme = localStorage.getItem('theme');
             const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-            // Configurar estado inicial
             if (currentTheme) {
                 if (currentTheme === 'dark') {
                     document.body.classList.add('dark-theme');
@@ -1017,7 +1494,6 @@
                 }
             }
 
-            // Ouvinte para alternar o tema
             toggleBtn.addEventListener('click', function() {
                 const isDark = document.body.classList.contains('dark-theme') || 
                                (prefersDarkScheme.matches && !document.body.classList.contains('light-theme'));
@@ -1046,10 +1522,9 @@
             if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
             if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleMenu);
 
-            // Fechar menu ao clicar num link (mobile)
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
+                    if (window.innerWidth <= 1024) {
                         if (sidebar) sidebar.classList.remove('open');
                         if (sidebarOverlay) sidebarOverlay.classList.remove('open');
                     }
