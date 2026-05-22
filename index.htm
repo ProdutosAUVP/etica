@@ -17,7 +17,6 @@
         /* Paleta Institucional - Modo Claro */
         :root {
             --bg-color: #FFFFFF;
-            --sidebar-bg: #F1F4F1; 
             --surface-color: #FFFFFF; 
             --surface-alt: #F1F4F1; 
             --text-main: #111827;
@@ -28,7 +27,9 @@
             --btn-text: #FFFFFF;
             --border-color: #DDE3DD; 
             --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-preta.svg');
-            --sidebar-width: 320px;
+            
+            /* Glassmorphism background para o header */
+            --glass-bg: rgba(255, 255, 255, 0.85);
             
             --destructive: #EF4343;
             --bg-positive: rgba(2, 54, 32, 0.06);
@@ -40,7 +41,6 @@
         /* Paleta Elegante - Modo Escuro */
         body.dark-theme {
             --bg-color: #0A0A0A;
-            --sidebar-bg: #000000; 
             --surface-color: #141414; 
             --surface-alt: #1A1A1A; 
             --text-main: #F3F4F6;
@@ -52,6 +52,8 @@
             --border-color: #262626;
             --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-branca.svg');
             
+            --glass-bg: rgba(10, 10, 10, 0.85);
+
             --destructive: #EF4343;
             --bg-positive: rgba(90, 135, 112, 0.15);
             --text-positive: #5A8770;
@@ -63,7 +65,6 @@
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #0A0A0A;
-                --sidebar-bg: #000000;
                 --surface-color: #141414;
                 --surface-alt: #1A1A1A;
                 --text-main: #F3F4F6;
@@ -74,6 +75,7 @@
                 --btn-text: #FFFFFF;
                 --border-color: #262626;
                 --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-branca.svg');
+                --glass-bg: rgba(10, 10, 10, 0.85);
                 --destructive: #EF4343;
                 --bg-positive: rgba(90, 135, 112, 0.15);
                 --text-positive: #5A8770;
@@ -82,7 +84,6 @@
             }
             body.light-theme {
                 --bg-color: #FFFFFF;
-                --sidebar-bg: #F1F4F1;
                 --surface-color: #FFFFFF;
                 --surface-alt: #F1F4F1;
                 --text-main: #111827;
@@ -93,6 +94,7 @@
                 --btn-text: #FFFFFF;
                 --border-color: #DDE3DD;
                 --logo-url: url('https://raw.githubusercontent.com/ProdutosAUVP/etica/main/auvp-capital-horizontal-preta.svg');
+                --glass-bg: rgba(255, 255, 255, 0.85);
                 --destructive: #EF4343;
                 --bg-positive: rgba(2, 54, 32, 0.06);
                 --text-positive: #023620;
@@ -109,7 +111,6 @@
             color: var(--text-main);
             line-height: 1.7;
             display: block; 
-            scroll-behavior: smooth;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -128,43 +129,302 @@
         ul, ol { margin-bottom: 1.25rem; margin-left: 2rem; color: var(--text-muted); }
         li { margin-bottom: 0.5rem; text-align: justify; }
 
-        /* Barra Lateral */
-        .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
-            position: fixed;
-            top: 0; left: 0;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
-            padding: 3rem 0 2rem 0;
-            display: flex; flex-direction: column; z-index: 50;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+        /* ==========================================================
+           HEADER SUPERIOR E MENU INTERATIVO (NOVO)
+           ========================================================== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
-        .nav-container { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; padding: 0 2rem; }
-        .sidebar-brand { display: block; width: 100%; height: 64px; background-image: var(--logo-url); background-size: contain; background-repeat: no-repeat; background-position: left center; margin-bottom: 2.5rem; }
-        .nav-list { list-style: none; margin-left: 0; }
-        .nav-item { margin-bottom: 0.8rem; text-align: left; }
-        .nav-link { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; font-weight: 500; text-align: left; transition: all 0.2s ease; display: block; padding: 0.4rem 0 0.4rem 1rem; border-left: 2px solid transparent; margin-left: -2rem; }
-        .nav-link:hover { color: var(--text-main); }
-        .nav-link.active { color: var(--brand-highlight); font-weight: 600; border-left: 2px solid var(--brand-highlight); background: var(--active-bg); }
-        .nav-sublink { font-size: 0.85rem; margin-left: -1rem; margin-bottom: 0.5rem; opacity: 0.8; padding-left: 1rem; }
 
-        /* Controles do Topo */
-        .top-controls { position: fixed; top: 2rem; right: 3rem; display: flex; align-items: center; gap: 1rem; z-index: 100; }
-        .theme-toggle-btn { background-color: var(--sidebar-bg); color: var(--text-main); border: 1px solid var(--border-color); width: 42px; height: 42px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.2s ease; }
-        .theme-toggle-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); color: var(--brand-highlight); border-color: var(--brand-highlight); }
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 6%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .site-logo {
+            width: 180px;
+            height: 35px;
+            background-image: var(--logo-url);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
+            transition: background-image 0.3s ease;
+        }
+
+        .top-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle-btn {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--surface-alt);
+            color: var(--brand-highlight);
+            border-color: var(--brand-highlight);
+        }
+
         .icon-sun { display: none; } .icon-moon { display: block; }
         body.dark-theme .icon-sun { display: block; } body.dark-theme .icon-moon { display: none; }
         @media (prefers-color-scheme: dark) { body:not(.light-theme) .icon-sun { display: block; } body:not(.light-theme) .icon-moon { display: none; } }
 
-        /* Conteúdo Principal */
-        .main-content { margin-left: var(--sidebar-width); padding: 4rem 6%; width: auto; max-width: 1440px; }
-        section { margin-bottom: 6rem; }
+        .btn-export {
+            background-color: var(--brand-highlight);
+            color: var(--btn-text);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-export:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .sticky-nav {
+            padding: 0 6%;
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+        }
+        
+        .site-header.show-nav .sticky-nav {
+            max-height: 100px;
+            opacity: 1;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Sombras para indicar rolagem no menu */
+        .sticky-nav::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 40px;
+            background: linear-gradient(to right, transparent, var(--bg-color));
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            list-style: none;
+            scrollbar-width: none; /* Firefox */
+            scroll-behavior: smooth;
+            padding-bottom: 0.5rem;
+            margin-left: 0;
+        }
+        
+        .nav-list::-webkit-scrollbar { display: none; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            background-color: var(--surface-alt);
+            border: 1px solid transparent;
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+            border-color: var(--border-color);
+        }
+
+        .nav-link.active {
+            color: var(--btn-text);
+            background: var(--brand-highlight);
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Conteúdo Principal Centralizado */
+        .main-content { 
+            margin: 0 auto; 
+            padding: 3rem 6%; 
+            width: 100%; 
+            max-width: 1200px; /* Reduzido levemente para melhor leitura centralizada */
+        }
+        
+        section { margin-bottom: 6rem; scroll-margin-top: 180px; /* Margem nativa para ancoras */ }
+        h2[id], h3[id] { scroll-margin-top: 180px; /* Garante que os subtítulos também não ficam escondidos */ }
+        
         .text-columns { column-count: 2; column-gap: 4rem; text-align: justify; margin-bottom: 1.5rem; }
         .text-columns p { margin-bottom: 1.25rem; break-inside: avoid; }
 
         /* ==========================================================
-           NOVO SISTEMA DE PLACEHOLDERS (BLUEPRINTS)
+           BENTO BOX (ÍNDICE VISUAL E INTERATIVO)
+           ========================================================== */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 5rem 0;
+            grid-auto-rows: minmax(140px, auto);
+        }
+        
+        .bento-item {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            overflow: hidden;
+            position: relative;
+            break-inside: avoid;
+        }
+        
+        .bento-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border-color: var(--brand-highlight);
+        }
+        
+        .bento-num {
+            font-family: 'Inter', monospace;
+            font-size: 4.5rem;
+            font-weight: 800;
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            color: var(--text-muted);
+            opacity: 0.05;
+            transition: opacity 0.3s ease, color 0.3s ease;
+            pointer-events: none;
+        }
+        
+        body.dark-theme .bento-num { opacity: 0.1; }
+        
+        .bento-item:hover .bento-num {
+            opacity: 0.15;
+            color: var(--brand-highlight);
+        }
+
+        .bento-icon {
+            font-size: 2rem;
+            color: var(--brand-highlight);
+            margin-bottom: 1.5rem;
+        }
+
+        .bento-title {
+            font-family: 'Anek Latin', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            line-height: 1.1;
+            z-index: 1;
+        }
+
+        .bento-desc {
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            color: var(--text-muted);
+            z-index: 1;
+            display: block;
+        }
+
+        .bento-span-2 { grid-column: span 2; }
+        .bento-span-3 { grid-column: span 3; }
+        .bento-row-2 { grid-row: span 2; }
+        .bento-highlight {
+            background-color: var(--active-bg);
+            border-color: var(--brand-highlight);
+        }
+
+        /* Sub-itens do Bento Box (Ex: Item 5) */
+        .bento-subgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bento-subitem {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .bento-subitem:hover {
+            background-color: var(--brand-highlight);
+            color: var(--btn-text);
+            border-color: var(--brand-highlight);
+            transform: translateY(-2px);
+        }
+        
+        .bento-subitem-full {
+            grid-column: span 2;
+        }
+
+        /* ==========================================================
+           SISTEMA DE PLACEHOLDERS (BLUEPRINTS)
            ========================================================== */
         .img-placeholder {
             width: 100%;
@@ -209,7 +469,7 @@
         .img-placeholder .dim { font-family: 'Inter', monospace; font-weight: 700; font-size: 1.3rem; color: var(--text-main); z-index: 1; letter-spacing: 1px;}
         .img-placeholder .desc { font-size: 0.95rem; font-weight: 500; opacity: 0.8; z-index: 1; text-transform: uppercase; letter-spacing: 0.5px;}
 
-        /* Proporções Exatas para os Placeholders (Usados apenas em Banners isolados) */
+        /* Proporções Exatas para os Placeholders */
         .ph-banner { aspect-ratio: 21/9; margin: 3rem 0; }
         .ph-slim { aspect-ratio: 4/1; margin: 2.5rem 0; }
         .ph-landscape { aspect-ratio: 16/9; margin: 2.5rem 0; }
@@ -218,7 +478,7 @@
         .split-layout {
             display: flex;
             flex-direction: row;
-            align-items: stretch; /* Estica ambos os lados para a mesma altura */
+            align-items: stretch;
             gap: 3rem;
             margin: 3rem 0;
             page-break-inside: avoid;
@@ -232,8 +492,8 @@
             width: 50%;
             margin: 0; 
             height: auto;
-            min-height: 200px; /* Evita que o placeholder encolha demais em textos muito pequenos */
-            aspect-ratio: auto !important; /* Força o placeholder a copiar a altura exata do texto */
+            min-height: 200px; 
+            aspect-ratio: auto !important; 
         }
 
         /* Grelha de Cartões (Valores) */
@@ -242,6 +502,9 @@
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--brand-highlight); }
         .card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; color: var(--brand-highlight); font-size: 1.5rem; }
         .card-header h4 { margin: 0; font-size: 1.25rem; color: var(--accent-color); }
+        
+        .valor-icon { width: 52px; height: 52px; object-fit: contain; display: block; }
+        body.dark-theme .valor-icon { filter: invert(1) grayscale(1) brightness(1.5); } /* Preserva os traços e inverte as cores corretamente */
 
         .list-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
         .list-card-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem; background-color: var(--surface-alt); border: 1px solid var(--border-color); border-radius: 8px; break-inside: avoid; }
@@ -252,7 +515,18 @@
             .split-layout > div, .split-layout > .img-placeholder { width: 100% !important; min-height: 250px; height: auto !important; aspect-ratio: auto; }
             .text-columns { column-count: 1; } 
             .list-cards { grid-template-columns: 1fr; }
-            .ph-banner, .ph-slim { aspect-ratio: 16/9; } /* Ajuste mobile para banners */
+            .ph-banner, .ph-slim { aspect-ratio: 16/9; } 
+            
+            /* Bento Responsivo */
+            .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .bento-span-2, .bento-span-3 { grid-column: span 2; }
+            .bento-row-2 { grid-row: span 1; }
+            
+            .header-top { padding: 1rem 4%; }
+            .sticky-nav { padding: 0 4%; }
+            .btn-export span { display: none; }
+            .btn-export { padding: 0.6rem; border-radius: 50%; }
+            .btn-export i { font-size: 1.2rem; margin: 0; }
         }
 
         /* Elementos UI (Alertas, Botões) */
@@ -273,9 +547,6 @@
         .btn-link { display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--brand-highlight); color: var(--btn-text) !important; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: opacity 0.2s ease, transform 0.2s ease; }
         .btn-link:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        .btn-export { background-color: var(--brand-highlight); color: var(--btn-text); border: none; padding: 0.8rem 1.5rem; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 0.5rem; transition: transform 0.2s ease; }
-        .btn-export:hover { transform: translateY(-2px); }
-
         .document-meta { background-color: var(--surface-color); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; margin-top: 2rem; margin-bottom: 4rem; }
         .document-meta p { margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-main); }
         .document-meta strong { font-weight: 600; color: var(--accent-color); }
@@ -285,26 +556,6 @@
         th { background-color: var(--surface-alt); font-family: 'Anek Latin', sans-serif; font-weight: 700; color: var(--accent-color); }
 
         .print-only { display: none !important; }
-
-        /* ==========================================================
-           RESPONSIVIDADE (MOBILE)
-           ========================================================== */
-        .mobile-header { display: none; }
-        .sidebar-overlay { display: none; }
-
-        @media (max-width: 1024px) {
-            .mobile-header { display: flex; position: fixed; top: 0; left: 0; right: 0; height: 65px; background-color: var(--sidebar-bg); border-bottom: 1px solid var(--border-color); z-index: 60; align-items: center; padding: 0 1.5rem; justify-content: space-between; }
-            .mobile-logo { width: 140px; height: 30px; background-image: var(--logo-url); background-size: contain; background-repeat: no-repeat; background-position: left center; }
-            .hamburger-btn { background: none; border: none; color: var(--text-main); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-            .sidebar { transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 70; width: 280px; padding-top: 1rem; }
-            .sidebar.open { transform: translateX(0); }
-            .sidebar-overlay.open { display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 65; backdrop-filter: blur(2px); }
-            .main-content { margin-left: 0; width: 100%; padding: 7rem 1.5rem 2rem 1.5rem; max-width: none; }
-            .top-controls { top: auto; bottom: 1.5rem; right: 1.5rem; flex-direction: column-reverse; gap: 0.8rem; }
-            .theme-toggle-btn, .btn-export { width: 52px; height: 52px; padding: 0; border-radius: 50%; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-            .btn-export span { display: none; } 
-            .btn-export i { font-size: 1.5rem; margin: 0; }
-        }
 
         /* ==========================================================
            CONFIGURAÇÕES RIGOROSAS PARA IMPRESSÃO / EXPORTAÇÃO PDF
@@ -320,8 +571,11 @@
 
             * { box-shadow: none !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
             body { display: block; background-color: #FFF !important; font-size: 11pt !important; color: #333 !important; }
-            .sidebar, .top-controls, .mobile-header, .sidebar-overlay { display: none !important; }
+            
+            /* Ocultar elementos UI iterativos na impressão */
+            .site-header { display: none !important; }
             .print-only { display: block !important; }
+            #indice-bento { display: none !important; }
 
             /* Ajustes Capa e PDF */
             #capa { display: flex !important; flex-direction: column; align-items: center; height: 17cm !important; box-sizing: border-box; page-break-after: always; padding-top: 2rem; margin-bottom: 0; }
@@ -338,7 +592,7 @@
             .print-sumario ul ul { margin-top: 0.3rem; margin-left: 1.5rem; column-count: 1; }
             .print-sumario ul ul li { font-weight: 400; margin-bottom: 0.3rem; color: #333 !important; }
 
-            .main-content { margin-left: 0; width: 100%; padding: 0; }
+            .main-content { margin: 0; width: 100%; max-width: none; padding: 0; }
             section { page-break-inside: auto; margin-bottom: 2rem !important; }
             h1, h2, h3, h4, h5 { page-break-after: avoid; break-after: avoid; page-break-before: auto; }
             p, .document-meta, table, tr, td, .card, .alert-box, .value-box, .img-placeholder, .list-card-item { page-break-inside: avoid; break-inside: avoid; }
@@ -351,7 +605,7 @@
             .list-cards { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 2rem !important; align-items: start !important; }
             .text-columns { column-count: 2 !important; column-gap: 3rem !important; }
 
-            /* Quebras de Página Forçadas por Item (Exceto itens pequenos agrupados: 10, 11, 12, 13) */
+            /* Quebras de Página Forçadas por Item */
             #sec-2, #sec-3, #sec-4, #sec-5, #sec-6, #sec-7, #sec-8, #sec-9, #sec-10, #sec-14, #sec-15 {
                 page-break-before: always !important;
                 break-before: page !important;
@@ -369,59 +623,50 @@
 </head>
 <body>
 
-    <!-- HEADER MOBILE -->
-    <div class="mobile-header">
-        <div class="mobile-logo" aria-label="AUVP Capital"></div>
-        <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir Menu">
-            <i class="ph ph-list"></i>
-        </button>
-    </div>
-    <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-    <!-- MENU LATERAL -->
-    <nav class="sidebar" id="sidebar">
-        <div class="nav-container">
-            <div class="sidebar-brand" aria-label="AUVP Capital"></div>
-            <ul class="nav-list">
-                <li class="nav-item"><a href="#capa" class="nav-link">Código de ética</a></li>
-                <li class="nav-item"><a href="#sec-1" class="nav-link">1. Quem é a AUVP Capital?</a></li>
-                <li class="nav-item"><a href="#sec-2" class="nav-link">2. Nossos Valores</a></li>
-                <li class="nav-item"><a href="#sec-3" class="nav-link">3. A quem se aplica?</a></li>
-                <li class="nav-item"><a href="#sec-4" class="nav-link">4. Consequências</a></li>
-                <li class="nav-item"><a href="#sec-5" class="nav-link">5. Boas Práticas e Cultura</a>
-                    <a href="#sec-5-1" class="nav-link nav-sublink">5.1. Ambiente de Trabalho</a>
-                    <a href="#sec-5-2" class="nav-link nav-sublink">5.2. Discriminação</a>
-                    <a href="#sec-5-3" class="nav-link nav-sublink">5.3. Assédio Moral e Sexual</a>
-                    <a href="#sec-5-4" class="nav-link nav-sublink">5.4. Conflito de Interesses</a>
-                    <a href="#sec-5-5" class="nav-link nav-sublink">5.5. Pessoas Politicamente Expostas</a>
-                    <a href="#sec-5-6" class="nav-link nav-sublink">5.6. Atividades Paralelas</a>
-                    <a href="#sec-5-7" class="nav-link nav-sublink">5.7. Informações Privilegiadas</a>
-                </li>
-                <li class="nav-item"><a href="#sec-6" class="nav-link">6. Corrupção</a></li>
-                <li class="nav-item"><a href="#sec-7" class="nav-link">7. Fraudes</a></li>
-                <li class="nav-item"><a href="#sec-8" class="nav-link">8. Brindes e Hospitalidades</a></li>
-                <li class="nav-item"><a href="#sec-9" class="nav-link">9. Proteção de Dados</a></li>
-                <li class="nav-item"><a href="#sec-10" class="nav-link">10. Visitas</a></li>
-                <li class="nav-item"><a href="#sec-11" class="nav-link">11. Uso da Marca</a></li>
-                <li class="nav-item"><a href="#sec-12" class="nav-link">12. Canais de Comunicação</a></li>
-                <li class="nav-item"><a href="#sec-13" class="nav-link">13. Treinamentos</a></li>
-                <li class="nav-item"><a href="#sec-14" class="nav-link">14. Canal de Ética</a></li>
-                <li class="nav-item"><a href="#sec-15" class="nav-link">15. Revisão do Código</a></li>
-            </ul>
+    <!-- HEADER SUPERIOR E MENU ANIMADO -->
+    <header class="site-header">
+        <div class="header-top">
+            <div class="site-logo" aria-label="AUVP Capital"></div>
+            <div class="top-controls">
+                <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Alternar Tema" title="Alternar Modo Claro/Escuro">
+                    <i class="ph ph-moon icon-moon"></i>
+                    <i class="ph ph-sun icon-sun"></i>
+                </button>
+                <button class="btn-export" onclick="window.print()" aria-label="Exportar PDF" title="Exportar PDF">
+                    <i class="ph ph-printer"></i>
+                    <span>Exportar PDF</span>
+                </button>
+            </div>
         </div>
-    </nav>
-
-    <!-- CONTROLES DO TOPO -->
-    <div class="top-controls">
-        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Alternar Modo Claro/Escuro" title="Alternar Modo Claro/Escuro">
-            <i class="ph ph-moon icon-moon"></i>
-            <i class="ph ph-sun icon-sun"></i>
-        </button>
-        <button class="btn-export" onclick="window.print()" aria-label="Exportar PDF" title="Exportar PDF">
-            <i class="ph ph-printer"></i>
-            <span>Exportar PDF</span>
-        </button>
-    </div>
+        
+        <nav class="sticky-nav">
+            <ul class="nav-list" id="nav-list">
+                <li><a href="#capa" class="nav-link"><i class="ph ph-book-bookmark"></i> Capa</a></li>
+                <li><a href="#sec-1" class="nav-link"><i class="ph ph-info"></i> 1. Quem Somos</a></li>
+                <li><a href="#sec-2" class="nav-link"><i class="ph ph-star"></i> 2. Valores</a></li>
+                <li><a href="#sec-3" class="nav-link"><i class="ph ph-users"></i> 3. Aplicação</a></li>
+                <li><a href="#sec-4" class="nav-link"><i class="ph ph-warning"></i> 4. Consequências</a></li>
+                <li><a href="#sec-5" class="nav-link"><i class="ph ph-briefcase"></i> 5. Boas Práticas</a></li>
+                <li><a href="#sec-5-1" class="nav-link"><i class="ph ph-handshake"></i> 5.1 Ambiente</a></li>
+                <li><a href="#sec-5-2" class="nav-link"><i class="ph ph-prohibit"></i> 5.2 Discriminação</a></li>
+                <li><a href="#sec-5-3" class="nav-link"><i class="ph ph-chat-circle-slash"></i> 5.3 Assédio</a></li>
+                <li><a href="#sec-5-4" class="nav-link"><i class="ph ph-scales"></i> 5.4 Conflitos</a></li>
+                <li><a href="#sec-5-5" class="nav-link"><i class="ph ph-bank"></i> 5.5 PEPs</a></li>
+                <li><a href="#sec-5-6" class="nav-link"><i class="ph ph-briefcase"></i> 5.6 Paralelas</a></li>
+                <li><a href="#sec-5-7" class="nav-link"><i class="ph ph-eye-slash"></i> 5.7 Informações</a></li>
+                <li><a href="#sec-6" class="nav-link"><i class="ph ph-hand-coins"></i> 6. Corrupção</a></li>
+                <li><a href="#sec-7" class="nav-link"><i class="ph ph-shield-warning"></i> 7. Fraudes</a></li>
+                <li><a href="#sec-8" class="nav-link"><i class="ph ph-gift"></i> 8. Brindes</a></li>
+                <li><a href="#sec-9" class="nav-link"><i class="ph ph-lock-key"></i> 9. Proteção Dados</a></li>
+                <li><a href="#sec-10" class="nav-link"><i class="ph ph-door"></i> 10. Visitas</a></li>
+                <li><a href="#sec-11" class="nav-link"><i class="ph ph-megaphone"></i> 11. Marca</a></li>
+                <li><a href="#sec-12" class="nav-link"><i class="ph ph-chat-circle"></i> 12. Comunicação</a></li>
+                <li><a href="#sec-13" class="nav-link"><i class="ph ph-graduation-cap"></i> 13. Treinamentos</a></li>
+                <li><a href="#sec-14" class="nav-link"><i class="ph ph-shield-check"></i> 14. Canal de Ética</a></li>
+                <li><a href="#sec-15" class="nav-link"><i class="ph ph-clock-counter-clockwise"></i> 15. Revisão</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="main-content">
@@ -474,15 +719,125 @@
             </ul>
         </section>
 
+        <!-- ÍNDICE BENTO BOX -->
+        <section id="indice-bento">
+            <!-- BENTO BOX (SUBSTITUI O ANTIGO HERO PLACEHOLDER) -->
+            <div class="bento-grid">
+                <a href="#sec-1" class="bento-item bento-span-2">
+                    <span class="bento-num">01</span>
+                    <i class="ph ph-info bento-icon"></i>
+                    <div>
+                        <span class="bento-title">Quem é a AUVP Capital?</span>
+                        <span class="bento-desc">Visão, origens e o nosso impacto no mercado.</span>
+                    </div>
+                </a>
+                <a href="#sec-2" class="bento-item bento-span-2">
+                    <span class="bento-num">02</span>
+                    <i class="ph ph-star bento-icon"></i>
+                    <div>
+                        <span class="bento-title">Nossos Valores</span>
+                        <span class="bento-desc">O código que mantém a tripulação unida e focada.</span>
+                    </div>
+                </a>
+                
+                <a href="#sec-3" class="bento-item">
+                    <span class="bento-num">03</span>
+                    <i class="ph ph-users bento-icon"></i>
+                    <span class="bento-title">Aplicação</span>
+                </a>
+                <a href="#sec-4" class="bento-item">
+                    <span class="bento-num">04</span>
+                    <i class="ph ph-warning bento-icon"></i>
+                    <span class="bento-title">Consequências</span>
+                </a>
+                
+                <div class="bento-item bento-span-2 bento-row-2" style="cursor: default;">
+                    <span class="bento-num">05</span>
+                    <a href="#sec-5" style="text-decoration: none; color: inherit; z-index: 1;">
+                        <i class="ph ph-briefcase bento-icon" style="margin-bottom: 0.5rem;"></i>
+                        <span class="bento-title" style="display: block;">Boas Práticas e Cultura</span>
+                    </a>
+                    <div class="bento-subgrid">
+                        <a href="#sec-5-1" class="bento-subitem">5.1 Ambiente</a>
+                        <a href="#sec-5-2" class="bento-subitem">5.2 Discriminação</a>
+                        <a href="#sec-5-3" class="bento-subitem">5.3 Assédio</a>
+                        <a href="#sec-5-4" class="bento-subitem">5.4 Conflitos</a>
+                        <a href="#sec-5-5" class="bento-subitem">5.5 PEPs</a>
+                        <a href="#sec-5-6" class="bento-subitem">5.6 Paralelas</a>
+                        <a href="#sec-5-7" class="bento-subitem bento-subitem-full">5.7 Info Privilegiadas</a>
+                    </div>
+                </div>
+
+                <a href="#sec-6" class="bento-item">
+                    <span class="bento-num">06</span>
+                    <i class="ph ph-hand-coins bento-icon"></i>
+                    <span class="bento-title">Corrupção</span>
+                </a>
+                <a href="#sec-7" class="bento-item">
+                    <span class="bento-num">07</span>
+                    <i class="ph ph-shield-warning bento-icon"></i>
+                    <span class="bento-title">Fraudes</span>
+                </a>
+
+                <a href="#sec-8" class="bento-item bento-span-2">
+                    <span class="bento-num">08</span>
+                    <i class="ph ph-gift bento-icon"></i>
+                    <div>
+                        <span class="bento-title">Brindes e Hospitalidades</span>
+                        <span class="bento-desc">Regras de transparência e Soft Dollar.</span>
+                    </div>
+                </a>
+                <a href="#sec-9" class="bento-item bento-span-2">
+                    <span class="bento-num">09</span>
+                    <i class="ph ph-database bento-icon"></i>
+                    <div>
+                        <span class="bento-title">Proteção de Dados</span>
+                        <span class="bento-desc">Diretrizes rigorosas sobre o tratamento LGPD.</span>
+                    </div>
+                </a>
+
+                <a href="#sec-10" class="bento-item">
+                    <span class="bento-num">10</span>
+                    <i class="ph ph-door bento-icon"></i>
+                    <span class="bento-title">Visitas</span>
+                </a>
+                <a href="#sec-11" class="bento-item">
+                    <span class="bento-num">11</span>
+                    <i class="ph ph-megaphone bento-icon"></i>
+                    <span class="bento-title">Marca</span>
+                </a>
+                <a href="#sec-12" class="bento-item">
+                    <span class="bento-num">12</span>
+                    <i class="ph ph-chat-circle bento-icon"></i>
+                    <span class="bento-title">Comunicação</span>
+                </a>
+                <a href="#sec-13" class="bento-item">
+                    <span class="bento-num">13</span>
+                    <i class="ph ph-graduation-cap bento-icon"></i>
+                    <span class="bento-title">Treinos</span>
+                </a>
+
+                <a href="#sec-14" class="bento-item bento-span-2">
+                    <span class="bento-num">14</span>
+                    <i class="ph ph-shield-check bento-icon"></i>
+                    <div>
+                        <span class="bento-title">Canal de Ética</span>
+                        <span class="bento-desc">Reportes confidenciais (Ouvidor Digital).</span>
+                    </div>
+                </a>
+                <a href="#sec-15" class="bento-item bento-span-2">
+                    <span class="bento-num">15</span>
+                    <i class="ph ph-clock-counter-clockwise bento-icon"></i>
+                    <div>
+                        <span class="bento-title">Revisão</span>
+                        <span class="bento-desc">Acompanhamento e atualizações de versão.</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
         <!-- SEÇÃO 1 -->
         <section id="sec-1">
-            
-            <div class="img-placeholder ph-banner">
-                <i class="ph ph-panorama"></i>
-                <span class="dim">1200 x 400 px</span>
-                <span class="desc">Hero Banner / Imagem Institucional Ampla</span>
-            </div>
-
             <h2>1. QUEM É A AUVP CAPITAL?</h2>
             
             <div class="split-layout">
@@ -498,7 +853,6 @@
                 </div>
             </div>
 
-            <!-- Parágrafos com largura total (sem a div text-columns) -->
             <p>Seu braço educacional já impactou mais de 40 milhões de pessoas, oferecendo o conhecimento necessário para dominar o universo dos investimentos. Em 2025 e 2026, a AUVP Capital consolidou sua liderança no mercado ao conquistar o primeiro lugar no ranking de melhores consultorias pelo BTG Pactual, reforçando sua posição como referência nacional.</p>
             <p>Ainda em 2025, a AUVP Capital ampliou sua atuação no mercado de capitais com o lançamento de três ETFs em parceria com o BTG Pactual. O AUVP11 tornou-se o primeiro ETF do Brasil 100% fundamentalista, reafirmando nossa capacidade de inovar com profundidade técnica. Já o AREA11 marcou um novo capítulo ao ser o primeiro fundo de índice da B3 estruturado integralmente para geração de renda mensal indexada ao IPCA. O AUPO11 consolidou nosso compromisso com soluções eficientes e acessíveis, ao combinar simplicidade operacional, previsibilidade tributária, com alíquota fixa de 15% de IR; sendo ideal para reserva de oportunidade e emergência.</p>
             <p>Mais do que uma plataforma, a AUVP Capital é um ecossistema completo que integra investidores, conhecimento e capital, transformando educação em estratégia e estratégia em resultados concretos. Aqui, cada aluno, membro ou investidor encontra segurança, crescimento e liberdade financeira para evoluir em todas as etapas da sua jornada.</p>
@@ -523,35 +877,35 @@
             <div class="cards-grid">
                 
                 <div class="card">
-                    <div class="card-header"><i class="ph ph-warning-circle"></i><h4>Manda a Real</h4></div>
+                    <div class="card-header"><img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/MANDA%20A%20REAL.svg" alt="Manda a Real" class="valor-icon"><h4>Manda a Real</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Coragem de dar ideias e questionar as regras.</p>
                     <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Falamos com franqueza, questionamos processos que podem evoluir e trazemos novas ideias.</div>
                     <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Omitindo opiniões por medo, ou aceitando processos ruins porque "sempre foi assim".</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><i class="ph ph-users"></i><h4>Divide o Rum</h4></div>
+                    <div class="card-header"><img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/DIVIDE%20O%20RUM.svg" alt="Divide o Rum" class="valor-icon"><h4>Divide o Rum</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Reconhece os louros dos colegas e recompensa à altura.</p>
                     <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Reconhecemos o trabalho dos colegas e celebramos vitórias coletivas.</div>
                     <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Apropriando-nos do mérito do time ou criando competição interna destrutiva.</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><i class="ph ph-fire"></i><h4>Sangue nos Olhos, Capitão</h4></div>
+                    <div class="card-header"><img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/SANGUE%20NOS%20OLHOS.svg" alt="Sangue nos Olhos, Capitão" class="valor-icon"><h4>Sangue nos Olhos, Capitão</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Ensina, aprende e inspira medo ou admiração.</p>
                     <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Buscamos crescimento constante, compartilhamos conhecimento e lideramos pelo exemplo.</div>
                     <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Aceitando mediocridade, retendo conhecimento ou evitando responsabilidade.</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><i class="ph ph-target"></i><h4>Impiedoso</h4></div>
+                    <div class="card-header"><img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/IMPIEDOSO.svg" alt="Impiedoso" class="valor-icon"><h4>Impiedoso</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Vigia os concorrentes, analisa dados e executa o que funciona.</p>
                     <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Monitoramos tendências, tomamos decisões baseadas em dados e aprendemos.</div>
                     <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Ignorando o mercado, decidindo por achismo ou subestimando competidores.</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><i class="ph ph-anchor"></i><h4>Imediato</h4></div>
+                    <div class="card-header"><img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/IMEDIATO.svg" alt="Imediato" class="valor-icon"><h4>Imediato</h4></div>
                     <p style="font-weight: 500; margin-bottom: 1rem; color: var(--text-main);">Leal aos piratas e à AUVP Capital.</p>
                     <div class="value-box value-positive"><strong><i class="ph ph-check-circle"></i> Como Vivemos:</strong> Defendemos a AUVP Capital, protegemos o time e priorizamos o coletivo.</div>
                     <div class="value-box value-negative"><strong><i class="ph ph-x-circle"></i> Como Não Vivemos:</strong> Agindo em benefício próprio ou enfraquecendo a reputação da empresa.</div>
@@ -892,11 +1246,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // == Funcionalidade: Scroll Suave e Highlight de Menu ==
             const navLinks = document.querySelectorAll('.nav-link');
+            const navList = document.getElementById('nav-list');
             const targets = [];
 
-            // Mapeia cirurgicamente apenas os elementos que existem no menu lateral
+            // Mapeia os elementos
             navLinks.forEach(link => {
                 const href = link.getAttribute('href');
                 if (href && href.startsWith('#')) {
@@ -905,13 +1259,17 @@
                 }
             });
 
-            // Scroll suave com margem de segurança (para o título não colar no teto)
-            navLinks.forEach(anchor => {
+            // Scroll suave ao clicar em qualquer link interno (Menu Superior ou Bento Box)
+            const allInternalLinks = document.querySelectorAll('a[href^="#"]');
+            allInternalLinks.forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return; // Ignora links vazios
+                    
+                    const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const offset = 80; // Margem no topo da tela
+                        e.preventDefault(); // Previne o salto nativo e seco do navegador
+                        const offset = 180; // Altura do header + respiro agradável acima do título
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -923,36 +1281,56 @@
                 });
             });
 
-            // Função robusta de ScrollSpy (substitui o IntersectionObserver falho)
+            // Função ScrollSpy e auto-scroll horizontal do menu
             function onScroll() {
                 let currentId = '';
                 const scrollPosition = window.scrollY;
 
                 targets.forEach(target => {
                     const targetTop = target.getBoundingClientRect().top + window.scrollY;
-                    // Gatilho visual: atualiza assim que o elemento chega a 150px do topo
-                    if (targetTop - 150 <= scrollPosition) {
+                    if (targetTop - 180 <= scrollPosition) {
                         currentId = target.getAttribute('id');
                     }
                 });
 
-                // Tratamento especial: se chegar ao final exato da página, marca o último item
                 if (window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 50) {
                     currentId = targets[targets.length - 1].getAttribute('id');
                 }
 
-                // Atualiza o destaque da classe ativa
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${currentId}`) {
                         link.classList.add('active');
+                        
+                        // Faz com que o menu horizontal se mova sozinho para mostrar o item ativo
+                        if (navList) {
+                            const linkRect = link.getBoundingClientRect();
+                            const listRect = navList.getBoundingClientRect();
+                            
+                            // Se a pílula ativa estiver fora ou muito perto da borda do menu, desliza suavemente
+                            if (linkRect.left < listRect.left || linkRect.right > listRect.right) {
+                                link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                            }
+                        }
                     }
                 });
+
+                // Lógica Inteligente para Exibir/Esconder o Menu Flutuante
+                const bentoElement = document.querySelector('.bento-grid');
+                const siteHeader = document.querySelector('.site-header');
+                if (bentoElement && siteHeader) {
+                    const bentoBottom = bentoElement.getBoundingClientRect().bottom;
+                    // O menu surge assim que o utilizador rola para baixo do Bento Box e entra no Item 1
+                    if (bentoBottom < 150) {
+                        siteHeader.classList.add('show-nav');
+                    } else {
+                        siteHeader.classList.remove('show-nav');
+                    }
+                }
             }
 
-            // Ativa o ouvinte de eventos focado em performance e dispara-o no load inicial
             window.addEventListener('scroll', onScroll, { passive: true });
-            onScroll();
+            onScroll(); // Corrida inicial
 
             // == Funcionalidade: Switch de Tema Claro/Escuro ==
             const toggleBtn = document.getElementById('theme-toggle-btn');
@@ -979,26 +1357,6 @@
                 }
             });
 
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const sidebar = document.getElementById('sidebar');
-            const sidebarOverlay = document.getElementById('sidebar-overlay');
-
-            function toggleMenu() {
-                if (sidebar) sidebar.classList.toggle('open');
-                if (sidebarOverlay) sidebarOverlay.classList.toggle('open');
-            }
-
-            if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
-            if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleMenu);
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 1024) {
-                        if (sidebar) sidebar.classList.remove('open');
-                        if (sidebarOverlay) sidebarOverlay.classList.remove('open');
-                    }
-                });
-            });
         });
     </script>
 </body>
