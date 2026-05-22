@@ -570,7 +570,7 @@
             }
 
             * { box-shadow: none !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            body { display: block; background-color: #FFF !important; font-size: 11pt !important; color: #333 !important; }
+            body { display: block; background-color: #FFF !important; font-size: 10pt !important; color: #333 !important; }
             
             /* Ocultar elementos UI iterativos na impressão */
             .site-header { display: none !important; }
@@ -593,17 +593,30 @@
             .print-sumario ul ul li { font-weight: 400; margin-bottom: 0.3rem; color: #333 !important; }
 
             .main-content { margin: 0; width: 100%; max-width: none; padding: 0; }
-            section { page-break-inside: auto; margin-bottom: 2rem !important; }
+            section { page-break-inside: auto; margin-bottom: 1.5rem !important; }
             h1, h2, h3, h4, h5 { page-break-after: avoid; break-after: avoid; page-break-before: auto; }
             p, .document-meta, table, tr, td, .card, .alert-box, .value-box, .img-placeholder, .list-card-item { page-break-inside: avoid; break-inside: avoid; }
             ul, ol, li { page-break-inside: auto; break-inside: auto; orphans: 3; widows: 3; }
 
+            /* Margens de tipografia compactas para impressão */
+            h2 { margin-top: 1.5rem !important; margin-bottom: 0.9rem !important; font-size: 1.35rem !important; }
+            h3 { margin-top: 1.2rem !important; margin-bottom: 0.6rem !important; font-size: 1.05rem !important; }
+            h4 { margin-bottom: 0.5rem !important; }
+            p { margin-bottom: 0.75rem !important; }
+            ul, ol { margin-bottom: 0.75rem !important; }
+            li { margin-bottom: 0.25rem !important; }
+            .alert-box { margin: 0.9rem 0 !important; }
+            .img-placeholder { margin: 1.2rem 0 !important; }
+            .cards-grid { margin-top: 1rem !important; margin-bottom: 1rem !important; }
+            .list-cards { margin: 1rem 0 !important; }
+
             /* Forçar as grelhas no PDF */
             .cards-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1.5rem !important; }
-            .split-layout { display: flex !important; flex-direction: row !important; align-items: stretch !important; gap: 2rem !important; page-break-inside: avoid !important; break-inside: avoid !important; margin-bottom: 2rem !important; }
+            .split-layout { display: flex !important; flex-direction: row !important; align-items: stretch !important; gap: 1.5rem !important; page-break-inside: avoid !important; break-inside: avoid !important; margin: 1.2rem 0 !important; }
             .split-layout.reversed { flex-direction: row-reverse !important; }
-            .list-cards { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 2rem !important; align-items: start !important; }
-            .text-columns { column-count: 2 !important; column-gap: 3rem !important; }
+            .list-cards { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1rem !important; align-items: start !important; }
+            .text-columns { column-count: 2 !important; column-gap: 2.5rem !important; }
+            .cards-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
 
             /* Quebras de Página Forçadas por Item */
             #sec-2, #sec-3, #sec-4, #sec-5, #sec-6, #sec-7, #sec-8, #sec-9, #sec-10, #sec-14, #sec-15 {
@@ -1061,7 +1074,7 @@
 
             <p>No mercado financeiro, determinadas informações sensíveis não são de acesso público imediato e, quando utilizadas de forma indevida, podem gerar vantagens injustas. A utilização dessas informações para benefício próprio ou de terceiros é incompatível com os princípios da AUVP Capital e representa violação às normas aplicáveis.</p>
             
-            <div class="cards-grid">
+            <div class="cards-grid cards-grid-2">
                 <div class="card">
                     <div class="card-header"><i class="ph ph-trend-up"></i><h4>Insider Trading</h4></div>
                     <p>Ocorre quando alguém se antecipa ao mercado ao negociar valores mobiliários com base em informação relevante ainda não divulgada, buscando obter vantagem econômica. Prática tipificada como crime.</p>
