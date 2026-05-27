@@ -475,6 +475,45 @@
         .ph-slim { aspect-ratio: 4/1; margin: 2.5rem 0; }
         .ph-landscape { aspect-ratio: 16/9; margin: 2.5rem 0; }
 
+        /* Imagens Reais — corte e zoom centralizados */
+        .img-fit-split {
+            flex: 1;
+            width: 50%;
+            margin: 0;
+            min-height: 200px;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .img-fit-landscape {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            margin: 2.5rem 0;
+        }
+        .img-fit-banner {
+            width: 100%;
+            aspect-ratio: 21/9;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            margin: 3rem 0;
+        }
+        .img-fit-slim {
+            width: 100%;
+            aspect-ratio: 4/1;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            margin: 2.5rem 0;
+        }
+
         /* Layout Dividido Dinâmico */
         .split-layout {
             display: flex;
@@ -641,6 +680,12 @@
             .print-vbox.pv-neg strong { color: #C81E1E !important; }
             .print-sec2-disclaimer { border: 1px solid #DDE3DD !important; border-left: 4px solid #023620 !important; border-radius: 0 8px 8px 0 !important; padding: 0.6rem 0.75rem !important; background: #F1F4F1 !important; break-inside: avoid !important; box-sizing: border-box !important; align-self: stretch !important; display: flex !important; align-items: center !important; }
             .print-sec2-disclaimer p { font-size: 0.74rem !important; color: #333 !important; font-style: italic !important; margin: 0 !important; line-height: 1.4 !important; }
+
+            /* Imagens reais na impressão */
+            .img-fit-split { max-height: none !important; margin: 0 !important; }
+            .img-fit-landscape { max-height: 8cm !important; aspect-ratio: auto !important; margin: 1.2rem 0 !important; }
+            .img-fit-banner { max-height: 5cm !important; aspect-ratio: auto !important; margin: 1.2rem 0 !important; }
+            .img-fit-slim { max-height: 4cm !important; aspect-ratio: auto !important; margin: 1rem 0 !important; }
 
             /* Quebras de Página Forçadas por Item */
             #sec-2, #sec-3, #sec-4, #sec-5, #sec-6, #sec-8, #sec-9, #sec-10, #sec-15 {
@@ -883,22 +928,14 @@
                     <p>Hoje, somos a maior escola de investimentos do Brasil e a consultoria número 1 no ranking do BTG Pactual. Mais do que títulos ou reconhecimento, o que nos move é gerar impacto real: levar educação financeira de verdade e gestão patrimonial eficiente a brasileiros comuns, com soluções que entregam resultados.</p>
                     <p>A AUVP Capital atua com uma gama integrada de produtos e frentes que conectam educação financeira, investimentos, gestão patrimonial, soluções empresariais, agronegócio, experiências e tecnologia. Essa integração permite a criação de soluções inovadoras, tanto para indivíduos quanto para empresas que buscam crescimento sustentável, segurança financeira e decisões mais inteligentes.</p>
                 </div>
-                <div class="img-placeholder">
-                    <i class="ph ph-buildings"></i>
-                    <span class="dim">Ajustável</span>
-                    <span class="desc">Acompanha altura do texto</span>
-                </div>
+                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%201%20-%20imagem%20vertical%20quem%20somos.webp" alt="AUVP Capital — Quem Somos" class="img-fit-split">
             </div>
 
             <p>Seu braço educacional já impactou mais de 40 milhões de pessoas, oferecendo o conhecimento necessário para dominar o universo dos investimentos. Em 2025 e 2026, a AUVP Capital consolidou sua liderança no mercado ao conquistar o primeiro lugar no ranking de melhores consultorias pelo BTG Pactual, reforçando sua posição como referência nacional.</p>
             <p>Ainda em 2025, a AUVP Capital ampliou sua atuação no mercado de capitais com o lançamento de três ETFs em parceria com o BTG Pactual. O AUVP11 tornou-se o primeiro ETF do Brasil 100% fundamentalista, reafirmando nossa capacidade de inovar com profundidade técnica. Já o AREA11 marcou um novo capítulo ao ser o primeiro fundo de índice da B3 estruturado integralmente para geração de renda mensal indexada ao IPCA. O AUPO11 consolidou nosso compromisso com soluções eficientes e acessíveis, ao combinar simplicidade operacional, previsibilidade tributária, com alíquota fixa de 15% de IR; sendo ideal para reserva de oportunidade e emergência.</p>
             <p>Mais do que uma plataforma, a AUVP Capital é um ecossistema completo que integra investidores, conhecimento e capital, transformando educação em estratégia e estratégia em resultados concretos. Aqui, cada aluno, membro ou investidor encontra segurança, crescimento e liberdade financeira para evoluir em todas as etapas da sua jornada.</p>
             
-            <div class="img-placeholder ph-landscape">
-                <i class="ph ph-users-three"></i>
-                <span class="dim">1200 x 600 px</span>
-                <span class="desc">Paisagem / Diversidade de Equipa</span>
-            </div>
+            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%202%20-%20imagem%20ultrawide%20crescimento.webp" alt="AUVP Capital — Crescimento" class="img-fit-landscape">
         </section>
 
         <!-- SEÇÃO 2 -->
