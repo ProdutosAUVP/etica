@@ -226,10 +226,10 @@
         }
         
         .site-header.show-nav .sticky-nav {
-            max-height: 100px;
+            max-height: 120px; /* Aumentado para garantir espaço para a barra de scroll */
             opacity: 1;
             padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            padding-bottom: 1rem; /* Margem inferior para a barra não ficar cortada */
         }
 
         /* Sombras para indicar rolagem no menu */
@@ -248,13 +248,32 @@
             gap: 0.5rem;
             overflow-x: auto;
             list-style: none;
-            scrollbar-width: none; /* Firefox */
             scroll-behavior: smooth;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem; /* Espaço de respiro entre os botões e a barra de scroll */
             margin-left: 0;
+            scrollbar-width: thin; /* Firefox: barra fina */
+            scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+            -webkit-overflow-scrolling: touch;
         }
         
-        .nav-list::-webkit-scrollbar { display: none; }
+        body.dark-theme .nav-list {
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+
+        /* Scrollbar elegante para Chrome, Edge e Safari */
+        .nav-list::-webkit-scrollbar { 
+            height: 6px; 
+        }
+        .nav-list::-webkit-scrollbar-track { 
+            background: transparent; 
+        }
+        .nav-list::-webkit-scrollbar-thumb { 
+            background: rgba(0, 0, 0, 0.2); 
+            border-radius: 10px; 
+        }
+        body.dark-theme .nav-list::-webkit-scrollbar-thumb { 
+            background: rgba(255, 255, 255, 0.2); 
+        }
 
         .nav-link {
             display: flex;
@@ -594,8 +613,20 @@
 
             .main-content { margin: 0; width: 100%; max-width: none; padding: 0; }
             section { page-break-inside: auto; margin-bottom: 2rem !important; }
-            h1, h2, h3, h4, h5 { page-break-after: avoid; break-after: avoid; page-break-before: auto; }
-            p, .document-meta, table, tr, td, .card, .alert-box, .value-box, .img-placeholder, .list-card-item { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* GARANTIA DE TÍTULOS JUNTOS AO TEXTO E IMAGENS INTACTAS */
+            h1, h2, h3, h4, h5 { 
+                page-break-after: avoid !important; 
+                break-after: avoid !important; 
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            p, .document-meta, table, tr, td, .card, .alert-box, .value-box, .img-placeholder, .list-card-item, img, .content-image, .valor-icon { 
+                page-break-inside: avoid !important; 
+                break-inside: avoid !important; 
+            }
+            
             ul, ol, li { page-break-inside: auto; break-inside: auto; orphans: 3; widows: 3; }
 
             /* Forçar as grelhas no PDF */
