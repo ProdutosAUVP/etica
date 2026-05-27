@@ -626,9 +626,12 @@
             .print-sec2 { display: flex !important; flex-direction: row !important; gap: 2.5rem !important; align-items: flex-start !important; page-break-inside: avoid !important; break-inside: avoid !important; }
             .print-sec2-texto { flex: 1 !important; }
             .print-sec2-valores { flex: 1 !important; border-top: 2px solid #023620 !important; }
-            .print-sec2-valores ul { list-style: none !important; margin: 0 !important; padding: 0 !important; }
-            .print-sec2-valores li { padding: 0.55rem 0 !important; border-bottom: 1px solid #DDE3DD !important; margin: 0 !important; font-size: 0.95rem !important; line-height: 1.4 !important; }
-            .print-sec2-nota { margin-top: 0.9rem !important; font-size: 0.85rem !important; font-style: italic !important; color: #555 !important; border-left: 3px solid #023620 !important; padding-left: 0.6rem !important; margin-bottom: 0 !important; }
+            .print-valor-item { border-bottom: 1px solid #DDE3DD !important; padding: 0.35rem 0 !important; break-inside: avoid !important; }
+            .print-valor-nome { font-size: 0.88rem !important; font-weight: 600 !important; margin-bottom: 0.15rem !important; color: #111 !important; }
+            .print-valor-detalhe { font-size: 0.8rem !important; margin-bottom: 0.1rem !important; line-height: 1.35 !important; color: #333 !important; }
+            .pv-sim { color: #023620 !important; font-weight: 700 !important; }
+            .pv-nao { color: #C81E1E !important; font-weight: 700 !important; }
+            .print-sec2-nota { margin-top: 0.7rem !important; font-size: 0.8rem !important; font-style: italic !important; color: #555 !important; border-left: 3px solid #023620 !important; padding-left: 0.6rem !important; margin-bottom: 0 !important; }
 
             /* Quebras de Página Forçadas por Item */
             #sec-2, #sec-3, #sec-4, #sec-5, #sec-6, #sec-8, #sec-9, #sec-10, #sec-15 {
@@ -953,13 +956,31 @@
                     <p>Nossos valores são o código que mantém a tripulação unida, protege nossa cultura e garante que seguimos na mesma direção com coragem, lealdade e propósito. Eles definem o que é ser um verdadeiro pirata da AUVP Capital: quem somos, como navegamos e o que jamais aceitamos dentro do navio.</p>
                 </div>
                 <div class="print-sec2-valores">
-                    <ul>
-                        <li><strong>Manda a Real</strong> — Coragem de dar ideias e questionar as regras.</li>
-                        <li><strong>Divide o Rum</strong> — Reconhece os louros dos colegas e recompensa à altura.</li>
-                        <li><strong>Sangue nos Olhos, Capitão</strong> — Ensina, aprende e inspira medo ou admiração.</li>
-                        <li><strong>Impiedoso</strong> — Vigia os concorrentes, analisa dados e executa o que funciona.</li>
-                        <li><strong>Imediato</strong> — Leal aos piratas e à AUVP Capital.</li>
-                    </ul>
+                    <div class="print-valor-item">
+                        <p class="print-valor-nome"><strong>Manda a Real</strong> — Coragem de dar ideias e questionar as regras.</p>
+                        <p class="print-valor-detalhe"><span class="pv-sim">✓ Como Vivemos:</span> Falamos com franqueza, questionamos processos que podem evoluir e trazemos novas ideias.</p>
+                        <p class="print-valor-detalhe"><span class="pv-nao">✕ Como Não Vivemos:</span> Omitindo opiniões por medo, ou aceitando processos ruins porque "sempre foi assim".</p>
+                    </div>
+                    <div class="print-valor-item">
+                        <p class="print-valor-nome"><strong>Divide o Rum</strong> — Reconhece os louros dos colegas e recompensa à altura.</p>
+                        <p class="print-valor-detalhe"><span class="pv-sim">✓ Como Vivemos:</span> Reconhecemos o trabalho dos colegas e celebramos vitórias coletivas.</p>
+                        <p class="print-valor-detalhe"><span class="pv-nao">✕ Como Não Vivemos:</span> Apropriando-nos do mérito do time ou criando competição interna destrutiva.</p>
+                    </div>
+                    <div class="print-valor-item">
+                        <p class="print-valor-nome"><strong>Sangue nos Olhos, Capitão</strong> — Ensina, aprende e inspira medo ou admiração.</p>
+                        <p class="print-valor-detalhe"><span class="pv-sim">✓ Como Vivemos:</span> Buscamos crescimento constante, compartilhamos conhecimento e lideramos pelo exemplo.</p>
+                        <p class="print-valor-detalhe"><span class="pv-nao">✕ Como Não Vivemos:</span> Aceitando mediocridade, retendo conhecimento ou evitando responsabilidade.</p>
+                    </div>
+                    <div class="print-valor-item">
+                        <p class="print-valor-nome"><strong>Impiedoso</strong> — Vigia os concorrentes, analisa dados e executa o que funciona.</p>
+                        <p class="print-valor-detalhe"><span class="pv-sim">✓ Como Vivemos:</span> Monitoramos tendências, tomamos decisões baseadas em dados e aprendemos.</p>
+                        <p class="print-valor-detalhe"><span class="pv-nao">✕ Como Não Vivemos:</span> Ignorando o mercado, decidindo por achismo ou subestimando competidores.</p>
+                    </div>
+                    <div class="print-valor-item">
+                        <p class="print-valor-nome"><strong>Imediato</strong> — Leal aos piratas e à AUVP Capital.</p>
+                        <p class="print-valor-detalhe"><span class="pv-sim">✓ Como Vivemos:</span> Defendemos a AUVP Capital, protegemos o time e priorizamos o coletivo.</p>
+                        <p class="print-valor-detalhe"><span class="pv-nao">✕ Como Não Vivemos:</span> Agindo em benefício próprio ou enfraquecendo a reputação da empresa.</p>
+                    </div>
                     <p class="print-sec2-nota">Nossos valores não são slogans, são critérios de decisão. Eles guiam cada atitude, contratação e reconhecimento. Aqui, cultura não é o que está no mural, é o que sustenta o nosso resultado.</p>
                 </div>
             </div>
