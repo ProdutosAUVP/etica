@@ -618,6 +618,18 @@
             .text-columns { column-count: 2 !important; column-gap: 2.5rem !important; }
             .cards-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
 
+            /* Sec-2: substituir cards pelo layout de 2 colunas compacto */
+            #sec-2 .text-columns,
+            #sec-2 .cards-grid,
+            #sec-2 .alert-box { display: none !important; }
+
+            .print-sec2 { display: flex !important; flex-direction: row !important; gap: 2.5rem !important; align-items: flex-start !important; page-break-inside: avoid !important; break-inside: avoid !important; }
+            .print-sec2-texto { flex: 1 !important; }
+            .print-sec2-valores { flex: 1 !important; border-top: 2px solid #023620 !important; }
+            .print-sec2-valores ul { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+            .print-sec2-valores li { padding: 0.55rem 0 !important; border-bottom: 1px solid #DDE3DD !important; margin: 0 !important; font-size: 0.95rem !important; line-height: 1.4 !important; }
+            .print-sec2-nota { margin-top: 0.9rem !important; font-size: 0.85rem !important; font-style: italic !important; color: #555 !important; border-left: 3px solid #023620 !important; padding-left: 0.6rem !important; margin-bottom: 0 !important; }
+
             /* Quebras de Página Forçadas por Item */
             #sec-2, #sec-3, #sec-4, #sec-5, #sec-6, #sec-8, #sec-9, #sec-10, #sec-15 {
                 page-break-before: always !important;
@@ -930,6 +942,25 @@
                 <i class="ph ph-info alert-icon" style="color: var(--text-muted);"></i>
                 <div class="alert-content">
                     <p>É importante lembrar que nossos valores não são slogans, são critérios de decisão! Eles guiam cada atitude, contratação e reconhecimento. Aqui, cultura não é o que está no mural, é o que sustenta o nosso resultado.</p>
+                </div>
+            </div>
+
+            <!-- Layout condensado exclusivo para impressão/PDF -->
+            <div class="print-only print-sec2">
+                <div class="print-sec2-texto">
+                    <p>Assim como no Cerrado, onde as árvores são discretas na superfície, mas sustentadas por raízes profundas e resilientes, acreditamos que a força de um profissional está na sua solidez intelectual, na profundidade do seu conhecimento e na consistência das suas decisões. Não selecionamos profissionais pela imagem que projetam, mas pela base que constroem. Preferimos quem é, não quem apenas parece ser.</p>
+                    <p>É por isso que aqui nos reconhecemos e nos chamamos de Piratas. Piratas da AUVP Capital não são rótulos, são pessoas que escolhem navegar juntas, com autonomia, responsabilidade e coragem, sabendo que fazem parte de algo maior.</p>
+                    <p>Nossos valores são o código que mantém a tripulação unida, protege nossa cultura e garante que seguimos na mesma direção com coragem, lealdade e propósito. Eles definem o que é ser um verdadeiro pirata da AUVP Capital: quem somos, como navegamos e o que jamais aceitamos dentro do navio.</p>
+                </div>
+                <div class="print-sec2-valores">
+                    <ul>
+                        <li><strong>Manda a Real</strong> — Coragem de dar ideias e questionar as regras.</li>
+                        <li><strong>Divide o Rum</strong> — Reconhece os louros dos colegas e recompensa à altura.</li>
+                        <li><strong>Sangue nos Olhos, Capitão</strong> — Ensina, aprende e inspira medo ou admiração.</li>
+                        <li><strong>Impiedoso</strong> — Vigia os concorrentes, analisa dados e executa o que funciona.</li>
+                        <li><strong>Imediato</strong> — Leal aos piratas e à AUVP Capital.</li>
+                    </ul>
+                    <p class="print-sec2-nota">Nossos valores não são slogans, são critérios de decisão. Eles guiam cada atitude, contratação e reconhecimento. Aqui, cultura não é o que está no mural, é o que sustenta o nosso resultado.</p>
                 </div>
             </div>
         </section>
