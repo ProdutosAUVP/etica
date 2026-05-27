@@ -626,10 +626,9 @@
 
             .print-only.print-sec2 { display: block !important; }
             .print-sec2-intro { margin-bottom: 0.9rem !important; }
-            .print-sec2-intro p { color: #333 !important; margin-bottom: 0.6rem !important; }
-            .print-sec2-grid { display: flex !important; flex-direction: row !important; gap: 1.2rem !important; align-items: flex-start !important; }
-            .print-sec2-col { flex: 1 !important; display: flex !important; flex-direction: column !important; gap: 0.55rem !important; }
-            .print-card { border: 1px solid #DDE3DD !important; border-radius: 8px !important; padding: 0.6rem 0.75rem !important; break-inside: avoid !important; background: #FFFFFF !important; }
+            .print-sec2-intro p { color: #333 !important; margin-bottom: 0.55rem !important; }
+            .print-sec2-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 0.55rem 1.2rem !important; align-items: stretch !important; }
+            .print-card { border: 1px solid #DDE3DD !important; border-radius: 8px !important; padding: 0.6rem 0.75rem !important; break-inside: avoid !important; background: #FFFFFF !important; box-sizing: border-box !important; }
             .print-card-header { display: flex !important; align-items: center !important; gap: 0.5rem !important; margin-bottom: 0.4rem !important; }
             .print-valor-icon { width: 34px !important; height: 34px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; }
             .print-card-header h4 { margin: 0 0 0.1rem 0 !important; font-size: 0.82rem !important; color: #023620 !important; line-height: 1.2 !important; }
@@ -640,7 +639,7 @@
             .print-vbox.pv-pos strong { color: #023620 !important; }
             .print-vbox.pv-neg { background: #FEF2F2 !important; border-left: 2px solid #C81E1E !important; }
             .print-vbox.pv-neg strong { color: #C81E1E !important; }
-            .print-sec2-disclaimer { border: 1px solid #DDE3DD !important; border-left: 4px solid #023620 !important; border-radius: 0 8px 8px 0 !important; padding: 0.6rem 0.75rem !important; background: #F1F4F1 !important; break-inside: avoid !important; }
+            .print-sec2-disclaimer { border: 1px solid #DDE3DD !important; border-left: 4px solid #023620 !important; border-radius: 0 8px 8px 0 !important; padding: 0.6rem 0.75rem !important; background: #F1F4F1 !important; break-inside: avoid !important; box-sizing: border-box !important; align-self: stretch !important; display: flex !important; align-items: center !important; }
             .print-sec2-disclaimer p { font-size: 0.74rem !important; color: #333 !important; font-style: italic !important; margin: 0 !important; line-height: 1.4 !important; }
 
             /* Quebras de Página Forçadas por Item */
@@ -961,65 +960,62 @@
             <!-- Layout exclusivo para impressão/PDF -->
             <div class="print-only print-sec2">
 
-                <!-- Texto introdutório — largura total -->
+                <!-- Texto introdutório resumido — largura total -->
                 <div class="print-sec2-intro">
-                    <p>Assim como no Cerrado, onde as árvores são discretas na superfície, mas sustentadas por raízes profundas e resilientes, acreditamos que a força de um profissional está na sua solidez intelectual, na profundidade do seu conhecimento e na consistência das suas decisões. Não selecionamos profissionais pela imagem que projetam, mas pela base que constroem. Preferimos quem é, não quem apenas parece ser.</p>
-                    <p>É por isso que aqui nos reconhecemos e nos chamamos de Piratas. Piratas da AUVP Capital não são rótulos, são pessoas que escolhem navegar juntas, com autonomia, responsabilidade e coragem, sabendo que fazem parte de algo maior.</p>
-                    <p>Nossos valores são o código que mantém a tripulação unida, protege nossa cultura e garante que seguimos na mesma direção com coragem, lealdade e propósito. Eles definem o que é ser um verdadeiro pirata da AUVP Capital: quem somos, como navegamos e o que jamais aceitamos dentro do navio.</p>
+                    <p>Assim como no Cerrado, cujas raízes profundas sustentam o que é discreto na superfície, valorizamos a solidez intelectual e a consistência das decisões — preferimos quem é, não quem apenas parece ser. Por isso, nos reconhecemos como Piratas: pessoas que escolhem navegar juntas, com autonomia, responsabilidade e coragem, sabendo que fazem parte de algo maior.</p>
+                    <p>Nossos valores são o código que mantém a tripulação unida, protege nossa cultura e define quem somos, como navegamos e o que jamais aceitamos dentro do navio.</p>
                 </div>
 
-                <!-- Grid 2 colunas: valores 1-3 | valores 4-5 + disclaimer -->
+                <!-- Grid 2×3 flat: itens intercalados para altura uniforme por linha -->
                 <div class="print-sec2-grid">
 
-                    <!-- Coluna 1 -->
-                    <div class="print-sec2-col">
-                        <div class="print-card">
-                            <div class="print-card-header">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/MANDA%20A%20REAL.svg" alt="Manda a Real" class="print-valor-icon">
-                                <div><h4>Manda a Real</h4><p class="print-card-desc">Coragem de dar ideias e questionar as regras.</p></div>
-                            </div>
-                            <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Falamos com franqueza, questionamos processos que podem evoluir e trazemos novas ideias.</div>
-                            <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Omitindo opiniões por medo, ou aceitando processos ruins porque "sempre foi assim".</div>
+                    <div class="print-card"><!-- linha 1, col 1 -->
+                        <div class="print-card-header">
+                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/MANDA%20A%20REAL.svg" alt="Manda a Real" class="print-valor-icon">
+                            <div><h4>Manda a Real</h4><p class="print-card-desc">Coragem de dar ideias e questionar as regras.</p></div>
                         </div>
-                        <div class="print-card">
-                            <div class="print-card-header">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/DIVIDE%20O%20RUM.svg" alt="Divide o Rum" class="print-valor-icon">
-                                <div><h4>Divide o Rum</h4><p class="print-card-desc">Reconhece os louros dos colegas e recompensa à altura.</p></div>
-                            </div>
-                            <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Reconhecemos o trabalho dos colegas e celebramos vitórias coletivas.</div>
-                            <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Apropriando-nos do mérito do time ou criando competição interna destrutiva.</div>
-                        </div>
-                        <div class="print-card">
-                            <div class="print-card-header">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/SANGUE%20NOS%20OLHOS.svg" alt="Sangue nos Olhos, Capitão" class="print-valor-icon">
-                                <div><h4>Sangue nos Olhos, Capitão</h4><p class="print-card-desc">Ensina, aprende e inspira medo ou admiração.</p></div>
-                            </div>
-                            <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Buscamos crescimento constante, compartilhamos conhecimento e lideramos pelo exemplo.</div>
-                            <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Aceitando mediocridade, retendo conhecimento ou evitando responsabilidade.</div>
-                        </div>
+                        <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Falamos com franqueza, questionamos processos que podem evoluir e trazemos novas ideias.</div>
+                        <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Omitindo opiniões por medo, ou aceitando processos ruins porque "sempre foi assim".</div>
                     </div>
 
-                    <!-- Coluna 2 -->
-                    <div class="print-sec2-col">
-                        <div class="print-card">
-                            <div class="print-card-header">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/IMPIEDOSO.svg" alt="Impiedoso" class="print-valor-icon">
-                                <div><h4>Impiedoso</h4><p class="print-card-desc">Vigia os concorrentes, analisa dados e executa o que funciona.</p></div>
-                            </div>
-                            <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Monitoramos tendências, tomamos decisões baseadas em dados e aprendemos.</div>
-                            <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Ignorando o mercado, decidindo por achismo ou subestimando competidores.</div>
+                    <div class="print-card"><!-- linha 1, col 2 -->
+                        <div class="print-card-header">
+                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/IMPIEDOSO.svg" alt="Impiedoso" class="print-valor-icon">
+                            <div><h4>Impiedoso</h4><p class="print-card-desc">Vigia os concorrentes, analisa dados e executa o que funciona.</p></div>
                         </div>
-                        <div class="print-card">
-                            <div class="print-card-header">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/IMEDIATO.svg" alt="Imediato" class="print-valor-icon">
-                                <div><h4>Imediato</h4><p class="print-card-desc">Leal aos piratas e à AUVP Capital.</p></div>
-                            </div>
-                            <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Defendemos a AUVP Capital, protegemos o time e priorizamos o coletivo.</div>
-                            <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Agindo em benefício próprio ou enfraquecendo a reputação da empresa.</div>
+                        <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Monitoramos tendências, tomamos decisões baseadas em dados e aprendemos.</div>
+                        <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Ignorando o mercado, decidindo por achismo ou subestimando competidores.</div>
+                    </div>
+
+                    <div class="print-card"><!-- linha 2, col 1 -->
+                        <div class="print-card-header">
+                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/DIVIDE%20O%20RUM.svg" alt="Divide o Rum" class="print-valor-icon">
+                            <div><h4>Divide o Rum</h4><p class="print-card-desc">Reconhece os louros dos colegas e recompensa à altura.</p></div>
                         </div>
-                        <div class="print-sec2-disclaimer">
-                            <p>É importante lembrar que nossos valores não são slogans, são critérios de decisão! Eles guiam cada atitude, contratação e reconhecimento. Aqui, cultura não é o que está no mural, é o que sustenta o nosso resultado.</p>
+                        <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Reconhecemos o trabalho dos colegas e celebramos vitórias coletivas.</div>
+                        <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Apropriando-nos do mérito do time ou criando competição interna destrutiva.</div>
+                    </div>
+
+                    <div class="print-card"><!-- linha 2, col 2 -->
+                        <div class="print-card-header">
+                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/IMEDIATO.svg" alt="Imediato" class="print-valor-icon">
+                            <div><h4>Imediato</h4><p class="print-card-desc">Leal aos piratas e à AUVP Capital.</p></div>
                         </div>
+                        <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Defendemos a AUVP Capital, protegemos o time e priorizamos o coletivo.</div>
+                        <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Agindo em benefício próprio ou enfraquecendo a reputação da empresa.</div>
+                    </div>
+
+                    <div class="print-card"><!-- linha 3, col 1 -->
+                        <div class="print-card-header">
+                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/SANGUE%20NOS%20OLHOS.svg" alt="Sangue nos Olhos, Capitão" class="print-valor-icon">
+                            <div><h4>Sangue nos Olhos, Capitão</h4><p class="print-card-desc">Ensina, aprende e inspira medo ou admiração.</p></div>
+                        </div>
+                        <div class="print-vbox pv-pos"><strong>✓ Como Vivemos:</strong> Buscamos crescimento constante, compartilhamos conhecimento e lideramos pelo exemplo.</div>
+                        <div class="print-vbox pv-neg"><strong>✕ Como Não Vivemos:</strong> Aceitando mediocridade, retendo conhecimento ou evitando responsabilidade.</div>
+                    </div>
+
+                    <div class="print-sec2-disclaimer"><!-- linha 3, col 2 -->
+                        <p>É importante lembrar que nossos valores não são slogans, são critérios de decisão! Eles guiam cada atitude, contratação e reconhecimento. Aqui, cultura não é o que está no mural, é o que sustenta o nosso resultado.</p>
                     </div>
 
                 </div>
