@@ -476,12 +476,21 @@
         .ph-landscape { aspect-ratio: 16/9; margin: 2.5rem 0; }
 
         /* Imagens Reais — corte e zoom centralizados */
-        .img-fit-split {
+        /* Wrapper: define o espaço (como o placeholder); imagem preenche via absolute */
+        .split-img-wrap {
             flex: 1;
             width: 50%;
             margin: 0;
             min-height: 200px;
             border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .img-fit-split {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             object-position: center;
             display: block;
@@ -682,6 +691,7 @@
             .print-sec2-disclaimer p { font-size: 0.74rem !important; color: #333 !important; font-style: italic !important; margin: 0 !important; line-height: 1.4 !important; }
 
             /* Imagens reais na impressão */
+            .split-img-wrap { max-height: none !important; margin: 0 !important; }
             .img-fit-split { max-height: none !important; margin: 0 !important; }
             .img-fit-landscape { max-height: 8cm !important; aspect-ratio: auto !important; margin: 1.2rem 0 !important; }
             .img-fit-banner { max-height: 5cm !important; aspect-ratio: auto !important; margin: 1.2rem 0 !important; }
@@ -928,7 +938,9 @@
                     <p>Hoje, somos a maior escola de investimentos do Brasil e a consultoria número 1 no ranking do BTG Pactual. Mais do que títulos ou reconhecimento, o que nos move é gerar impacto real: levar educação financeira de verdade e gestão patrimonial eficiente a brasileiros comuns, com soluções que entregam resultados.</p>
                     <p>A AUVP Capital atua com uma gama integrada de produtos e frentes que conectam educação financeira, investimentos, gestão patrimonial, soluções empresariais, agronegócio, experiências e tecnologia. Essa integração permite a criação de soluções inovadoras, tanto para indivíduos quanto para empresas que buscam crescimento sustentável, segurança financeira e decisões mais inteligentes.</p>
                 </div>
-                <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%201%20-%20imagem%20vertical%20quem%20somos.webp" alt="AUVP Capital — Quem Somos" class="img-fit-split">
+                <div class="split-img-wrap">
+                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/etica/main/item%201%20-%20imagem%20vertical%20quem%20somos.webp" alt="AUVP Capital — Quem Somos" class="img-fit-split">
+                </div>
             </div>
 
             <p>Seu braço educacional já impactou mais de 40 milhões de pessoas, oferecendo o conhecimento necessário para dominar o universo dos investimentos. Em 2025 e 2026, a AUVP Capital consolidou sua liderança no mercado ao conquistar o primeiro lugar no ranking de melhores consultorias pelo BTG Pactual, reforçando sua posição como referência nacional.</p>
